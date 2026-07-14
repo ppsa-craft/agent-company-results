@@ -5,7 +5,8 @@
 ## Current State
 - **Cycle:** 2 (resumed after provider error pause at 2026-07-14T09:26:44.668Z)
 - **Active Product:** 6 products in pipeline (diffcheck, daycalc, colorlab, textcounter, loremipsum, uuid-generator)
-- **Active Milestone:** Still waiting for product kickoff (phase 1 tech stack done, but product kickoff milestone not set)
+- **Active Milestone**
+  - `milestone:product-kickoff` — NOT SET (blocker)
 - **Active Debate:** None
 - **Active Tasks:** 3 DEV tasks in flight (colorlab→DEV-2, loremipsum→DEV, uuid-generator→DEV-1); TECHLEAD, BA, HR tasks ready but not claimed
 
@@ -45,6 +46,9 @@ Latest metrics file: `metrics/cycle-1.json` (cycle 1 incomplete — provider err
 ## Milestone Flags
 - `milestone:product-kickoff` — NOT SET
 - `milestone:first-ship` — NOT SET
+
+## Blockers
+- HR dev-3 hire blocked on ba-2 permission (capped parallel DEV capacity); TECHLEAD `review-all-products` not yet started; PM still must claim 6 BA task entries for hygiene.
 
 ## Blockers
 - Cycle 1 interrupted by provider error (ppsa/deepseek-v4-flash-free "Upstream request failed" ×3)
