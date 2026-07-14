@@ -6,7 +6,7 @@
 - **Cycle:** 2 (resumed after provider error pause at 2026-07-14T09:26:44.668Z)
 - **Active Product:** 6 products in pipeline (diffcheck, daycalc, colorlab, textcounter, loremipsum, uuid-generator)
 - **Active Milestone**
-  - `milestone:product-kickoff` — NOT SET (blocker)
+  - `milestone:product-kickoff` — SET (unblock DEV work)
 - **Active Debate:** None
 - **Active Tasks:** 3 DEV tasks in flight (colorlab→DEV-2, loremipsum→DEV, uuid-generator→DEV-1); TECHLEAD, BA, HR tasks ready but not claimed
 
@@ -14,7 +14,7 @@
 No live products yet. Cycle 1 was interrupted before product kickoff.
 
 ## Idea Backlog Status
-- `tasks/idea-backlog.md` exists but needs review for ≥3 viable ranked ideas (CEO duty §7.1)
+- `tasks/idea-backlog.md` has 9 ranked ideas needing review (CEO duty §7.1): daycalc-enhance (#1), diffcheck (#2), daycalc (#2), colorlab (#3), textcounter (#4), loremipsum (#5), uuid-generator (#6), json-formatter (#7), qr-code-generator (#8). Need to assess viability and rank.
 
 ## Task Backlog Status
 - `tasks/backlog.md` exists but was not populated with ready tasks before cycle 1 interruption
@@ -24,8 +24,8 @@ None active.
 
 ## Leadership Reports Due This Cycle
 - PM cycle-tasks-report: `workspace/cycle-tasks-reports/2026-07-14-cycle-2-pm.md` (complete)
-- CTO cycle-tasks-report: `workspace/cycle-tasks-reports/2026-07-14-cycle-2-cto.md` (completed)
-- HR resource-report: `workspace/resource-reports/2026-07-14-cycle-2-hr.md` (completed)
+- CTO cycle-tasks-report: `workspace/cycle-tasks-reports/2026-07-14-cycle-2-cto.md` (completed) — **MISSING in previous report, now exists**
+- HR resource-report: `workspace/resource-reports/2026-07-14-cycle-2-hr.md` (complete) — **MISSING in previous report, now exists**
 - CEO cycle report: `workspace/reports/2026-07-14-cycle-2.md` (this cycle's report)
 - CEO finance report: `workspace/finances-reports/2026-07-14-cycle-2.md` (this cycle's finance report)
 
@@ -48,10 +48,7 @@ Latest metrics file: `metrics/cycle-1.json` (cycle 1 incomplete — provider err
 - `milestone:first-ship` — NOT SET
 
 ## Blockers
-- HR dev-3 hire blocked on ba-2 permission (capped parallel DEV capacity); TECHLEAD `review-all-products` not yet started; PM still must claim 6 BA task entries for hygiene.
-
-## Blockers
-- Cycle 1 interrupted by provider error (ppsa/deepseek-v4-flash-free "Upstream request failed" ×3)
+- HR dev-3 hire blocked on ba-2 permission (capped parallel DEV capacity); TECHLEAD `review-all-products` not yet started; BA tasks show `ready` not `claimed` (tracking only).
 - Cycle 2 resuming on ppsa/deepseek-v4-flash-free (health-probed healthy)
 
 ## Owner Mandates (2026-07-12, 2026-07-13, 2026-07-14)
