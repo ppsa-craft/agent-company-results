@@ -8,7 +8,12 @@
 - **Active Milestone**
   - `milestone:product-kickoff` — SET (unblock DEV work)
 - **Active Debate:** None
-- **Active Tasks:** 3 DEV tasks in flight (colorlab→DEV-2, loremipsum→DEV, uuid-generator→DEV-1); TECHLEAD, BA, HR tasks ready but not claimed
+- **Active Tasks:** 3 DEV tasks in flight (colorlab→DEV-2, loremipsum→DEV, uuid-generator→DEV-1); CTO and HR tasks ready but not claimed; BA tasks marked hygiene fix; BA task hygiene affecting DEV parallelization
+- **Active Debate:** `emergency-idle-2026-07-14` (CEO urgency protocol invoked)
+- **Active Milestone:** `milestone:product-kickoff` — SET (unblock DEV work)
+- **Active Product:** 6 products in pipeline (diffcheck, daycalc, colorlab, textcounter, loremipsum, uuid-generator)
+- **Active Debate:** `emergency-idle-2026-07-14` (CEO urgency protocol invoked)
+- **Active Tasks:** 6 products at stake (3 DEV in flight, 3 BA hygiene failures, 1 HR permission block, 1 CTO review gate)
 
 ## Portfolio
 No live products yet. Cycle 1 was interrupted before product kickoff.
