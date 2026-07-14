@@ -22,9 +22,9 @@ No live products yet. Cycle 1 was interrupted before product kickoff.
 None active.
 
 ## Leadership Reports Due This Cycle
-- PM cycle-tasks-report: `workspace/cycle-tasks-reports/2026-07-14-cycle-2-pm.md` (pending)
-- CTO cycle-tasks-report: `workspace/cycle-tasks-reports/2026-07-14-cycle-2-cto.md` (pending)
-- HR resource-report: `workspace/resource-reports/2026-07-14-cycle-2-hr.md` (pending)
+- PM cycle-tasks-report: `workspace/cycle-tasks-reports/2026-07-14-cycle-2-pm.md` (complete)
+- CTO cycle-tasks-report: `workspace/cycle-tasks-reports/2026-07-14-cycle-2-cto.md` (completed)
+- HR resource-report: `workspace/resource-reports/2026-07-14-cycle-2-hr.md` (completed)
 - CEO cycle report: `workspace/reports/2026-07-14-cycle-2.md` (this cycle's report)
 - CEO finance report: `workspace/finances-reports/2026-07-14-cycle-2.md` (this cycle's finance report)
 
