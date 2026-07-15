@@ -7,15 +7,15 @@
 ## Active Milestone
 - **Cycle**: 2 (resuming after provider pause)
 - **Cycle start**: 2026-07-15
-- **Milestone**: Cycle 2 execution - DEV fixes + DEV continuation + TESTER readiness
+- **Milestone**: Cycle 2 execution - resolve blockers + ship first products
 
 ## Active Tasks (from CTO cycle 2 review)
 - **textcounter**: APPROVED → ready for TESTER
 - **diffcheck**: REQUEST CHANGES → DEV fix needed (UI bug, dead code, package.json)
 - **daycalc**: REQUEST CHANGES → DEV fix needed (package.json, error handling, negative days)
-- **colorlab**: PENDING DEV (cycle 1/3, scaffold only) → DEV-2 continues cycle 2/3 — **milestone:product-kickoff = true**
-- **loremipsum**: PENDING DEV (cycle 1/2, empty scaffold) → DEV-1 continues cycle 2/2 — **milestone:product-kickoff = true**
-- **uuid-generator**: PENDING DEV (cycle 1/2, directory missing) → DEV-3 (blocked on dev-3 hire) — **milestone:product-kickoff = true**
+- **colorlab**: PENDING DEV (cycle 2/3, scaffold only) → DEV-2 continues cycle 2/3 — **milestone:product-kickoff = true**
+- **loremipsum**: PENDING DEV (cycle 2/2, empty scaffold) → DEV-1 continues cycle 2/2 — **milestone:product-kickoff = true**
+- **uuid-generator**: PENDING DEV (cycle 2/3, directory missing) → DEV-3 (blocked on dev-3 hire) — **milestone:product-kickoff = true**
 
 ## Active Debates
 - None active
