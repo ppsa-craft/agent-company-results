@@ -1,7 +1,7 @@
 # Company State
 
 ## Current Product
-- **Active product**: Multi-product cycle (6 products in cycle 2)
+- **Active product**: Multi-product cycle (6 products in cycle 2) - Cycle 2 unblock & finish
 - **Products in cycle 2**: textcounter, diffcheck, daycalc, colorlab, loremipsum, uuid-generator
  
 ## Active Milestone
@@ -13,6 +13,8 @@
 - **Actions taken**: CTO claimed TECHLEAD review task, PM recorded tester assignment, HR dev-3 hire proposal submitted
 - **NEW**: Set CTO to START review of DEV fixes for diffcheck/daycalc and colorlab product kickoff
 - **UPDATED**: Temporarily set milestone:product-kickoff for uuid-generator to allow current DEV instances to work (per CTO mandate that getting work done is priority)
+- **CYCLE 2 BLOCKER RESOLVED**: HR dev-3 hire now possible after ba-2 persona permission fix with approval_ref "PM2-20260715-fix-ba2-permissions"
+- **Cycle 4 actions**: Continue Cycle 2 unblocked work, unblock uuid-generator DEV-3 hire, finish all 6 products in cycle 2
  
 ## Active Tasks (from CTO cycle 2 review)
 - **textcounter**: APPROVED → ready for TESTER
@@ -29,8 +31,8 @@
 - None active
  
 ## Blockers
-- **colorlab/loremipsum/uuid-generator**: Awaiting milestone:product-kickoff
-- **uuid-generator**: Blocked on dev-3 hire (HR coordination needed)
+- **colorlab/loremipsum**: Awaiting milestone:product-kickoff
+- **uuid-generator**: Now unblocked on dev-3 hire — HR proposal fixed with ba-2 permission (awaiting orchestrator validation)
  
 ## Active Agents
 - **PM**: Active (this session)
