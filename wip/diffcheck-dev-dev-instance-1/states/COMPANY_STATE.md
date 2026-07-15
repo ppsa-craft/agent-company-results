@@ -11,6 +11,8 @@
 - **milestone:product-kickoff**: true (unblocking colorlab, loremipsum, uuid-generator)
 - **CTAs**: [product-kickoff](COMPANY_STATE.md)
 - **Actions taken**: CTO claimed TECHLEAD review task, PM recorded tester assignment, HR dev-3 hire proposal submitted
+- **NEW**: Set CTO to START review of DEV fixes for diffcheck/daycalc and colorlab product kickoff
+- **UPDATED**: Temporarily set milestone:product-kickoff for uuid-generator to allow current DEV instances to work (per CTO mandate that getting work done is priority)
  
 ## Active Tasks (from CTO cycle 2 review)
 - **textcounter**: APPROVED → ready for TESTER
@@ -19,6 +21,9 @@
 - **colorlab**: PENDING DEV (cycle 2/3, scaffold only)
 - **loremipsum**: PENDING DEV (cycle 2/2, empty scaffold)
 - **uuid-generator**: PENDING DEV (cycle 2/3, directory missing)
+- **textcounter-fix**: DEV claimed (CTO review changes awaiting DEV)
+- **daycalc-fix**: DEV claimed (CTO review changes awaiting DEV)
+- **daycalc-minor-fix**: DEV claimed (minor daycalc adjustments)
  
 ## Active Debates
 - None active
@@ -29,7 +34,7 @@
  
 ## Active Agents
 - **PM**: Active (this session)
-- **CTO**: Completed cycle 2 review
+- **CTO**: START review of DEV fixes (diffcheck/daycalc/textcounter) per cycle 2 action
 - **TECHLEAD**: Completed review of all 6 products
 - **DEV**: Available (dev, dev-1, dev-2, dev-3 pending hire)
 - **TESTER**: Available (tester-1, tester-2, tester)
