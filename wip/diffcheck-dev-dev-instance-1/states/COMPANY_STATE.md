@@ -5,10 +5,10 @@
 - **Products**: textcounter, diffcheck, daycalc, colorlab, loremipsum, uuid-generator
 
 ## Active Milestone
-- **Cycle**: 7 (completed — state assessment and verification cycle)
+- **Cycle**: 8 (in progress — ship-first-products cycle)
 - **Cycle start**: 2026-07-16
 - **Cycle end**: 2026-07-16
-- **Milestone**: VERIFIED state — 3 products code-complete (textcounter, diffcheck, daycalc), 3 incomplete (colorlab, loremipsum, uuid-generator). All fixes verified. Subagent delegation confirmed broken — no pipeline progress possible without fix.
+- **Milestone**: SHIP FIRST PRODUCTS — textcounter (39/39 tests), diffcheck (5/5 tests), daycalc (12/12 tests) are code-complete with ALL TESTS PASSING and TECHLEAD review APPROVED (per reviews/techlead-review-all-products.md 2026-07-15). Blocked on stale individual review records needing update + TESTER → QA → SHIP. colorlab, loremipsum, uuid-generator need DEV implementation.
 - **milestone:product-kickoff**: true (all 6 products unblocked)
 
 ## Verified Cycle 7 State
