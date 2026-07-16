@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>daycalc — Date Calculator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>daycalc</h1>
+      <p>Simple date calculator for days between dates, day-of-week lookup, and date arithmetic.</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Days Between Dates</h2>
+        <div class="input-group">
+          <label for="start-date">Start Date:</label>
+          <input type="date" id="start-date">
+        </div>
+        <div class="input-group">
+          <label for="end-date">End Date:</label>
+          <input type="date" id="end-date">
+        </div>
+        <button id="calc-days-btn" class="btn-primary">Calculate Days</button>
+        <div id="days-result" class="result" hidden></div>
+      </section>
+
+      <section class="card">
+        <h2>Day of Week</h2>
+        <div class="input-group">
+          <label for="dow-date">Date:</label>
+          <input type="date" id="dow-date">
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="abbreviated">
+          <label for="abbreviated">Abbreviated</label>
+        </div>
+        <button id="calc-dow-btn" class="btn-primary">Get Day</button>
+        <div id="dow-result" class="result" hidden></div>
+      </section>
+
+      <section class="card">
+        <h2>Add/Subtract Days</h2>
+        <div class="input-group">
+          <label for="base-date">Base Date:</label>
+          <input type="date" id="base-date">
+        </div>
+        <div class="input-group">
+          <label for="days-input">Days to Add (negative to subtract):</label>
+          <input type="number" id="days-input" value="1">
+        </div>
+        <button id="calc-add-btn" class="btn-primary">Calculate New Date</button>
+        <div id="add-result" class="result" hidden></div>
+      </section>
+
+      <div id="error" class="error" hidden></div>
+    </main>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
