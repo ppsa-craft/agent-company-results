@@ -1,0 +1,10 @@
+{
+  "name": "textcounter",
+  "version": "1.0.0",
+  "description": "Count words, characters, sentences, paragraphs, and estimate reading time.",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "build": "esbuild js/main.js --bundle --outfile=js/bundle.js"
+  }
+}
