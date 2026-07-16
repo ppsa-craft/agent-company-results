@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>diffcheck — Local Text Diff Tool</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>diffcheck</h1>
+      <p>Private, local-only text diff tool</p>
+    </header>
+
+    <main>
+      <div class="controls">
+        <button id="compare-btn" class="btn-primary">Compare</button>
+        <button id="clear-btn" class="btn-secondary">Clear All</button>
+        <button id="swap-btn" class="btn-secondary">Swap Texts</button>
+        <div class="dark-mode-toggle">
+          <button id="theme-toggle" class="btn-secondary" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </div>
+
+      <div class="textareas">
+        <div>
+          <label for="old-text" class="sr-only">Original Text</label>
+          <textarea id="old-text" placeholder="Paste original text here..."></textarea>
+        </div>
+        <div>
+          <label for="new-text" class="sr-only">Changed Text</label>
+          <textarea id="new-text" placeholder="Paste changed text here..."></textarea>
+        </div>
+      </div>
+
+      <div id="error" class="error" hidden></div>
+
+      <div id="diff-output" class="diff-container" hidden>
+        <div class="diff-header">
+          <span id="diff-stats"></span>
+        </div>
+        <div id="diff-body" class="diff-body"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/bundle.js"></script>
+</body>
+</html>
