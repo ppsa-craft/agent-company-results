@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs';
+import { generateText } from './generator.js';
 
 function showError(message) {
   console.error(`Error: ${message}`);
@@ -28,8 +28,9 @@ export async function runDemo({ count = 3, format = 'plain', corpus = 'lorem' })
   }
 }
 
-if (require.main === module) {
-  const { runDemo } = await import('./cli.js');
+// Self-invocation when run directly
+const isMain = process.argv[1] && import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'));
+if (isMain) {
   runDemo({
     count: parseInt(process.argv[2]) || 3,
     format: process.argv[3] || 'plain',

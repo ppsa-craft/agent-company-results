@@ -8,7 +8,6 @@ import {
   generateSplitComplementary
 } from './algorithms.js';
 import { getContrastRating } from './contrast.js';
-import { hslToRgb } from './conversions.js';
 
 /**
  * Generate palette based on algorithm

@@ -20,13 +20,15 @@ export type ContrastResult = {
 
 export type PaletteType = 'monochromatic' | 'analogous' | 'complementary';
 
+export type PaletteAlgorithm = 'monochromatic' | 'analogous' | 'complementary' | 'triadic' | 'tetradic' | 'split-complementary';
+
 export type PaletteOptions = {
   count?: number;
   angle?: number;
 };
 
 export type Palette = {
-  type: PaletteType;
+  type: PaletteAlgorithm;
   base: HSL;
   colors: HSL[];
   contrast: {
