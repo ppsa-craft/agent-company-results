@@ -1,8 +1,8 @@
 # Company State
 
 ## Current Cycle
-- **Cycle ID**: 38
-- **Status**: ACTIVE — resuming after provider pause on cycle 38 start. Completing the 6-product milestone.
+- **Cycle ID**: 39
+- **Status**: ACTIVE — resumed after cycle 38 was interrupted by provider error. Completing the 6-product milestone.
 - **Started**: 2026-07-17
 - **Owner**: ppsa (2026-07-12)
 - **Mission**: Ship remaining 3 products (colorlab, loremipsum, uuid-generator) to complete milestone and reach 6 shipped total. Then portfolio review + new product kickoff.
@@ -21,13 +21,12 @@ Ship 3 more products (colorlab, loremipsum, uuid-generator) to reach 6 shipped t
 ## Active Debates
 None active.
 
-## Orchestrator Notes (Cycle 38 — being addressed)
-1. ✅ BOUNDARY VIOLATION investigated — see `debates/boundary-violation-investigation-cycle-38.md`. No rogue agent activity. System operations and already-corrected issues. Lesson recorded.
-2. ✅ LAYOFF ORDER APPROVED: dev-1 idle 4 cycles — CEO approval granted for layoff (disable_only: true). See `debates/boundary-violation-investigation-cycle-38.md` for approval_ref. HR must execute this cycle.
-3. ⚠️ WORKSPACE DIRTY: uncommitted `apps/` in workspace repo — new product code that should be committed. Need to commit and push.
-4. ⚠️ NO-OP CYCLE: 1 no-op in a row — ensuring this cycle produces writes to owned files.
+## Orchestrator Notes (Cycle 39 — being addressed)
+1. ✅ Cycled from 38 to 39 after provider pause mid-cycle-38. Session restarted.
+2. ⚠️ WORKSPACE DIRTY in workspace repo: modified `apps/loremipsum/src/cli.js` + untracked `apps/colorlab/index.html` and `apps/loremipsum/analytics/`. Need to clean and commit.
+3. ⚠️ This cycle must produce writes (streak: starting fresh).
 
-## Leadership Reports (Cycle 38 — to be written)
+## Leadership Reports (Cycle 39 — to be written)
 - CEO Cycle Report: (to be written)
 - PM Cycle Tasks Report: (to be written)
 - CTO Cycle Tasks Report: (to be written)
@@ -50,7 +49,7 @@ None active.
 See `tasks/backlog.md` for current task board.
 
 ## Metrics
-Latest metrics file: `metrics/cycle-37.json`
+Latest metrics file: `metrics/cycle-38.json` (cycle 38 had brief run before provider error)
 
 ## Notes
 - Cycle 13 completed: 3 products shipped (textcounter, diffcheck, daycalc) via CEO direct execution bypassing broken subagent delegation.
