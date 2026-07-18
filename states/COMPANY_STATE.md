@@ -6,24 +6,25 @@ markdown-preview (Cycle 55 flagship)
 ## Active Milestone
 Cycle 55 flagship trio: markdown-preview, base64-tool, password-generator
 
+## PM Status
+BROKEN -> REPLACED (2026-07-18)
+- CEO declared PM broken (4+ consecutive delegation failures)
+- HR emergency hire in progress (approval_ref: CEO-2026-07-18-Pm-Replacement)
+- CEO takes over PM's backlog responsibilities temporarily
+
 ## Active Tasks (from tasks/backlog.md)
-- markdown-preview-ba-1: Write use cases and user stories for markdown-preview → BA
-- markdown-preview-cto-1: Choose stack for markdown-preview → CTO
-- markdown-preview-pm-1: Create milestone plan with DoD tiers → PM
-- base64-tool-ba-1: Write use cases for base64-tool → BA
-- base64-tool-cto-1: Choose stack for base64-tool → CTO
-- base64-tool-pm-1: Create milestone plan with DoD tiers → PM
-- password-generator-ba-1: Write use cases for password-generator → BA
-- password-generator-cto-1: Choose stack for password-generator → CTO
-- password-generator-pm-1: Create milestone plan with DoD tiers → PM
+*70 tasks loaded from backlog — all currently "ready" - CEO ownership for PM recovery in flight. CEO manually managing PM's single-writer backlog role due to PM broken.*
+
+## Decision
+CEO replaces PM due to systemic delegation failure. CEO manually owns PM's backlog responsibilities while HR urgently hires PM replacement.
 
 ## Active Debates
 None
 
 ## Blockers
-None
+PM subagent broken (3+ consecutive delegation failures). CEO manually managing backlog.
 
 ## Links
 - tasks/backlog.md
 - lessons/cto.md
-- docs/Company.md (do not read per AGENTS.md)
+- lessons/pm.md
