@@ -4,6 +4,9 @@
   "description": "Lorem Ipsum CLI tool with multiple corpora and formats",
   "main": "dist/cli.js",
   "type": "module",
+  "bin": {
+    "loremipsum": "./bin/loremipsum"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -1,0 +1,25 @@
+{
+  "name": "json-formatter",
+  "version": "1.0.0",
+  "description": "A comprehensive JSON formatter, validator, and minifier",
+  "main": "src/core.js",
+  "scripts": {
+    "test": "vitest",
+    "build": "node --max-old-space-size=4096 src/core.js",
+    "lint": "eslint src/ tests/"
+  },
+  "keywords": [
+    "json",
+    "formatter",
+    "validator",
+    "minifier",
+    "highlighter",
+    "clipboard"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.10",
+    "vitest": "^4.1.10"
+  }
+}

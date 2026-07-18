@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+import { runDemo } from '../src/cli.js';
+
+const args = process.argv.slice(2);
+
+if (args.includes('--help') || args.includes('-h')) {
+  console.log(`
+Lorem Ipsum CLI - Generate placeholder text
+
+Usage:
+  loremipsum [count] [format] [corpus]
+  loremipsum --help | -h
+
+Arguments:
+  count    Number of paragraphs to generate (default: 3)
+  format   Output format: plain, json (default: plain)
+  corpus   Text corpus: lorem, corporate, hipster, startup, legal (default: lorem)
+
+Examples:
+  loremipsum 3                    # 3 paragraphs of lorem ipsum
+  loremipsum 5 json corporate     # 5 paragraphs of corporate text in JSON
+  loremipsum 10 plain hipster     # 10 paragraphs of hipster text
+  loremipsum --help               # Show this help
+
+Available corpora: lorem, corporate, hipster, startup, legal
+Available formats: plain, json
+`);
+  process.exit(0);
+}
+
+runDemo({
+  count: parseInt(args[0]) || 3,
+  format: args[1] || 'plain',
+  corpus: args[2] || 'lorem'
+}).catch((error) => {
+  console.error(`Error: ${error.message}`);
+  process.exit(1);
+});

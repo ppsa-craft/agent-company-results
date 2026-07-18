@@ -6,11 +6,28 @@ Generate placeholder text (lorem ipsum, corporate, hipster, etc.) via CLI with o
 
 ```bash
 npm install
+npm link  # Makes 'loremipsum' command available globally
 ```
 
 ## Usage
 
-The CLI takes **positional arguments**: `count` `format` `corpus`
+After `npm link`, the `loremipsum` command is available:
+
+```bash
+# Generate 3 paragraphs of lorem ipsum (default)
+loremipsum 3
+
+# Generate 5 paragraphs of corporate text in JSON format
+loremipsum 5 json corporate
+
+# Generate 10 paragraphs in JSON format
+loremipsum 10 json lorem
+
+# Hipster corpus with custom count
+loremipsum 3 plain hipster
+```
+
+Without linking, run directly with Node:
 
 ```bash
 # Generate 3 paragraphs of lorem ipsum (default)
@@ -19,7 +36,7 @@ node src/cli.js 3
 # Generate 5 paragraphs of corporate text in JSON format
 node src/cli.js 5 json corporate
 
-# Generate 10 sentences in JSON format
+# Generate 10 paragraphs in JSON format
 node src/cli.js 10 json lorem
 
 # Hipster corpus with custom count
@@ -38,6 +55,13 @@ node src/cli.js 3 plain hipster
 
 - **plain**: Raw text output (default)
 - **json**: JSON-formatted output with metadata
+
+## Options
+
+```bash
+loremipsum --help    # Show help
+loremipsum -h        # Show help (short)
+```
 
 ## Analytics
 
