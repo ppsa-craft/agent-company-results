@@ -1,104 +1,38 @@
-# Company State - Cycle 73
+# Company State — Cycle 76 (Emergency Recovery)
 
-## Current Product
-markdown-preview (Cycle 55 flagship), json-formatter (JF), qr-generator (QR), day-calculator (DC)
+**Current Product:** `vn-stock-suggestion` (VN Stock Suggestion Engine)
+**Active Milestone:** `vn-c1` — Core Data Ingestion Service (Milestone 1, Phased Launch Option B)
+**Active Debate:** `debates/emergency-idle-2026-07-20.md` — **DECIDED: Option B (Flagship Milestone 1 Phased Launch)**
 
-## Active Milestone
-Milestone 1: Core adapters + normalizers + core engines + packaging + contract tests (vn-stock flagship)
+## Active Tasks (from backlog.md - PM fixing ID format this cycle)
+- **vn-c1-01** — BA: Use cases ingestion → **IN_PROGRESS**
+- **vn-c1-02** — BA: Normalization/caching/API use cases → **IN_PROGRESS**
+- **vn-c1-14** — BA: Analytics plan → **IN_PROGRESS**
+- **vn-c1-03** — TECHLEAD: Architecture ADR (interfaces, schemas, caching, threat model) → **IN_PROGRESS (CTO+TECHLEAD)**
+- **vn-c1-04** — DEV: VNDirect adapter → **READY (blocked on vn-c1-03)**
+- **vn-c1-05** — DEV: Vietstock adapter → **READY (blocked on vn-c1-03)**
+- **vn-c1-06** — DEV: Cafef adapter → **READY (blocked on vn-c1-03)**
+- **vn-c1-07** — DEV: Normalization service → **READY (blocked on 04,05,06)**
+- **vn-c1-08** — DEV: Caching layer → **READY (blocked on vn-c1-03)**
+- **vn-c1-09** — DEV: Unified Query API → **READY (blocked on 07,08)**
+- **vn-c1-10** — TESTER: Adapter contract tests → **READY (blocked on vn-c1-03)**
+- **vn-c1-11** — TESTER: E2E integration tests → **READY (blocked on DEV)**
+- **vn-c1-12** — TESTER: Load/soak tests → **READY (blocked on 08,09)**
+- **vn-c1-13** — QA: Security review → **READY (blocked on full build)**
 
-## Cycle 73 Status
-- **ORCHESTRATOR NOTE**: Resuming from pause after successful execution in Cycle 68-72
-- **Status**: RECOVERY MODE - focus on completing flagship vn-stock milestone
-- **Priority**: Clear TECHLEAD gate, unblock Stream C, maintain existing momentum
-- **TODAY'S STATUS**: TECHLEAD gate (vn-stock-techlead-1) MUST CLEAR - still pending despite ongoing in-progress work
-
-## Active Tasks (Cycle 73 Assessments)
-
-### TECHLEAD Gate (vn-stock-techlead-1) - PRIORITY TODAY
-- **Blocker**: vn-stock-techlead-1 must clear TODAY per COMPANY_STATE.md
-- **Impact**: 6 Stream C tasks blocked (query builder + integration)
-- **Authorization chain**: PM → CTO → TECHLEAD
-
-### Existing Developer Workload (Cycle 68 patterns)
-- **DEV-1**: 13 tasks (Stream A) - vn-stock S1/S4 adapters + json-formatter + daycalc
-- **DEV-2**: 6 tasks (recovery focus) - base64-tool + cron-parser  
-
-- **DEV-3**: 13 tasks (Stream B) - vn-stock S2/S5 + qr-generator packaging
-- **BA**: 24 parallel tasks across all products (vn-stock, JF, QR, DC)
-- **TESTER-1**: 21 contract tests (vn-stock S1/S4 + JF + DC)
-
-## Active Tasks (Cycle 68 Assignments)
-
-### BA (24 tasks - parallel, no deps)
-- vn-stock-ba-1..5
-- JF-T1-1, JF-T1-6
-- QR-T1-1, QR-T1-6
-- DC-T1-1, DC-T1-6
-
-### DEV-1 (Stream A - 13 tasks)
-- vn-stock-t1-4, t1-5, t1-6, t1-7, t1-8 (S1 adapters)
-- vn-stock-t4-4, t4-5, t4-6, t4-7 (S4 storage)
-- JF-T1-2, JF-T1-3 (json-formatter core)
-- DC-T1-2, DC-T1-3 (daycalc core)
-- markdown-preview-t1-3 (DEV-1 core parser)
-
-### DEV-2 (Streams - X tasks)
-- base64-tool-t1-5, base64-tool-t1-6, base64-tool-t1-7 (DEV-2)
-- base64-tool-t1-8 (B)
-- cron-parser-t1-3, cron-parser-t1-4, cron-parser-t1-5, cron-parser-t1-6 (DEV-2)
-- cron-parser-t1-7, cron-parser-t1-8 (C)
-
-### DEV-3 (Stream B - 13 tasks)
-- vn-stock-t2-3, t2-4, t2-5, t2-6 (S2 normalizer)
-- vn-stock-t5-3, t5-4, t5-5, t5-6 (S5 observability)
-- QR-T1-2, QR-T1-3 (qr core)
-- QR-T2-1, QR-T2-2 (qr packaging)
-- password-generator-t1-7 (DEV-3)
-- password-generator-t1-8, t1-9 (DEV-2)
-
-### TESTER-1 (Contract tests Stream A + JF + DC + Recov - 21 tasks)
-- vn-stock-t1-9, t1-10, t1-11 (S1 contract)
-- vn-stock-t4-8, t4-9, t4-10 (S4 contract)
-- JF-T1-4, JF-T1-5 (json-formatter contract)
-- DC-T1-4, DC-T1-5 (daycalc contract)
-- markdown-preview-t1-7, t1-8, t1-9, t1-10, t1-11, t1-12 (MARKDOWN-PREVIEW TESTS)
-
-### TESTER-3 (Contract tests Stream B + QR - 14 tasks)
-- vn-stock-t2-7, t2-8, t2-9 (S2 contract)
-- vn-stock-t5-7, t5-8 (S5 contract)
-- QR-T1-4, QR-T1-5 (qr core contract)
-- QR-T2-3 (qr packaging contract)
-
-### TECHLEAD Gate (vn-stock-techlead-1) - MUST CLEAR TODAY
-Blocks Stream C for DEV-3. Coordination: PM → CTO → TECHLEAD
-
-## Builder Status
-- BA: 24 tasks assigned, starting now
-- DEV-1: 13 tasks assigned (Stream A), starting now
-- DEV-2: 6 tasks assigned, starting now
-- DEV-3: 13 tasks assigned (Stream B), starting now
-- TESTER-1: 21 tasks assigned, starting now
-- TESTER-3: 14 tasks assigned, starting now
-- TECHLEAD: vn-stock-techlead-1 gate pending (PM→CTO→TECHLEAD coordination)
+## Architecture North Star
+`workspace/apps/vn-stock-suggestion/ARCHITECTURE.md` — **DELIVERED THIS CYCLE** (CEO task `CEO-2026-07-20-CTO-Arch-Seams` complete).
 
 ## Blockers
-- TECHLEAD gate (vn-stock-techlead-1) must clear TODAY to unblock Stream C for DEV-3
+1. **Backlog ID format** — PM must rename `vn-stock-suggestion-vn-c1-XX` → `vn-c1-XX` with parseable `app: vn-stock-suggestion` tags for orchestrator visibility (single point of failure).
+2. **vn-c1-03 ADR** — CTO/TECHLEAD must deliver to unblock 3 DEV adapter tasks.
+3. **Provider instability** — 331 transient resets/cycle; expect mid-cycle pauses.
 
-## Backlog Status
-80+ tasks total in backlog.md - +71 recovery tasks across 5 products
+## Active Agents (12 builder instances)
+- CEO, CTO, TECHLEAD, PM, BA, DEV×3, TESTER×2, QA, HR
+- All have ready or in-progress work ✓
 
-## Recovery Product Status (via PM breakdown)
-- markdown-preview (1-2 cycles, 18 tasks ready)
-- base64-tool (1 cycle, 20 tasks ready)
-- cron-parser (1-2 cycles, 15 tasks ready)
-- password-generator (5-7 cycles, 23 tasks ready)
-- json-to-csv (3-5 cycles, 17 tasks ready)
+## Security Gate (§7.2)
+Active — CTO owns gate definition; TECHLEAD enforces in review; QA gates ship. vn-c1-13 (QA security review) is final gate for milestone 1.
 
-## Delegation Status
-- CTO delegation: markdown-preview, base64-tool, password-generator CTO-1 tasks claimed
-- PM delegation: json-formatter, qr-code-generator, daycalc-enhance horizontal layers distributed
-- All 11 live agents have ready tasks by Hour 12
-
-## Decision: EMERGENCY IDLE DEBATE PASSED
-Winner: PM's plan (A + C) with CTO's seam awareness + TECHLEAD gate
-Decision ref: emergency-idle-2026-07-19.md Decision section
+(End of file - total 38 lines)
