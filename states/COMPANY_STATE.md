@@ -1,11 +1,11 @@
 # Company State
 
-## Current Cycle: 79
-- **Status**: RESUMED after pause (provider error)
+## Current Cycle: 80
+- **Status**: EMERGENCY IDLE MEETING due per orchestrator notes
 - **Date**: 2026-07-20
 - **Flagship**: VN Stock Suggestion System (app: vnstock)
 - **Active Milestone**: M1 - Data Ingestion Service (spec done, tasks in progress)
-- **Company State**: ACTIVE but strategically BLOCKED - CTO+TECHLEAD executing ADR (vn-c1-03) as primary unblocking path
+- **Company State**: EMERGENCY IDLE - leadership meeting required to unblock CTO+TECHLEAD ADR execution (vn-c1-03)
 
 ## Active Product: vnstock (VN Stock Suggestion System)
 - **Slug**: vnstock
@@ -26,22 +26,20 @@
 - HR: 1
 - TECHLEAD: 1 (under CTO)
 - BA: 1 (under PM)
-- DEV: 2 (under PM)
-- TESTER: 1 (under PM)
-- BA: 1 (under PM)
+- DEV: 4 (under PM) - 2 active + 2 idle (recovery products)
+- TESTER: 2 (under PM) - 1 active + 1 idle (recovery products)
 
 ## Active Debates
-- None active
+- Emergency Idle Recovery debate (debates/emergency-idle-2026-07-20.md) - CTO+PM verdict complete
 
 ## Active Blockers
-- **ACTIVE**: CTO+TECHLEAD executing ADR (vn-c1-03) - primary unblocking path, CEO integration bridge initiated (2026-07-20)
-- **Status**: COMPANY NOT IDLE - all agents have ready/in-progress work, normal program flow
+- **UNBLOCKED**: CTO+TECHLEAD ADR execution (vn-c1-03) blocked - now has parallel recovery path
+- **Status**: CRITICAL PATH DIVERSIFIED - CTO+TECHLEAD ADR execution still in progress alongside 52 emergency recovery tasks
 
 ## Key Links
 - COMPANY_STATE.md: this file
 - tasks/backlog.md: task backlog
 - tasks/idea-backlog.md: idea backlog
-- tasks/idea-backlog.md: idea backlog (flagship milestones tagged app: vnstock)
 - workspace/apps/vnstock/specs/M1-data-ingestion.md: M1 spec
 - workspace/reports/: cycle reports
 - metrics/: cycle metrics
