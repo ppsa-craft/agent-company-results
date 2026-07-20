@@ -1,10 +1,11 @@
 # Company State
 
-## Current Cycle: 78
+## Current Cycle: 79
 - **Status**: RESUMED after pause (provider error)
 - **Date**: 2026-07-20
 - **Flagship**: VN Stock Suggestion System (app: vnstock)
 - **Active Milestone**: M1 - Data Ingestion Service (spec done, tasks in progress)
+- **Company State**: ACTIVE but strategically BLOCKED - CTO+TECHLEAD executing ADR (vn-c1-03) as primary unblocking path
 
 ## Active Product: vnstock (VN Stock Suggestion System)
 - **Slug**: vnstock
@@ -34,6 +35,7 @@
 
 ## Active Blockers
 - **ACTIVE**: CTO+TECHLEAD executing ADR (vn-c1-03) - primary unblocking path, CEO integration bridge initiated (2026-07-20)
+- **Status**: COMPANY NOT IDLE - all agents have ready/in-progress work, normal program flow
 
 ## Key Links
 - COMPANY_STATE.md: this file
