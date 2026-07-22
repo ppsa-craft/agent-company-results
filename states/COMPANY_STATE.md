@@ -1,52 +1,55 @@
 # Company State
 
-**Cycle**: 119 (resumed after provider error pause)
-**Date**: 2026-07-22
-**Status**: EMERGENCY - COMPANY IDLE (no ready/in-progress tasks)
+## Current Cycle
+- **Cycle ID**: 122
+- **Date**: 2026-07-22
+- **Status**: ACTIVE - Emergency resolved, 39 tasks in progress across all roles
 
-## Current Product
-**Flagship**: VN Stock Suggestion System (`app: vn-stock-suggestion`)
-- Status: Pre-milestone 1 (data ingestion service)
-- Status in COMPANY_STATE: "pre-milestone 1 - data ingestion service"
+## Current Product Portfolio
+- **Flagship**: VN Stock Suggestion System (app: vn-stock-suggestion)
+  - Milestone 1: Data Ingestion Service — **In Progress** (shared libs + API specs + reviews)
+  - Status in COMPANY_STATE: "M1 In Progress — shared libs building, API specs drafting"
 
-## Active Milestone
-**Milestone 1**: Data Ingestion Service (VN stock data ingestion service)
-- Status: Not started (no tasks in backlog)
-- Target: Shippable data ingestion service for VN stock data
-
-## Active Debates
-- None active
-
-## Active Tasks
-- tasks/backlog.md: EMPTY (no ready, no in-progress tasks)
-- tasks/idea-backlog.md: Needs checking
-
-## Active Agents (from roster)
-- CEO: 1 (this session)
-- CTO: 1 (cto-1)
-- PM: 1 (pm-1)
-- HR: 1 (hr-1)
-- QA: 1 (qa-1)
-- CTO → TECHLEAD: 1 (techlead-1)
-- PM → BA: 1 (ba-1)
-- PM → DEV: 1 (dev-1)
-- PM → TESTER: 1 (tester-1)
+## Active Milestones
+- **M1 Data Ingestion Service** — Flagship, architecture done, 39 tasks decomposed (all tagged `app: vn-stock-suggestion`)
+  - Shared libs (9 parallel DEV tasks): T-122-05 through T-122-13 — In Progress
+  - API Specs (4 BA tasks): T-122-01 through T-122-04 — In Progress
+  - TECHLEAD reviews (3): T-122-35 through T-122-37 — In Progress
+  - QA gates (2): T-122-38, T-122-39 — In Progress
+  - TESTER tasks (12): Waiting on DEV completions
 
 ## Active Debates
-- None
+- **emergency-idle-2026-07-22.md** — DECIDED (Option 2: assign existing ready tasks)
 
-## Blockers
-- **EMERGENCY**: Company idle - no ready/in-progress tasks in backlog
-- EMERGENCY LEADERSHIP MEETING REQUIRED (Company.md §3.5.4)
+## Active Blockers
+- None — all roles have work. TESTER blocked on DEV shared lib completions (expected).
+- **Watch list**: dev-1, tester-1, tester-2 at 3 idle cycles (layoff-watch.json) — they now have tasks claimed.
 
-## Metrics
-- Last metrics file: metrics/cycle-118.json (need to read)
+## Roster (from roster/applied.json)
+- CEO: 1 (this instance)
+- CTO: 1
+- PM: 1
+- QA: 1
+- HR: 1
+- TECHLEAD: 1 (under CTO)
+- BA: 1 (under PM)
+- DEV: 4 (dev, dev-1, dev-3, dev-6 under PM)
+- TESTER: 4 (tester, tester-1, tester-2, tester-3 under PM)
 
-## Cycle 118 Status
-- Was interrupted mid-cycle due to provider error
-- Need to complete cycle 119 (this cycle) and produce report
+## Active Tasks (39 claimed per emergency debate decision)
+- **BA (4)**: T-122-01 through T-122-04 — API Specs (Auth, Config, Logging, Metrics)
+- **DEV (9 tasks, 4 instances — parallelization needed)**: T-122-05 through T-122-13 — Shared Libs (Auth, Config, Logging, Metrics, Errors, Utils, Types, Validation, Constants)
+- **TECHLEAD (3)**: T-122-35 through T-122-37 — Code Reviews + Threat Model
+- **QA (2)**: T-122-38, T-122-39 — Quality Gate, Security Gate
+- **TESTER (12 waiting)**: T-122-14 through T-122-25 — Unit/Integration/Contract/E2E tests (deps on DEV)
 
-## Notes
-- Company was paused mid-cycle 118 due to provider error
-- Session lost - need to re-read all state files
-- EMERGENCY: No ready/in-progress tasks → EMERGENCY LEADERSHIP MEETING REQUIRED
+## Key Files
+- COMPANY_STATE.md: this file
+- tasks/backlog.md: task backlog (39 tasks in progress)
+- tasks/idea-backlog.md: idea backlog (flagship M1 at top)
+- lessons/ceo.md: CEO lessons
+- metrics/cycle-*.json: metrics files (none yet — first cycle with work)
+- workspace/reports/: cycle reports (none yet)
+- debates/: debate files
+- lessons/: lessons files
+- roster/: roster files
