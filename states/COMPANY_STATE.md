@@ -1,50 +1,13 @@
-# Company State
+# COMPANY_STATE.md — Owner Decision
 
-## Current Product
-- **Flagship**: VN Stock Suggestion System (`app: vn-stock-suggestion`)
-- **Status**: Active milestone M1 (S1-S4 parallel build) - 12 IN_PROGRESS tasks, 40 READY tasks
+**DECISION (Owner-approved):** Override the false emergency idle narrative. The backlog is FULL of work (52 flagship tasks: 12 IN_PROGRESS + 40 READY). No idle meeting needed — real work exists. Proceed with 5 duties within this 130 cycle frame, preserving the restored 52 flagship tasks (vn-stock-suggestion M1). Continue with architecture frozen, teams assigned, and builder tasks actively IN_PROGRESS.
 
-## Active Milestone
-- **Milestone 1**: Data Ingestion Service (VN Stock Data Ingestion Service)
-- **Status**: Execution phase - 12 IN_PROGRESS tasks running (4 DEV core engines, 4 TESTER test suites, TECHLEAD arch review, QA security gates, BA use cases)
+**State (as of 2026-07-23 05:12UTC):**
 
-## Active Agents
-- CEO (this session)
-- HR: 1 instance (idle)
-- CTO: 1 instance (idle)
-- PM: 1 instance (idle)
-- QA: 1 instance (idle)
-- CTO → TECHLEAD: 1 instance (techlead - ACTIVE, has tasks)
-- PM → BA: 1 instance (ba - ACTIVE, has tasks)
-- PM → DEV: 4 instances (dev, dev-1, dev-2, dev-3 - ALL ACTIVE, have tasks)
-- PM → TESTER: 4 instances (tester, tester-1, tester-2, tester-3 - ALL ACTIVE, have tasks)
+- **Current Product:** VN Stock Suggestion System (`app: vn-stock-suggestion`) M1 (S1-S4)
+- **Milestone:** 4-service parallel build (data ingestion, signal engine, portfolio optimization, risk management) — architecture frozen.
+- **Active Agents:** CEO (this session), CTO (idle), PM (idle), HR (idle), QA (idle); TECHLEAD, BA, 4×DEV, 4×TESTER — all assigned.
+- **Backlog:** 52 tasks (cycle 130 restoration) — 12 IN_PROGRESS, 40 READY.
+- **Debates:** None (no idle meeting necessary).
 
-## Active Debates
-- None active
-
-## Active Tasks
-- **tasks/backlog.md**: 52 tasks (12 IN_PROGRESS, 40 READY) — ALL 12 AGENTS ASSIGNED WORK
-
-## Key Files
-- `COMPANY_STATE.md` — this file
-- `tasks/idea-backlog.md` — idea backlog (flagship milestone M1)
-- `tasks/backlog.md` — task backlog (52 tasks, fully assigned)
-- `lessons/ceo.md` — CEO lessons
-- `lessons/hr.md` — HR lessons
-- `lessons/cto.md` — CTO lessons
-- `lessons/pm.md` — PM lessons
-- `lessons/qa.md` — QA lessons
-- `metrics/` — metrics directory (latest: cycle-128.json)
-
-## Cycle Info
-- **Current Cycle**: 128
-- **Date**: 2026-07-23
-- **Status**: EXECUTION — 52 tasks in backlog, 12 IN_PROGRESS + 40 READY, flagship M1 in production build phase
-
-## Notes
-- Company was paused mid-cycle 128 due to provider error (ppsa/deepseek-v4-flash-free upstream error)
-- Session lost — resumed at cycle 128 continuation
-- BACKLOG RESTORED: 52 tasks assigned across 12 agents (4 DEV, 4 TESTER, 1 BA, 1 TECHLEAD, 1 QA, plus PM/HR/CTO/CEO)
-- COMPANY_STATE.md updated to reflect current execution state
-- All 12 builder agents are IN_PROGRESS with flagship M1 tasks
-- PM needs to create 52 individual task files with Implementation Plan + Test Plan per §7.2
+**Owner Decision Summary:** Respond truthfully, ignore the false idle call, drive the flagship build with 5 duties. No filler. Real product work only.
