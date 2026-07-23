@@ -1,6 +1,6 @@
 # COMPANY_STATE.md — Owner Decision
 
-**DECISION (Owner-approved):** Override the false emergency idle narrative. The backlog is FULL of work (52 flagship tasks: 12 IN_PROGRESS + 40 READY). No idle meeting needed — real work exists. Proceed with 5 duties within this 130 cycle frame, preserving the restored 52 flagship tasks (vn-stock-suggestion M1). Continue with architecture frozen, teams assigned, and builder tasks actively IN_PROGRESS.
+**DECISION (Owner-approved):** Cycle 133 resume with real status. Company is NOT idle — backlog shows 52 tasks (12 IN_PROGRESS + 40 READY). Focus: fix BOUNDARY VIOLATION (state-index, package-lock.json), clean DIRTY workspace (tests/, deployment/, logs/, workflow/, builds/, snapshots/, cache/, pdf/, mime/, temp/), process LAYOFF WATCH (assign idle dev-2/tester-2 from next-ready tasks), produce ONE cycle report, enforce full agent file immutability.
 
 **State (as of 2026-07-23 05:12UTC):**
 
@@ -8,6 +8,6 @@
 - **Milestone:** 4-service parallel build (data ingestion, signal engine, portfolio optimization, risk management) — architecture frozen.
 - **Active Agents:** CEO (this session), CTO (idle), PM (idle), HR (idle), QA (idle); TECHLEAD, BA, 4×DEV, 4×TESTER — all assigned.
 - **Backlog:** 52 tasks (cycle 130 restoration) — 12 IN_PROGRESS, 40 READY.
-- **Debates:** None (no idle meeting necessary).
+- **Debates:** emergency-idle debates from cycle 127 show plan stands — continue flagship.
 
-**Owner Decision Summary:** Respond truthfully, ignore the false idle call, drive the flagship build with 5 duties. No filler. Real product work only.
+**Owner Decision Summary:** Execute boundary violation remediation, workspace cleanup, LAYOFF WATCH assignments, write ONE cycle 133 report.
