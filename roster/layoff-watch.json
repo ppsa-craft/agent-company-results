@@ -1,0 +1,9 @@
+{
+  "watch": [
+    {
+      "name": "tester-2",
+      "idleCycles": 4,
+      "stage": "layoff-ordered"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "cycleId": 101,
+  "ts": "2026-07-21T04:46:25.542Z",
+  "model": "ppsa/big-pickle",
+  "cycleDurationMs": 28439,
+  "milestone": {
+    "id": null,
+    "cyclesUsed": 100,
+    "cap": 15,
+    "hoursElapsed": 0
+  },
+  "reviews": {
+    "open": 7,
+    "approved": 0,
+    "avgRoundsPerTask": 0.71,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ceo"
+    ],
+    "idle": [
+      "ba",
+      "cto",
+      "dev-1",
+      "dev-2",
+      "dev",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester-1",
+      "tester-2",
+      "tester"
+    ]
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 137,
+    "qaNoGo": 0,
+    "boundaryViolations": 206,
+    "workspaceDirty": 949,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 95,
+    "noopCycles": 30,
+    "noopRotations": 30,
+    "stalls": 174,
+    "contextCompactions": 3,
+    "contextBytesSaved": 32065,
+    "providerTransientSessionResets": 491,
+    "providerTransientRetries": 124,
+    "rotations": 106,
+    "primaryRetries": 0,
+    "providerTransientSkips": 51
+  }
+}

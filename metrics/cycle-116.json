@@ -1,0 +1,56 @@
+{
+  "cycleId": 116,
+  "ts": "2026-07-22T01:46:45.972Z",
+  "model": "ppsa/mimo-v2.5-free",
+  "cycleDurationMs": 30016,
+  "milestone": {
+    "id": null,
+    "cyclesUsed": 115,
+    "cap": 15,
+    "hoursElapsed": 0
+  },
+  "reviews": {
+    "open": 7,
+    "approved": 0,
+    "avgRoundsPerTask": 0.71,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ceo"
+    ],
+    "idle": [
+      "ba",
+      "cto",
+      "dev-1",
+      "dev-2",
+      "dev",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester-1",
+      "tester-2",
+      "tester"
+    ]
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 139,
+    "qaNoGo": 0,
+    "boundaryViolations": 221,
+    "workspaceDirty": 1114,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 110,
+    "noopCycles": 39,
+    "noopRotations": 39,
+    "stalls": 176,
+    "contextCompactions": 3,
+    "contextBytesSaved": 32065,
+    "providerTransientSessionResets": 541,
+    "providerTransientRetries": 124,
+    "rotations": 106,
+    "primaryRetries": 0,
+    "providerTransientSkips": 51
+  }
+}

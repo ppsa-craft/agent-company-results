@@ -1,0 +1,55 @@
+{
+  "cycleId": 123,
+  "ts": "2026-07-22T05:06:13.824Z",
+  "model": "ppsa/deepseek-v4-flash-free",
+  "cycleDurationMs": 17398,
+  "milestone": {
+    "id": null,
+    "cyclesUsed": 122,
+    "cap": 15,
+    "hoursElapsed": 0
+  },
+  "reviews": {
+    "open": 7,
+    "approved": 0,
+    "avgRoundsPerTask": 0.71,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ceo"
+    ],
+    "idle": [
+      "ba",
+      "cto",
+      "dev-1",
+      "dev",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester-1",
+      "tester-2",
+      "tester"
+    ]
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 139,
+    "qaNoGo": 0,
+    "boundaryViolations": 228,
+    "workspaceDirty": 1191,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 110,
+    "noopCycles": 42,
+    "noopRotations": 42,
+    "stalls": 177,
+    "contextCompactions": 4,
+    "contextBytesSaved": 53096,
+    "providerTransientSessionResets": 584,
+    "providerTransientRetries": 124,
+    "rotations": 106,
+    "primaryRetries": 0,
+    "providerTransientSkips": 51
+  }
+}
