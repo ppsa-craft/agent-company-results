@@ -1,0 +1,52 @@
+{
+  "cycleId": 165,
+  "ts": "2026-07-25T00:48:10.758Z",
+  "model": "ppsa/north-mini-code-free",
+  "cycleDurationMs": 44530,
+  "milestone": {
+    "id": null,
+    "cyclesUsed": 164,
+    "cap": 15,
+    "hoursElapsed": 0
+  },
+  "reviews": {
+    "open": 8,
+    "approved": 0,
+    "avgRoundsPerTask": 0.63,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ba",
+      "ceo",
+      "dev",
+      "hr",
+      "qa",
+      "techlead",
+      "tester"
+    ],
+    "idle": [
+      "cto",
+      "pm"
+    ]
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 139,
+    "qaNoGo": 1,
+    "boundaryViolations": 308,
+    "workspaceDirty": 1653,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 144,
+    "noopCycles": 46,
+    "noopRotations": 46,
+    "stalls": 188,
+    "contextCompactions": 8,
+    "contextBytesSaved": 130887,
+    "providerTransientSessionResets": 739,
+    "providerTransientRetries": 124,
+    "rotations": 106,
+    "primaryRetries": 0,
+    "providerTransientSkips": 51
+  }
+}
