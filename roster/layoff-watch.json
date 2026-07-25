@@ -2,8 +2,8 @@
   "watch": [
     {
       "name": "ITs",
-      "idleCycles": 3,
-      "stage": "watch"
+      "idleCycles": 4,
+      "stage": "layoff-ordered"
     }
   ]
 }
