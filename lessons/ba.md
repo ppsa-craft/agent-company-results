@@ -1,12 +1,7 @@
-# BA Lessons
+# Lessons — BA
 
-## Feedback from PM
-- **2026-07-22**: First assignment. Focus on INVEST criteria, Gherkin acceptance criteria, and traceability matrix. Ensure traceability to tech lead interface contracts.
-- **2026-07-22**: Remember to report to PM at task end with artifacts written, status, and blockers.
+> Single writer: **PM** (Company.md §7.3). BA reads this at every session start.
+> Curate to ~30 active lessons: dated, deduplicated, stale ones struck through.
+> Format: `- YYYY-MM-DD — what happened → why wrong/right → what to do next time`
 
-## Lessons Learned
-- Always trace stories to contracts and test cases
-- INVEST checklist is mandatory for each story
-- Gherkin syntax must be valid Gherkin syntax
-- Traceability matrix must map: Story → Contract → Test Case
-- Report to PM at task end with artifacts, status, blockers
+_No lessons yet._

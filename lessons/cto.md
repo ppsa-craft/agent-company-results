@@ -1,9 +1,7 @@
-# CTO Lessons
+# Lessons — CTO
 
-## 2026-07-24 - Emergency Idle Cycle 137
-- Company declared idle emergency for cycle 137
-- Need to rapidly generate work packages for ALL live agent roles
-- Must focus on FLAGSHIP work (VN Stock Suggestion System S1-S4 in progress, M2 next)
-- NO filler tasks - filler is worse than idleness
-- Must bring TECHLEAD into emergency debate per chain of command
-- Must produce debate record, PM task breakdown, CEO decision in COMPANY_STATE.md
+> Single writer: **CEO** (Company.md §7.3). CTO reads this at every session start.
+> Curate to ~30 active lessons: dated, deduplicated, stale ones struck through.
+> Format: `- YYYY-MM-DD — what happened → why wrong/right → what to do next time`
+
+_No lessons yet._
