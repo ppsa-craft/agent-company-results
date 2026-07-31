@@ -12,7 +12,7 @@
 - [DEV] [vnstock-advisor] tasks/vnstock-advisor-1-repo-scaffold.md — status: done
 - [DEV] [vnstock-advisor] tasks/vnstock-advisor-4-dev-data-ingest.md — status: claimed:dev-1
 - [DEV] [vnstock-advisor] tasks/vnstock-advisor-6-dev-analysis-engine.md — status: claimed:dev-2
-- [TESTER] [vnstock-advisor] tasks/vnstock-advisor-7-tester-data-ingest.md — status: done
+- [TESTER] [vnstock-advisor] tasks/vnstock-advisor-7-tester-data-ingest.md — status: ready
 - [TESTER] [vnstock-advisor] tasks/vnstock-advisor-8-tester-analysis-engine.md — status: ready
 - [QA] [vnstock-advisor] tasks/vnstock-advisor-9-qa-data-ingest.md — status: ready
 - [QA] [vnstock-advisor] tasks/vnstock-advisor-10-qa-analysis-engine.md — status: ready
