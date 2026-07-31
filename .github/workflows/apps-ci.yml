@@ -1,0 +1,59 @@
+# Auto-bootstrapped by the orchestrator (agent-company decision #134) — generic
+# best-effort build+test for whatever stack each apps/<slug>/ uses. DEV owns
+# making its app runnable via one of the recognized manifests below; TESTER
+# treats this run's pass/fail as the authoritative signal for the automated
+# suite instead of executing it inside the resource-constrained orchestrator
+# pod.
+name: apps CI
+on:
+  pull_request:
+    paths:
+      - "apps/**"
+# Free-plan results repo, no paid concurrent-job capacity (owner 2026-07-30,
+# decision #134/#135 follow-up) — runs by QUEUE, never in parallel. A single,
+# repo-wide concurrency group (not per-branch/per-ref) serializes every
+# workflow run onto ONE at a time; the rest queue instead of executing
+# concurrently. cancel-in-progress:false so a queued PR's run waits its turn
+# rather than cancelling whatever's already running.
+concurrency:
+  group: apps-ci-single-runner
+  cancel-in-progress: false
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Detect changed apps and run their build+test
+        run: |
+          set -e
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+          CHANGED=$(git diff --name-only "$BASE" "$HEAD" -- apps/ | awk -F/ '{print $1"/"$2}' | sort -u)
+          if [ -z "$CHANGED" ]; then
+            echo "No apps/<slug>/ changes detected — nothing to test."
+            exit 0
+          fi
+          STATUS=0
+          for dir in $CHANGED; do
+            [ -d "$dir" ] || continue
+            echo "::group::$dir"
+            if [ -f "$dir/package.json" ]; then
+              ( cd "$dir" \
+                && npm ci --no-audit --no-fund \
+                && npm run build --if-present \
+                && npm test --if-present ) || { echo "::error::$dir: npm build/test failed"; STATUS=1; }
+            elif [ -f "$dir/requirements.txt" ] || [ -f "$dir/pyproject.toml" ]; then
+              ( cd "$dir" \
+                && python3 -m venv .venv && . .venv/bin/activate \
+                && { [ -f requirements.txt ] && pip install -r requirements.txt || pip install .; } \
+                && pytest -q ) || { echo "::error::$dir: pytest failed"; STATUS=1; }
+            elif [ -f "$dir/go.mod" ]; then
+              ( cd "$dir" && go test ./... ) || { echo "::error::$dir: go test failed"; STATUS=1; }
+            else
+              echo "::warning::$dir: no recognized manifest (package.json/requirements.txt/pyproject.toml/go.mod) — no automated tests ran"
+            fi
+            echo "::endgroup::"
+          done
+          exit $STATUS
