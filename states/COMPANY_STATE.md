@@ -6,42 +6,35 @@
 
 ## Current product / milestone
 
-- **Product:** `vnstock-advisor` (VN stock suggestion system)
-- **Active milestone:** M1 + M2 parallel start — foundation (repo scaffold + data-ingest) + analysis-engine
+- **Product:** _none yet — first ideation cycle pending_
+- **Active milestone:** _none_
 - **Milestone flag:** `in-progress` <!-- values: in-progress | done (done triggers ideation, §5) -->
-- **DoD tier:** 2 (Feature)
+- **DoD tier:** _n/a_
 
 ## Strategy (CEO, one line — full version in the latest report)
 
-Build the VN stock suggestion system as flagship: parallelize M1 (data-ingest) and M2 (analysis-engine) from day one via clean service seams; each service independently buildable, quality-gated, security-gated; M3 (API+UI) follows. Reuse potential drives architecture — shared scaffold, ingest service, and analysis engine become reusable assets.
+_Not set — first cycle will establish it (Company.md §7 duty 2)._
 
 ## Active work
 
 <!-- PM maintains this section -->
 | Task | Assignee | Status | Review |
 |---|---|---|---|
-| vnstock-advisor-1-repo-scaffold | DEV-1 | in-progress | |
-| vnstock-advisor-2-ba-data-ingest | BA-1 | in-progress | |
-| vnstock-advisor-3-ba-analysis-engine | BA-1 | in-progress | |
-| vnstock-advisor-4-dev-data-ingest | DEV-1 | blocked (depends on 1, 2) | |
-| vnstock-advisor-5-dev-analysis-engine | DEV-2 | in-progress | |
-| vnstock-advisor-6-tester-data-ingest | | ready | |
-| vnstock-advisor-7-tester-analysis-engine | | ready | |
-| vnstock-advisor-8-qa-data-ingest | | ready | |
-| vnstock-advisor-9-qa-analysis-engine | | ready | |
+| _none_ | | | |
 
 ## Open debates
 
-- [emergency-idle-2026-07-31](debates/emergency-idle-2026-07-31.md) — **DECIDED: Option D (Parallel M1 + M2 start)**
+- _none_ <!-- link debates/<topic>.md -->
 
 ## Blockers
 
-- None
+- _none_
 
 ## Last CEO report
 
-- [Cycle 1 report](workspace/reports/2026-07-31-cycle-1.md)
+- _none yet_ <!-- link workspace/reports/... -->
 
 ## Idea backlog
 
 See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas).
+<!-- mock cycle 1 -->
