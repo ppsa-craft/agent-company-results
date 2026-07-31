@@ -1,23 +1,28 @@
 {
-  "cycleCount": 0,
-  "lastCycleAt": null,
+  "cycleCount": 1,
+  "lastCycleAt": "2026-07-31T10:43:34.999Z",
   "milestoneId": null,
-  "milestoneCycles": 0,
+  "milestoneCycles": 1,
   "milestoneStartedAt": null,
   "milestoneEscalated": false,
   "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
-  "ceoSessionId": null,
+  "ceoSessionId": "ses_04848b156ffecENXdFmFxkPsxU",
   "ceoSessionRequests": 0,
-  "agentSessions": {},
-  "agentInterrupted": {},
-  "resumedByProbe": true,
-  "interrupted": {
-    "cycle": 1,
-    "reason": "ppsa/deepseek-v4-flash-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
-    "at": "2026-07-31T10:27:29.719Z"
+  "agentSessions": {
+    "tester": {
+      "id": "ses_0483a1fabffe40uUynOJhhN3UD",
+      "requests": 0
+    },
+    "dev": {
+      "id": "ses_0483a1dbfffeJgL4RSVyZNWHQC",
+      "requests": 0
+    }
   },
+  "agentInterrupted": {},
+  "resumedByProbe": false,
+  "interrupted": null,
   "pendingPrompt": null,
   "idleStreaks": {},
   "noopStreak": 0,
@@ -27,7 +32,7 @@
     "boundaryViolations": 0,
     "workspaceDirty": 0,
     "reviewEscalations": 0,
-    "outOfChainDelegations": 0,
+    "outOfChainDelegations": 3,
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 0,
