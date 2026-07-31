@@ -7,8 +7,8 @@
   "milestoneEscalated": false,
   "modelIndex": 0,
   "failedStarts": 0,
-  "providerTransientRetries": 0,
-  "ceoSessionId": "ses_047c941e4ffe3PEEOn5p04phjU",
+  "providerTransientRetries": 1,
+  "ceoSessionId": null,
   "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
@@ -30,15 +30,13 @@
   "resumedByProbe": false,
   "interrupted": null,
   "pendingPrompt": null,
-  "idleStreaks": {
-    "ITs": 1
-  },
+  "idleStreaks": {},
   "noopStreak": 0,
   "counters": {
     "backoffs": 0,
     "qaNoGo": 0,
     "boundaryViolations": 0,
-    "workspaceDirty": 5,
+    "workspaceDirty": 8,
     "reviewEscalations": 0,
     "outOfChainDelegations": 17,
     "noopCycles": 0,
@@ -46,7 +44,7 @@
     "stalls": 0,
     "contextCompactions": 0,
     "contextBytesSaved": 0,
-    "providerTransientSessionResets": 24
+    "providerTransientSessionResets": 25
   },
   "stallRetries": 0,
   "pendingBoundaryNote": null,
