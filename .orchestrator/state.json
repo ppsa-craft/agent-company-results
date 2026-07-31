@@ -1,43 +1,34 @@
 {
-  "cycleCount": 4,
-  "lastCycleAt": "2026-07-31T12:37:20.143Z",
+  "cycleCount": 5,
+  "lastCycleAt": "2026-07-31T12:48:37.785Z",
   "milestoneId": "M1 + M2 parallel start — foundation (repo scaffold + data-ingest) + analysis-engine",
-  "milestoneCycles": 3,
+  "milestoneCycles": 4,
   "milestoneStartedAt": 1785495397160,
   "milestoneEscalated": false,
   "modelIndex": 0,
   "failedStarts": 0,
-  "providerTransientRetries": 1,
-  "ceoSessionId": null,
+  "providerTransientRetries": 0,
+  "ceoSessionId": "ses_047c941e4ffe3PEEOn5p04phjU",
   "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
-      "id": "ses_047e6373cffezuYkj4J9s6yE2V",
-      "requests": 1
+      "id": null,
+      "requests": 0
     },
     "dev": {
-      "id": null,
+      "id": "ses_047c78f36fferCuDWx8l6feSuj",
       "requests": 0
     }
   },
   "agentInterrupted": {
     "tester": {
-      "task": "vnstock-advisor-8-tester-analysis-engine",
-      "reason": "failed to run",
-      "at": "2026-07-31T12:37:31.045Z"
-    },
-    "dev": {
-      "task": "vnstock-advisor-6-dev-analysis-engine",
+      "task": "vnstock-advisor-6-tester-data-ingest",
       "reason": "known-transient provider error",
-      "at": "2026-07-31T12:37:56.227Z"
+      "at": "2026-07-31T12:49:11.060Z"
     }
   },
   "resumedByProbe": false,
-  "interrupted": {
-    "cycle": 5,
-    "reason": "all 2 dispatched lane(s) failed at once (known-transient provider error) — health-probing the model list to resume on a healthy one",
-    "at": "2026-07-31T12:38:04.892Z"
-  },
+  "interrupted": null,
   "pendingPrompt": null,
   "idleStreaks": {
     "ITs": 1
@@ -49,7 +40,7 @@
     "boundaryViolations": 0,
     "workspaceDirty": 5,
     "reviewEscalations": 0,
-    "outOfChainDelegations": 12,
+    "outOfChainDelegations": 17,
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 0,
