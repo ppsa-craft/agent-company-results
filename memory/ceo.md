@@ -1,6 +1,5 @@
 <!-- orchestrator:session-loss-note -->
-> ORCHESTRATOR NOTE (2026-07-31T10:27:32.859Z): your previous session was lost — a transient provider error persisted even after a session reset — it was reset again before pausing.
-> Assignment on record: cycle 1, interrupted (ppsa/deepseek-v4-flash-free hit a known-transient provider error ("Upstream request failed") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one).
+> ORCHESTRATOR NOTE (2026-07-31T10:56:56.439Z): your previous session was lost — a transient provider error hit your session — it was reset, retrying once before pausing.
 > Your condensed memory below (if any) predates the loss and may be stale — reconcile it
 > against COMPANY_STATE.md and tasks/backlog.md before trusting it.
 <!-- /orchestrator:session-loss-note -->

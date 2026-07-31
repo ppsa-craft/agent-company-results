@@ -1,14 +1,14 @@
 {
   "cycleCount": 1,
   "lastCycleAt": "2026-07-31T10:43:34.999Z",
-  "milestoneId": null,
-  "milestoneCycles": 1,
-  "milestoneStartedAt": null,
+  "milestoneId": "M1 + M2 parallel start — foundation (repo scaffold + data-ingest) + analysis-engine",
+  "milestoneCycles": 0,
+  "milestoneStartedAt": 1785495397160,
   "milestoneEscalated": false,
   "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
-  "ceoSessionId": "ses_04848b156ffecENXdFmFxkPsxU",
+  "ceoSessionId": null,
   "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
@@ -22,7 +22,11 @@
   },
   "agentInterrupted": {},
   "resumedByProbe": false,
-  "interrupted": null,
+  "interrupted": {
+    "cycle": 2,
+    "reason": "ppsa/deepseek-v4-flash-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-07-31T11:00:44.265Z"
+  },
   "pendingPrompt": null,
   "idleStreaks": {},
   "noopStreak": 0,
@@ -30,7 +34,7 @@
     "backoffs": 0,
     "qaNoGo": 0,
     "boundaryViolations": 0,
-    "workspaceDirty": 0,
+    "workspaceDirty": 1,
     "reviewEscalations": 0,
     "outOfChainDelegations": 3,
     "noopCycles": 0,
@@ -38,7 +42,8 @@
     "stalls": 0,
     "contextCompactions": 0,
     "contextBytesSaved": 0,
-    "providerTransientSessionResets": 2
+    "providerTransientSessionResets": 4
   },
-  "stallRetries": 0
+  "stallRetries": 0,
+  "pendingBoundaryNote": null
 }
