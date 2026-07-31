@@ -3,7 +3,7 @@
 **Role:** DEV
 **Product:** vnstock-advisor
 **DoD Tier:** 2 (Feature: repo scaffold + CI foundation)
-**Status:** ready
+**Status:** claimed:DEV-1
 
 ---
 

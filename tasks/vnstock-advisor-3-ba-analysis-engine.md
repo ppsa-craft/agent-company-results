@@ -3,7 +3,7 @@
 **Role:** BA
 **Product:** vnstock-advisor
 **DoD Tier:** 2 (Feature: analysis-engine use cases + indicator specs)
-**Status:** ready
+**Status:** claimed:BA-1
 
 ---
 

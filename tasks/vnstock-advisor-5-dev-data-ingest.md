@@ -3,7 +3,7 @@
 **Role:** DEV
 **Product:** vnstock-advisor
 **DoD Tier:** 2 (Feature: data-ingest service)
-**Status:** ready
+**Status:** claimed:DEV-1
 
 ---
 

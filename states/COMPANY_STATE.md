@@ -20,15 +20,15 @@ Build the VN stock suggestion system as flagship: parallelize M1 (data-ingest) a
 <!-- PM maintains this section -->
 | Task | Assignee | Status | Review |
 |---|---|---|---|
-| vnstock-advisor-1-repo-scaffold | | ready | |
-| vnstock-advisor-2-ba-data-ingest | | ready | |
-| vnstock-advisor-3-ba-analysis-engine | | ready | |
-| vnstock-advisor-4-dev-data-ingest | | ready | |
-| vnstock-advisor-6-dev-analysis-engine | | ready | |
-| vnstock-advisor-7-tester-data-ingest | | ready | |
-| vnstock-advisor-8-tester-analysis-engine | | ready | |
-| vnstock-advisor-9-qa-data-ingest | | ready | |
-| vnstock-advisor-10-qa-analysis-engine | | ready | |
+| vnstock-advisor-1-repo-scaffold | DEV-1 | in-progress | |
+| vnstock-advisor-2-ba-data-ingest | BA-1 | in-progress | |
+| vnstock-advisor-3-ba-analysis-engine | BA-1 | in-progress | |
+| vnstock-advisor-4-dev-data-ingest | DEV-1 | blocked (depends on 1, 2) | |
+| vnstock-advisor-5-dev-analysis-engine | DEV-2 | in-progress | |
+| vnstock-advisor-6-tester-data-ingest | | ready | |
+| vnstock-advisor-7-tester-analysis-engine | | ready | |
+| vnstock-advisor-8-qa-data-ingest | | ready | |
+| vnstock-advisor-9-qa-analysis-engine | | ready | |
 
 ## Open debates
 
