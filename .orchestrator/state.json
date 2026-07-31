@@ -1,0 +1,38 @@
+{
+  "cycleCount": 0,
+  "lastCycleAt": null,
+  "milestoneId": null,
+  "milestoneCycles": 0,
+  "milestoneStartedAt": null,
+  "milestoneEscalated": false,
+  "modelIndex": 0,
+  "failedStarts": 0,
+  "providerTransientRetries": 0,
+  "ceoSessionId": null,
+  "ceoSessionRequests": 0,
+  "agentSessions": {},
+  "agentInterrupted": {},
+  "resumedByProbe": false,
+  "interrupted": {
+    "cycle": 1,
+    "reason": "ppsa/deepseek-v4-flash-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-07-31T10:27:29.719Z"
+  },
+  "pendingPrompt": null,
+  "idleStreaks": {},
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 0,
+    "boundaryViolations": 0,
+    "workspaceDirty": 0,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 0,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 0,
+    "contextCompactions": 0,
+    "contextBytesSaved": 0,
+    "providerTransientSessionResets": 2
+  }
+}
