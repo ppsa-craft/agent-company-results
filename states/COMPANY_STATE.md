@@ -6,33 +6,41 @@
 
 ## Current product / milestone
 
-- **Product:** _none yet — first ideation cycle pending_
-- **Active milestone:** _none_
+- **Product:** `vnstock-advisor` (VN stock suggestion system)
+- **Active milestone:** M1 + M2 parallel start — foundation (repo scaffold + data-ingest) + analysis-engine
 - **Milestone flag:** `in-progress` <!-- values: in-progress | done (done triggers ideation, §5) -->
-- **DoD tier:** _n/a_
+- **DoD tier:** 2 (Feature)
 
 ## Strategy (CEO, one line — full version in the latest report)
 
-_Not set — first cycle will establish it (Company.md §7 duty 2)._
+Build the VN stock suggestion system as flagship: parallelize M1 (data-ingest) and M2 (analysis-engine) from day one via clean service seams; each service independently buildable, quality-gated, security-gated; M3 (API+UI) follows. Reuse potential drives architecture — shared scaffold, ingest service, and analysis engine become reusable assets.
 
 ## Active work
 
 <!-- PM maintains this section -->
 | Task | Assignee | Status | Review |
 |---|---|---|---|
-| _none_ | | | |
+| vnstock-advisor-1-repo-scaffold | | ready | |
+| vnstock-advisor-2-ba-data-ingest | | ready | |
+| vnstock-advisor-3-ba-analysis-engine | | ready | |
+| vnstock-advisor-4-dev-data-ingest | | ready | |
+| vnstock-advisor-6-dev-analysis-engine | | ready | |
+| vnstock-advisor-7-tester-data-ingest | | ready | |
+| vnstock-advisor-8-tester-analysis-engine | | ready | |
+| vnstock-advisor-9-qa-data-ingest | | ready | |
+| vnstock-advisor-10-qa-analysis-engine | | ready | |
 
 ## Open debates
 
-- _none_ <!-- link debates/<topic>.md -->
+- [emergency-idle-2026-07-31](debates/emergency-idle-2026-07-31.md) — **DECIDED: Option D (Parallel M1 + M2 start)**
 
 ## Blockers
 
-- _none_
+- None
 
 ## Last CEO report
 
-- _none yet_ <!-- link workspace/reports/... -->
+- [Cycle 1 report](workspace/reports/2026-07-31-cycle-1.md)
 
 ## Idea backlog
 

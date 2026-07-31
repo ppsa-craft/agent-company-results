@@ -12,7 +12,7 @@
   "ceoSessionRequests": 0,
   "agentSessions": {},
   "agentInterrupted": {},
-  "resumedByProbe": false,
+  "resumedByProbe": true,
   "interrupted": {
     "cycle": 1,
     "reason": "ppsa/deepseek-v4-flash-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
@@ -34,5 +34,6 @@
     "contextCompactions": 0,
     "contextBytesSaved": 0,
     "providerTransientSessionResets": 2
-  }
+  },
+  "stallRetries": 0
 }
