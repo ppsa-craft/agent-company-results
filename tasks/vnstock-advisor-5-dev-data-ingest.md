@@ -74,4 +74,6 @@ Implement `data-ingest` service: scheduled fetch from chosen VN source, normaliz
 
 - `vnstock-advisor-1-repo-scaffold` (monorepo, docker-compose, shared/python models)
 - `vnstock-advisor-2-ba-data-ingest` (schema, source choice, use cases)
-- Blocks: `vnstock-advisor-5-dev-analysis-engine` (needs `market_data` + contract)
+- `vnstock-advisor-3-ba-analysis-engine` (indicator specs, fixture data)
+- `workspace/apps/vnstock-advisor/services/data-ingest/src/requirements.txt` (deps added)
+- `workspace/apps/vnstock-advisor/services/analysis-engine/src/requirements.txt` (deps added)

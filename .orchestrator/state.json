@@ -5,10 +5,10 @@
   "milestoneCycles": 1,
   "milestoneStartedAt": 1785495397160,
   "milestoneEscalated": false,
-  "modelIndex": 0,
+  "modelIndex": 1,
   "failedStarts": 0,
   "providerTransientRetries": 0,
-  "ceoSessionId": "ses_047f132e5ffeawgSzCyvvpcaB7",
+  "ceoSessionId": null,
   "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
@@ -55,9 +55,9 @@
     "stalls": 0,
     "contextCompactions": 0,
     "contextBytesSaved": 0,
-    "providerTransientSessionResets": 20
+    "providerTransientSessionResets": 21
   },
   "stallRetries": 0,
-  "pendingBoundaryNote": "CAPACITY PRESSURE (§3.5.1): dev: 2 ready vs 1 instance(s) — every instance is busy and work is queuing. This is the moment hiring IS justified: consider ordering HR to scale the role up.\n- WORKSPACE DIRTY after last cycle: uncommitted changes in workspace/ or a DEV worktree: apps/vnstock-advisor/. DEV work must be committed on its task branch; if TESTER or QA wrote these, that is a violation (Company.md §3.2) — investigate, clean up, record a lesson (§7.3).",
+  "pendingBoundaryNote": null,
   "reviewPrSyncHashes": {}
 }

@@ -9,10 +9,11 @@
 
 - [BA] [vnstock-advisor] tasks/vnstock-advisor-2-ba-data-ingest.md — status: ready
 - [BA] [vnstock-advisor] tasks/vnstock-advisor-3-ba-analysis-engine.md — status: ready
-- [DEV] [vnstock-advisor] tasks/vnstock-advisor-1-repo-scaffold.md — status: claimed:dev
 - [DEV] [vnstock-advisor] tasks/vnstock-advisor-5-dev-data-ingest.md — status: ready
 - [DEV] [vnstock-advisor] tasks/vnstock-advisor-6-dev-analysis-engine.md — status: ready
-- [TESTER] [vnstock-advisor] tasks/vnstock-advisor-7-tester-data-ingest.md — status: claimed:tester
+- [TESTER] [vnstock-advisor] tasks/vnstock-advisor-7-tester-data-ingest.md — status: ready
 - [TESTER] [vnstock-advisor] tasks/vnstock-advisor-8-tester-analysis-engine.md — status: ready
 - [QA] [vnstock-advisor] tasks/vnstock-advisor-9-qa-data-ingest.md — status: ready
 - [QA] [vnstock-advisor] tasks/vnstock-advisor-10-qa-analysis-engine.md — status: ready
+- [DEV] [vnstock-advisor] tasks/vnstock-advisor-5-dev-data-ingest.md — status: ready
+- [DEV] [vnstock-advisor] tasks/vnstock-advisor-6-dev-analysis-engine.md — status: ready
