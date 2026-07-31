@@ -33,15 +33,21 @@
     }
   },
   "resumedByProbe": false,
-  "interrupted": null,
+  "interrupted": {
+    "cycle": 3,
+    "reason": "all 2 dispatched lane(s) failed at once (known-transient provider error) — health-probing the model list to resume on a healthy one",
+    "at": "2026-07-31T12:06:25.509Z"
+  },
   "pendingPrompt": null,
-  "idleStreaks": {},
+  "idleStreaks": {
+    "ITs": 1
+  },
   "noopStreak": 0,
   "counters": {
     "backoffs": 0,
     "qaNoGo": 0,
     "boundaryViolations": 0,
-    "workspaceDirty": 1,
+    "workspaceDirty": 2,
     "reviewEscalations": 0,
     "outOfChainDelegations": 4,
     "noopCycles": 0,
@@ -52,6 +58,6 @@
     "providerTransientSessionResets": 20
   },
   "stallRetries": 0,
-  "pendingBoundaryNote": null,
+  "pendingBoundaryNote": "CAPACITY PRESSURE (§3.5.1): dev: 2 ready vs 1 instance(s) — every instance is busy and work is queuing. This is the moment hiring IS justified: consider ordering HR to scale the role up.\n- WORKSPACE DIRTY after last cycle: uncommitted changes in workspace/ or a DEV worktree: apps/vnstock-advisor/. DEV work must be committed on its task branch; if TESTER or QA wrote these, that is a violation (Company.md §3.2) — investigate, clean up, record a lesson (§7.3).",
   "reviewPrSyncHashes": {}
 }
