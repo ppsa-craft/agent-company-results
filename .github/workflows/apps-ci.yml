@@ -1,59 +1,93 @@
-# Auto-bootstrapped by the orchestrator (agent-company decision #134) — generic
-# best-effort build+test for whatever stack each apps/<slug>/ uses. DEV owns
-# making its app runnable via one of the recognized manifests below; TESTER
-# treats this run's pass/fail as the authoritative signal for the automated
-# suite instead of executing it inside the resource-constrained orchestrator
-# pod.
+# Auto-bootstrapped by the orchestrator (agent-company decision #134, extended
+# by #137) — generic best-effort build+test for whatever stack each
+# apps/<slug>/ uses. DEV owns making its app runnable via one of the
+# recognized manifests below; TESTER treats this run's pass/fail as the
+# authoritative signal for the automated suite instead of executing it inside
+# the resource-constrained orchestrator pod. The schedule trigger (decision
+# #137) re-runs this over EVERY shipped app, not just ones a PR touched — an
+# already-merged app can still regress (dependency drift, an upstream API
+# change) with nothing else ever re-testing it otherwise. workflow_dispatch's
+# `app` input (decision #137 follow-up) lets the orchestrator fire an
+# on-demand run for ONE app/branch at an agent's request (git.js's
+# processCiRequests(), queued off tasks/ci-requests/*.json) — blank input =
+# same full-repo audit as the schedule trigger.
 name: apps CI
 on:
   pull_request:
     paths:
       - "apps/**"
-# Free-plan results repo, no paid concurrent-job capacity (owner 2026-07-30,
-# decision #134/#135 follow-up) — runs by QUEUE, never in parallel. A single,
-# repo-wide concurrency group (not per-branch/per-ref) serializes every
-# workflow run onto ONE at a time; the rest queue instead of executing
-# concurrently. cancel-in-progress:false so a queued PR's run waits its turn
-# rather than cancelling whatever's already running.
-concurrency:
-  group: apps-ci-single-runner
-  cancel-in-progress: false
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      app:
+        description: "single apps/<slug> to test (blank = every app)"
+        required: false
+        type: string
 jobs:
+  # Actions has no native "max N concurrent" primitive — a concurrency group
+  # only ever gives exact 1-at-a-time exclusivity. Decision #137's owner
+  # follow-up wants up to 2 concurrent runs across EVERY trigger (PR +
+  # nightly schedule + on-demand agent requests), so this cheap first job
+  # computes a 0/1 lane from the run id; the real "test" job below is grouped
+  # by it — two runs landing in different lanes execute in parallel, same-
+  # lane runs still queue behind each other. Approximates "2 at a time," not
+  # an exact global cap (Actions doesn't offer one).
+  lane:
+    runs-on: ubuntu-latest
+    outputs:
+      n: ${{ steps.calc.outputs.n }}
+    steps:
+      - id: calc
+        run: echo "n=$(( ${{ github.run_id }} % 2 ))" >> "$GITHUB_OUTPUT"
   test:
+    needs: lane
+    concurrency:
+      group: apps-ci-lane-${{ needs.lane.outputs.n }}
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Detect changed apps and run their build+test
+      - name: Detect which apps to test
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+            CHANGED=$(git diff --name-only "$BASE" "$HEAD" -- apps/ | awk -F/ '{print $1"/"$2}' | sort -u)
+          elif [ -n "${{ github.event.inputs.app }}" ]; then
+            CHANGED="apps/${{ github.event.inputs.app }}"
+          else
+            CHANGED=$(find apps -mindepth 1 -maxdepth 1 -type d 2>/dev/null | sort)
+          fi
+          if [ -z "$CHANGED" ]; then
+            echo "No apps/<slug>/ to test."
+          fi
+          echo "$CHANGED" > /tmp/changed-apps.txt
+      - name: Build + test each app
         run: |
           set -e
-          BASE="${{ github.event.pull_request.base.sha }}"
-          HEAD="${{ github.event.pull_request.head.sha }}"
-          CHANGED=$(git diff --name-only "$BASE" "$HEAD" -- apps/ | awk -F/ '{print $1"/"$2}' | sort -u)
-          if [ -z "$CHANGED" ]; then
-            echo "No apps/<slug>/ changes detected — nothing to test."
-            exit 0
-          fi
+          [ -s /tmp/changed-apps.txt ] || exit 0
           STATUS=0
-          for dir in $CHANGED; do
+          while IFS= read -r dir; do
             [ -d "$dir" ] || continue
             echo "::group::$dir"
             if [ -f "$dir/package.json" ]; then
               ( cd "$dir" \
                 && npm ci --no-audit --no-fund \
                 && npm run build --if-present \
-                && npm test --if-present ) || { echo "::error::$dir: npm build/test failed"; STATUS=1; }
+                && npm test --if-present ) || { echo "::error file=$dir/README.md::$dir: npm build/test failed"; STATUS=1; }
             elif [ -f "$dir/requirements.txt" ] || [ -f "$dir/pyproject.toml" ]; then
               ( cd "$dir" \
                 && python3 -m venv .venv && . .venv/bin/activate \
                 && { [ -f requirements.txt ] && pip install -r requirements.txt || pip install .; } \
-                && pytest -q ) || { echo "::error::$dir: pytest failed"; STATUS=1; }
+                && pytest -q ) || { echo "::error file=$dir/README.md::$dir: pytest failed"; STATUS=1; }
             elif [ -f "$dir/go.mod" ]; then
-              ( cd "$dir" && go test ./... ) || { echo "::error::$dir: go test failed"; STATUS=1; }
+              ( cd "$dir" && go test ./... ) || { echo "::error file=$dir/README.md::$dir: go test failed"; STATUS=1; }
             else
               echo "::warning::$dir: no recognized manifest (package.json/requirements.txt/pyproject.toml/go.mod) — no automated tests ran"
             fi
             echo "::endgroup::"
-          done
+          done < /tmp/changed-apps.txt
           exit $STATUS
