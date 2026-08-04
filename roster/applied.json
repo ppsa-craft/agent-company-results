@@ -1,0 +1,12 @@
+{
+  "applied": [
+    {
+      "action": "remove",
+      "agent": "ITs",
+      "disable_only": true,
+      "ceo_approved": true,
+      "approval_ref": "orchestrator layoff backstop (§3.5.4): idle 5 consecutive cycles; watch + layoff order ignored",
+      "appliedAt": "2026-08-01T04:00:24.736Z"
+    }
+  ]
+}

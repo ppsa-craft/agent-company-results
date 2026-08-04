@@ -1,39 +1,68 @@
 {
-  "cycleCount": 0,
-  "lastCycleAt": null,
-  "milestoneId": null,
-  "milestoneCycles": 0,
-  "milestoneStartedAt": null,
-  "milestoneEscalated": false,
+  "cycleCount": 34,
+  "lastCycleAt": "2026-08-04T01:34:33.770Z",
+  "milestoneId": "M1 + M2 parallel start — foundation (repo scaffold + data-ingest) + analysis-engine",
+  "milestoneCycles": 33,
+  "milestoneStartedAt": 1785495397160,
+  "milestoneEscalated": true,
   "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
-  "ceoSessionId": null,
+  "ceoSessionId": "ses_0359ed56dffeXWUEFauI1suUGH",
   "ceoSessionRequests": 0,
-  "agentSessions": {},
-  "agentInterrupted": {},
-  "resumedByProbe": true,
-  "interrupted": {
-    "cycle": 1,
-    "reason": "ppsa/deepseek-v4-flash-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
-    "at": "2026-07-31T10:27:29.719Z"
+  "agentSessions": {
+    "tester": {
+      "id": null,
+      "requests": 0
+    },
+    "dev": {
+      "id": null,
+      "requests": 0
+    },
+    "techlead": {
+      "id": "ses_035dfd5f4ffeW41Z5G9bdG3fcB",
+      "requests": 8
+    }
   },
+  "agentInterrupted": {
+    "tester": {
+      "task": "vnstock-advisor-8-tester-analysis-engine",
+      "reason": "known-transient provider error",
+      "at": "2026-08-04T01:37:53.370Z"
+    },
+    "techlead": {
+      "task": "vnstock-advisor-1-repo-scaffold",
+      "reason": "rate-limited",
+      "at": "2026-08-04T01:37:17.707Z"
+    },
+    "dev": {
+      "task": "vnstock-advisor-5b-dev-screening",
+      "reason": "known-transient provider error",
+      "at": "2026-08-04T01:41:00.869Z"
+    }
+  },
+  "resumedByProbe": false,
+  "interrupted": null,
   "pendingPrompt": null,
   "idleStreaks": {},
   "noopStreak": 0,
   "counters": {
-    "backoffs": 0,
-    "qaNoGo": 0,
-    "boundaryViolations": 0,
-    "workspaceDirty": 0,
+    "backoffs": 6,
+    "qaNoGo": 1,
+    "boundaryViolations": 20,
+    "workspaceDirty": 122,
     "reviewEscalations": 0,
-    "outOfChainDelegations": 0,
+    "outOfChainDelegations": 67,
     "noopCycles": 0,
     "noopRotations": 0,
-    "stalls": 0,
-    "contextCompactions": 0,
-    "contextBytesSaved": 0,
-    "providerTransientSessionResets": 2
+    "stalls": 29,
+    "contextCompactions": 3,
+    "contextBytesSaved": 13842,
+    "providerTransientSessionResets": 251
   },
-  "stallRetries": 0
+  "stallRetries": 0,
+  "pendingBoundaryNote": null,
+  "reviewPrSyncHashes": {},
+  "lastAuditedRunId": 30789600870,
+  "pendingConflictNotes": []
 }

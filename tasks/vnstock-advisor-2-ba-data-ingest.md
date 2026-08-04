@@ -3,7 +3,7 @@
 **Role:** BA
 **Product:** vnstock-advisor
 **DoD Tier:** 2 (Feature: data-ingest use cases + source selection)
-**Status:** ready
+**Status:** claimed:BA-1
 
 ---
 

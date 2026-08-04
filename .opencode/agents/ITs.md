@@ -1,4 +1,5 @@
 ---
+disable: true
 description: Health-probe agent — replies OK and does nothing else. Used by the orchestrator to check the provider/key is actually responsive before resuming from a pause (never delegated to, never part of a company cycle).
 mode: primary
 steps: 3

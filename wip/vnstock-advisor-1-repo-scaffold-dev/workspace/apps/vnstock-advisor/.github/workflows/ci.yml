@@ -1,0 +1,215 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'workspace/apps/vnstock-advisor/**'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'workspace/apps/vnstock-advisor/**'
+
+env:
+  WORKING_DIR: ./workspace/apps/vnstock-advisor
+
+jobs:
+  # TypeScript services lint, typecheck, test
+  typescript-services:
+    name: TypeScript Services (${{ matrix.service }})
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    strategy:
+      matrix:
+        service: [suggestion-api, web-ui]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ${{ env.WORKING_DIR }}/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build shared TypeScript package
+        run: npm run build --workspace=@vnstock/shared-typescript
+
+      - name: Lint
+        run: npm run lint --workspace=${{ matrix.service }}
+
+      - name: Type check
+        run: npm run typecheck --workspace=${{ matrix.service }}
+
+      - name: Test
+        run: npm run test --workspace=${{ matrix.service }}
+
+  # Python services lint, typecheck, test
+  python-services:
+    name: Python Services (${{ matrix.service }})
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    strategy:
+      matrix:
+        service: [data-ingest, analysis-engine]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: ${{ env.WORKING_DIR }}/pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ./shared/python[dev]
+          pip install -e ./services/${{ matrix.service }}[dev]
+
+      - name: Lint (ruff)
+        run: ruff check ./services/${{ matrix.service }} ./shared/python
+
+      - name: Format check (ruff)
+        run: ruff format --check ./services/${{ matrix.service }} ./shared/python
+
+      - name: Type check (mypy)
+        run: mypy ./services/${{ matrix.service }} ./shared/python/src
+
+      - name: Test (pytest)
+        run: pytest ./services/${{ matrix.service }}/tests -v
+
+  # Shared TypeScript package
+  shared-typescript:
+    name: Shared TypeScript
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ${{ env.WORKING_DIR }}/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --workspace=@vnstock/shared-typescript
+
+      - name: Type check
+        run: npm run typecheck --workspace=@vnstock/shared-typescript
+
+      - name: Test
+        run: npm run test --workspace=@vnstock/shared-typescript
+
+      - name: Build
+        run: npm run build --workspace=@vnstock/shared-typescript
+
+  # Shared Python package
+  shared-python:
+    name: Shared Python
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: ${{ env.WORKING_DIR }}/pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ./shared/python[dev]
+
+      - name: Lint (ruff)
+        run: ruff check ./shared/python
+
+      - name: Format check (ruff)
+        run: ruff format --check ./shared/python
+
+      - name: Type check (mypy)
+        run: mypy ./shared/python/src
+
+      - name: Test (pytest)
+        run: pytest ./shared/python/tests -v
+
+  # Docker Compose validation
+  docker-compose:
+    name: Docker Compose Validate
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Docker Compose
+        run: docker compose config --quiet
+
+  # Security scanning
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          args: --verbose --config=.github/gitleaks.toml
+
+  # Dependency scanning (Snyk)
+  snyk:
+    name: Snyk Dependency Scan
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIR }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Snyk test
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --all-projects --severity-threshold=high
+
+      - name: Run Snyk Python test
+        uses: snyk/actions/python@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high

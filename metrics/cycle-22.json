@@ -1,0 +1,47 @@
+{
+  "cycleId": 22,
+  "ts": "2026-08-02T01:19:22.250Z",
+  "model": "ppsa/deepseek-v4-flash-free",
+  "cycleDurationMs": 440724,
+  "milestone": {
+    "id": "M1 + M2 parallel start — foundation (repo scaffold + data-ingest) + analysis-engine",
+    "cyclesUsed": 21,
+    "cap": 15,
+    "hoursElapsed": 38.38
+  },
+  "reviews": {
+    "open": 0,
+    "approved": 0,
+    "avgRoundsPerTask": 0,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ba",
+      "ceo",
+      "cto",
+      "dev",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester"
+    ],
+    "idle": []
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 5,
+    "qaNoGo": 0,
+    "boundaryViolations": 9,
+    "workspaceDirty": 87,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 47,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 9,
+    "contextCompactions": 2,
+    "contextBytesSaved": 8105,
+    "providerTransientSessionResets": 168
+  }
+}

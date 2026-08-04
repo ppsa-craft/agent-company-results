@@ -1,0 +1,48 @@
+{
+  "cycleId": 3,
+  "ts": "2026-07-31T12:32:55.572Z",
+  "model": "ppsa/big-pickle",
+  "cycleDurationMs": 445539,
+  "milestone": {
+    "id": "M1 + M2 parallel start — foundation (repo scaffold + data-ingest) + analysis-engine",
+    "cyclesUsed": 2,
+    "cap": 15,
+    "hoursElapsed": 1.61
+  },
+  "reviews": {
+    "open": 0,
+    "approved": 0,
+    "avgRoundsPerTask": 0,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ITs",
+      "ba",
+      "ceo",
+      "cto",
+      "dev",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester"
+    ],
+    "idle": []
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 0,
+    "boundaryViolations": 0,
+    "workspaceDirty": 2,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 12,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 0,
+    "contextCompactions": 0,
+    "contextBytesSaved": 0,
+    "providerTransientSessionResets": 21
+  }
+}
