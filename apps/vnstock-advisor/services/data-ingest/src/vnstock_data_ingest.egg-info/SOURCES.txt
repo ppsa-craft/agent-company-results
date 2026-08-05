@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/data_ingest/__init__.py
+src/data_ingest/disclaimer.py
+src/data_ingest/ingest_service.py
+src/data_ingest/main.py
+src/data_ingest/models.py
+src/vnstock_data_ingest.egg-info/PKG-INFO
+src/vnstock_data_ingest.egg-info/SOURCES.txt
+src/vnstock_data_ingest.egg-info/dependency_links.txt
+src/vnstock_data_ingest.egg-info/requires.txt
+src/vnstock_data_ingest.egg-info/top_level.txt
+tests/test_main.py
