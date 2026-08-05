@@ -1,0 +1,27 @@
+{
+  "name": "@vnstock/shared-typescript",
+  "version": "0.1.0",
+  "description": "Shared TypeScript types and Zod schemas for vnstock-advisor",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": ["vnstock", "shared", "types"],
+  "author": "ppsacraft",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "vitest": "^1.2.0"
+  },
+  "dependencies": {
+    "zod": "^3.22.0"
+  }
+}
