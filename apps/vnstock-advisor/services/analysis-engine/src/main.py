@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from vnstock_shared.config import get_settings
 from vnstock_shared.models import MarketDataCreate
 import structlog
+from indicators import compute_all_indicators, OHLCV
 
 # Analysis Engine - placeholder for technical analysis implementation
 # TODO: M2 milestone - implement MA/RSI/volume indicators, screening, ranking logic
@@ -35,20 +36,40 @@ async def root():
 # Service contract for data-ingest to interact with
 @app.post("/analyze")
 async def analyze_data(data: MarketDataCreate):
-    # Placeholder: This endpoint should receive market data from data-ingest
-    # and return technical analysis results (MA, RSI, volume indicators, etc.)
+    # Convert MarketDataCreate to OHLCV for indicator computation
+    ohlcv = OHLCV(
+        time=data.time,
+        open=float(data.open),
+        high=float(data.high),
+        low=float(data.low),
+        close=float(data.close),
+        volume=data.volume,
+    )
+    
+    # Compute all indicators using the real implementation
+    result = compute_all_indicators([ohlcv])
+    
     logger.info("Analysis request received", symbol=data.symbol, timeframe=data.timeframe)
     return {
         "symbol": data.symbol,
         "timeframe": data.timeframe,
-        "analysis": {
-            "ma_20": 100.0,
-            "ma_50": 95.0,
-            "rsi": 50.0,
-            "volume": 1000000,
-            "signal": "neutral"
+        "indicators": {
+            "sma20": result.sma20[-1] if result.sma20 else None,
+            "sma50": result.sma50[-1] if result.sma50 else None,
+            "sma200": result.sma200[-1] if result.sma200 else None,
+            "ema12": result.ema12[-1] if result.ema12 else None,
+            "ema26": result.ema26[-1] if result.ema26 else None,
+            "ema9": result.ema9[-1] if result.ema9 else None,
+            "rsi14": result.rsi14[-1] if result.rsi14 else None,
+            "macd": result.macd[-1] if result.macd else None,
+            "vwap": result.vwap[-1] if result.vwap else None,
+            "volume_sma": result.volume_sma[-1] if result.volume_sma else None,
+            "volume_ratio": result.volume_ratio[-1] if result.volume_ratio else None,
+            "roc10": result.roc10[-1] if result.roc10 else None,
+            "atr14": result.atr14[-1] if result.atr14 else None,
+            "obv": result.obv[-1] if result.obv else None,
         },
-        "note": "This is a placeholder response. Technical analysis implementation is pending M2 work."
+        "warnings": result.warnings,
     }
 
 
