@@ -53,6 +53,7 @@ class MarketDataCreate(BaseModel):
     close: Decimal = Field(..., gt=0, description="Closing price")
     volume: int = Field(..., ge=0, description="Trading volume")
     source: str = Field(..., min_length=1, max_length=50, description="Data source identifier")
+    timeframe: str = Field(..., pattern="^(1D|1W|1M|3M)$", description="Data timeframe")
 
 
 class MarketDataRead(MarketDataCreate):
