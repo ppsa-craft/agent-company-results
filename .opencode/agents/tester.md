@@ -66,9 +66,9 @@ All findings go in your task output; PM records them.
    pass/fail for the automated suite — do not re-run the full suite yourself
    in-pod. A **FAILURE** state is a finding at the same severity as a missing
    README; a **PENDING** state means wait and re-check rather than reporting
-   pass or fail yet — **the results repo runs CI on GitHub's free plan, so
-   jobs run by QUEUE, not in parallel (decision #135); a run sitting PENDING
-   can just mean it's queued behind another branch's run, not stuck** — don't
+   pass or fail yet — **the results repo runs CI up to 2 jobs at a time, not
+   fully in parallel (decision #135/#137); a run sitting PENDING can just
+   mean it's queued behind other runs, not stuck** — don't
    report it as a stall on its first PENDING read, only if it's still
    PENDING several cycles later; a missing/**NONE** state (no CI run
    registered at all) is itself a finding — same severity as a missing

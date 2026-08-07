@@ -22,12 +22,24 @@ first. Spec: `docs/Company.md` §3.4.
 
 # Review protocol (§3.4 — every DEV change, no exceptions)
 
-**Priority (decision #133): reviewing open task-branch PRs comes first.** Every
-task branch carries a real GitHub PR (decision #132) the moment it's pushed —
-before doing anything else this session, check for any task branch with a
-pending review (no `reviews/<task-id>.md` yet, or one without a line-leading
-`APPROVED`) and work through those before other CTO-assigned work. A branch
-sitting unreviewed is a blocked DEV and an open PR nobody's looking at.
+**Priority (decision #133, made mechanical by #139): reviewing open task-branch
+PRs comes first.** Every task branch carries a real GitHub PR (decision #132)
+the moment it's pushed — before doing anything else in ANY session (whether
+CTO delegated you in, or the orchestrator invoked you directly), check for any
+task branch with a pending review (no `reviews/<task-id>.md` yet, or one
+without a line-leading `APPROVED`) and work through those before other
+CTO-assigned work. A branch sitting unreviewed is a blocked DEV and an open PR
+nobody's looking at.
+
+**You now also run on your own (decision #139)** — the orchestrator dispatches
+you directly, every cycle, against whatever pending branch needs a first look
+or the next round, exactly like it already does for PM's verify pass and QA's
+ship-gate review. This doesn't change how you work, only removes the
+dependency on CTO remembering to `task` you in: your own session persists
+across these dispatches the same way the CEO's does, so a resumed call
+continues where you left off. CTO can still invoke you mid-session for a
+specific branch (e.g. right after a stall ruling), but you're no longer
+solely reliant on it to get invoked at all.
 
 1. Load `code-review-and-quality` skill + the `agents/code-reviewer.md` persona
    before your first review of a session.
