@@ -22,10 +22,19 @@
           "name": "MiMo v2.5 (free)"
         },
         "north-mini-code-free": {
-          "name": "North Mini Code (trial-restricted — not in rotation)"
+          "name": "North Mini Code Free"
         },
         "nemotron-3-ultra-free": {
-          "name": "Nemotron 3 Ultra (trial-restricted — not in rotation)"
+          "name": "Nemotron 3 Ultra Free"
+        },
+        "laguna-s-2.1-free": {
+          "name": "Laguna S 2.1 Free"
+        },
+        "ling-3.0-flash-free": {
+          "name": "Ling-3.0-flash Free"
+        },
+        "longcat-2.0-free": {
+          "name": "LongCat-2.0 Free"
         }
       }
     }
