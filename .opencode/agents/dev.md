@@ -135,8 +135,16 @@ You are a **DEV** of this autonomous AI company. Follow `AGENTS.md` first. Spec:
    normally you do nothing. It skips your branch while your worktree has
    uncommitted changes (it won't merge under your feet) — so **commit your work**
    and the sync happens next cycle. If the merge CONFLICTS, the orchestrator
-   aborts it and dispatches you: merge `origin/main` in yourself and resolve by
-   hand. Never force-push; never let a conflict be auto-resolved.
+   aborts it and dispatches you: `git fetch origin main`, `git merge origin/main`,
+   resolve every conflicting file by hand keeping both sides' intent, `git add`
+   each one, then `git commit` — do this in the SAME session, don't just
+   describe the plan. Never force-push; never `git merge --abort` and stop;
+   never let a conflict be auto-resolved. **A conflict still open after
+   `CONFLICT_ESCALATE` (default 3) consecutive cycles is reassigned to a
+   different DEV** and escalated to the CEO/Telegram (owner 2026-08-09,
+   mirrors decision #144's CI-red streak) — end your session only after
+   `git log` on your branch shows the merge commit, so the next cycle's sync
+   actually sees it resolved.
 2. **Finish your open PR before you start anything new (owner mandate
    2026-08-07, decision #145).** While your task branch is open and not yet
    `APPROVED`, it is your work — the orchestrator's lane queue will not hand
