@@ -140,11 +140,25 @@ You are a **DEV** of this autonomous AI company. Follow `AGENTS.md` first. Spec:
    each one, then `git commit` — do this in the SAME session, don't just
    describe the plan. Never force-push; never `git merge --abort` and stop;
    never let a conflict be auto-resolved. **A conflict still open after
-   `CONFLICT_ESCALATE` (default 3) consecutive cycles is reassigned to a
-   different DEV** and escalated to the CEO/Telegram (owner 2026-08-09,
-   mirrors decision #144's CI-red streak) — end your session only after
-   `git log` on your branch shows the merge commit, so the next cycle's sync
-   actually sees it resolved.
+   `CONFLICT_ESCALATE` (default 3) consecutive cycles forces your session
+   genuinely fresh** (you stay the author — a branch only lives in one
+   worktree at a time, decision #146) and escalates to the CEO/Telegram (owner
+   2026-08-09, mirrors decision #144's CI-red streak) — end your session only
+   after `git log` on your branch shows the merge commit, so the next cycle's
+   sync actually sees it resolved. **If a plain merge keeps failing at that
+   point, switch technique instead of repeating it (owner 2026-08-09, decision
+   #147):** `git fetch origin main`, `git branch tmp-rebuild origin/main`,
+   `git checkout tmp-rebuild`, cherry-pick your own commits onto it ONE AT A
+   TIME (smaller diffs conflict less than one giant merge — resolve, `git add`,
+   `git cherry-pick --continue`, repeat), then once every commit replays
+   cleanly, `git checkout <your-branch> && git merge tmp-rebuild` — this lands
+   with NO conflicts (both sides now hold the identical tree) and still needs
+   no force-push. **If the branch is still conflicted after `CONFLICT_ABANDON`
+   (default 10) consecutive cycles, the orchestrator gives up carrying the work
+   forward**: it closes the PR, retires the branch, and resets the task to
+   `ready` for a completely fresh build from current `main` — nothing you need
+   to do, but treat it as a signal that whatever made this branch un-mergeable
+   is worth naming in your next report so PM/CTO can record a lesson (§7.3).
 2. **Finish your open PR before you start anything new (owner mandate
    2026-08-07, decision #145).** While your task branch is open and not yet
    `APPROVED`, it is your work — the orchestrator's lane queue will not hand
