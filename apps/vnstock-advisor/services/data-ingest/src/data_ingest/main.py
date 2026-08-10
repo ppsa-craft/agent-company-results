@@ -12,25 +12,6 @@ from .disclaimer import build_meta_disclaimer
 settings = get_settings()
 
 
-# Disclaimer constants per docs/compliance/disclaimer.md
-DISCLAIMER_VN = (
-    "⚠️ **Thông tin chỉ mang tính chất tham khảo, không phải lời khuyên đầu tư.**\n\n"
-    "Dữ liệu và phân tích trên vnstock-advisor được cung cấp nhằm mục đích thông tin và nghiên cứu cá nhân. "
-    "Chúng tôi không đảm bảo tính chính xác, đầy đủ hoặc kịp thời của dữ liệu. Mọi quyết định đầu tư dựa trên "
-    "thông tin này đều do bạn tự chịu rủi ro. Vui lòng tham khảo ý kiến chuyên gia tài chính độc lập trước khi đầu tư."
-)
-
-DISCLAIMER_EN = (
-    "⚠️ **Information for reference only — not financial advice.**\n\n"
-    "Data and analysis on vnstock-advisor are provided for informational and personal research purposes only. "
-    "We do not guarantee the accuracy, completeness, or timeliness of the data. All investment decisions based on "
-    "this information are at your own risk. Please consult a qualified independent financial advisor before investing."
-)
-
-DISCLAIMER_SHORT_VN = "⚠️ Chỉ mang tính chất tham khảo — Không phải lời khuyên đầu tư."
-DISCLAIMER_SHORT_EN = "⚠️ Reference only — Not financial advice."
-
-
 # Scheduler for scheduled ingestion
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
