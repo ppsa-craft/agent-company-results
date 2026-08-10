@@ -1,0 +1,17 @@
+# Python build & runtime artifacts
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+.venv-ci/
+.venv-verify/
+.pytest_cache/
+*.egg-info/
+*.egg
+
+# Environment / secrets
+.env
+
+# Test & coverage output
+.coverage
+htmlcov/
