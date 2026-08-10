@@ -12,8 +12,8 @@ dependencies = [
     "uvicorn[standard]>=0.27.0",
     "pandas>=2.1.0",
     "numpy>=1.26.0",
-    "ta-lib>=0.4.28",
-    "vnstock-shared-python @ file://../../../shared/python",
+    
+    "vnstock-shared-python @ file:../../shared/python",
 ]
 
 [project.optional-dependencies]
