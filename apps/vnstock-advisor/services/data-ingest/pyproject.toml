@@ -14,7 +14,7 @@ dependencies = [
     "tenacity>=8.0.0",
     "structlog>=23.0.0",
     "apscheduler>=3.10.0",
-    "vnstock-shared-python @ ../../shared/python",
+    "vnstock-shared-python @ file:../../shared/python",
 ]
 
 [project.optional-dependencies]
