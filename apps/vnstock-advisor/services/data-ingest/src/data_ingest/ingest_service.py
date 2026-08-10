@@ -91,13 +91,13 @@ async def ingest_data_for_date(
         cafef_data = await fetch_from_cafef(session, date, symbol)
         if cafef_data:
             result.source = "CAFEF"
-            db_record = cafef_data.normalize()
+            db_record = cafef_data.normalize("1D")
         else:
             logger.info("Primary source CAFEF failed, trying VNDIRECT", symbol=symbol)
             vndirect_data = await fetch_from_vndirect(session, date, symbol)
             if vndirect_data:
                 result.source = "VNDIRECT"
-                db_record = vndirect_data.normalize()
+                db_record = vndirect_data.normalize("1D")
             else:
                 result.status = "failed"
                 result.error = "Both primary and fallback sources failed"
