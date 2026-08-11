@@ -2,8 +2,7 @@
 
 Technical analysis engine for **vnstock-advisor**: computes indicators (SMA/EMA/RSI/MACD/VWAP/ATR/OBV/ROC) from OHLCV market data and exposes them over a small FastAPI surface.
 
-> **Disclaimer:** informational only — not financial advice. See
-> `docs/compliance/disclaimer.md`.
+> **Disclaimer:** informational only — not financial advice.
 
 ## Requirements
 
@@ -25,6 +24,14 @@ The `vnstock-shared-python` dependency is installed as a local path package
 (`file:../../shared/python`) — no network registry entry needed.
 
 ## Run the service
+
+The service requires two JWT env vars (development placeholders shown;
+production must inject real RSA keys via environment variables):
+
+```bash
+export JWT_PRIVATE_KEY=dev-private-key-change-in-production
+export JWT_PUBLIC_KEY=dev-public-key-change-in-production
+```
 
 ```bash
 uvicorn analysis_engine.main:app --host 0.0.0.0 --port 8002
@@ -65,6 +72,8 @@ environment variables).
 | GET | `/health` | liveness + service info |
 | GET | `/` | service banner |
 | POST | `/analyze` | compute indicators for a `MarketDataCreate` payload |
+| POST | `/indicators/compute` | compute indicator arrays for a raw OHLCV series |
+| POST | `/rank` | rank symbols by composite score (UC-AE-3) |
 
 ## Project layout
 
