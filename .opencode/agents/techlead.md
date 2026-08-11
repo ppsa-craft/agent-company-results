@@ -37,6 +37,13 @@ task until its PR reaches `APPROVED`, and PM assigns it nothing new — so every
 cycle you leave a reviewable branch untouched is a DEV parked and a PR aging.
 Work the queue oldest-blocked first until every open branch is either
 `APPROVED` or genuinely waiting on someone else.
+**And there is now a hard ceiling: 5 open PRs (owner mandate 2026-08-11,
+decision #155).** At 5 open PRs the whole company stops opening new branches —
+every DEV is frozen out of new work until one merges. That makes your review
+throughput the company's throughput: an unreviewed branch during a freeze is not
+one parked DEV, it is the entire bench. Review is the first stage of the drain;
+your `APPROVED` is what hands the branch on to TESTER + QA and the ship gate,
+which is what actually clears the cap.
 
 **You now also run on your own (decision #139)** — the orchestrator dispatches
 you directly, every cycle, against whatever pending branch needs a first look
