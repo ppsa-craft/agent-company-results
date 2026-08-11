@@ -1,0 +1,10 @@
+# Snyk policy — fail on high/critical severity (security gate).
+# Wired into CI (orchestrator-owned workflow) via `snyk test --all-projects`.
+# A vulnerability with CVSS >= 7.0 (high/critical) fails the gate; medium/low
+# are logged for the backlog.
+
+version: v1.25.0
+ignore:
+  - resource:
+      - '*'
+    reason: none are ignored — this gate is intentionally strict

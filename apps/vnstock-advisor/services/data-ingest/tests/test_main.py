@@ -279,7 +279,7 @@ async def test_run_ingestion_job_weekday():
     mock_conn = AsyncMock()
     mock_session = AsyncMock()
     mock_engine = MagicMock()
-    mock_engine.begin = make_async_context_manager(mock_conn)
+    mock_engine.begin = lambda: make_async_context_manager(mock_conn)
     
     with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_fetch:
         mock_fetch.return_value = None  # Simulate CAFEF failure
@@ -353,7 +353,7 @@ async def test_primary_source_failure_triggers_fallback():
     mock_conn = AsyncMock()
     mock_session = AsyncMock()
     mock_engine = MagicMock()
-    mock_engine.begin = make_async_context_manager(mock_conn)
+    mock_engine.begin = lambda: make_async_context_manager(mock_conn)
     
     with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_cafef:
         mock_cafef.return_value = None  # Primary source fails
@@ -397,7 +397,7 @@ async def test_both_sources_fail():
     mock_conn = AsyncMock()
     mock_session = AsyncMock()
     mock_engine = MagicMock()
-    mock_engine.begin = make_async_context_manager(mock_conn)
+    mock_engine.begin = lambda: make_async_context_manager(mock_conn)
     
     with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_cafef:
         mock_cafef.return_value = None  # Primary source fails
