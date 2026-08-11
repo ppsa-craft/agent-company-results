@@ -52,7 +52,8 @@ strict_optional = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-testpaths = ["tests"]
+testpaths = ["services/data-ingest/tests"]
+pythonpath = ["services/data-ingest/src", "shared/python/src"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
 
