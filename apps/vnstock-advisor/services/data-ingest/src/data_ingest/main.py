@@ -2,11 +2,13 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 from typing import Optional, List, Dict
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from vnstock_shared.config import get_settings
 from vnstock_shared.models import HealthCheck
-from .ingest_service import run_ingestion_job, is_trading_day
+from .ingest_service import run_ingestion_job, is_trading_day, DatabaseUnavailableError
 from .disclaimer import build_meta_disclaimer
 
 settings = get_settings()
@@ -40,6 +42,26 @@ app = FastAPI(
     version="0.1.0",
     lifespan=lifespan,
 )
+
+
+@app.exception_handler(DatabaseUnavailableError)
+async def database_unavailable_handler(request, exc: DatabaseUnavailableError):
+    """Return a clean RFC-7807 problem+json 503 when PostgreSQL is unreachable.
+
+    Prevents the raw asyncpg/SQLAlchemy driver exception (and its stack trace)
+    from leaking to the client (TESTER defect 4). Logged server-side at the
+    raise site in run_ingestion_job.
+    """
+    return JSONResponse(
+        status_code=503,
+        content={
+            "type": "about:blank",
+            "title": "Database unavailable",
+            "status": 503,
+            "detail": str(exc) or "Database unavailable; ingestion could not run.",
+        },
+        media_type="application/problem+json",
+    )
 
 
 DEFAULT_SYMBOLS = ["VNM", "VCB", "BID", "FPT", "HPG", "MSN", "VIC", "VHM", "GAS", "TCB"]

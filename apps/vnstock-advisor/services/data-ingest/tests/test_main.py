@@ -421,3 +421,46 @@ async def test_both_sources_fail():
                     assert results[0].error == "Both primary and fallback sources failed"
                     assert summary["success"] == 0
                     assert summary["failed"] == 1
+
+
+def test_ingest_run_db_unreachable_returns_clean_error():
+    """Worst-flow: DB unreachable at connection time → clean RFC-7807 503, no stack trace.
+
+    Reproduces TESTER defect 4: live /ingest/run on a trading day with no reachable
+    Postgres previously returned HTTP 500 with a raw asyncpg ConnectionRefusedError
+    stack trace leaking from run_ingestion_job's engine.begin() (outside the
+    per-symbol try/except). The endpoint must instead return a clean RFC-7807
+    problem+json body with no raw driver exception / traceback leakage.
+    """
+    class RaisingAsyncContextManager:
+        """Async context manager whose __aenter__ raises — simulates a DB connection failure."""
+
+        def __init__(self, exc):
+            self._exc = exc
+
+        async def __aenter__(self):
+            raise self._exc
+
+        async def __aexit__(self, exc_type, exc_val, exc_tb):
+            return None
+
+    mock_engine = MagicMock()
+    mock_engine.begin = lambda: RaisingAsyncContextManager(
+        ConnectionRefusedError("[Errno 111] Connection refused")
+    )
+
+    with patch("data_ingest.ingest_service.create_async_engine", return_value=mock_engine):
+        response = client.post("/ingest/run", json={"date": "2024-01-15", "symbols": ["VNM"]})
+
+    # Clean RFC-7807 problem+json error body — 5xx, no stack trace / raw driver error
+    assert response.status_code == 503
+    assert response.headers["content-type"].startswith("application/problem+json")
+    data = response.json()
+    assert data["type"] == "about:blank"
+    assert data["title"] == "Database unavailable"
+    assert data["status"] == 503
+    assert data["detail"]
+    body = response.text.lower()
+    assert "traceback" not in body
+    assert "connectionrefused" not in body
+    assert "asyncpg" not in body
