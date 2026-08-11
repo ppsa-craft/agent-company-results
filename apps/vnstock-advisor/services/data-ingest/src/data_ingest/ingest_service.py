@@ -1,13 +1,14 @@
 from datetime import datetime, timezone, timedelta
-from typing import Optional, List, Dict, Any, Tuple
+from typing import Optional, List, Dict, Any, Tuple, Literal
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.exc import SQLAlchemyError
 import httpx
 from tenacity import retry, stop_after_attempt, wait_exponential
 from vnstock_shared.config import get_settings
-from vnstock_shared.models import MarketDataCreate
+from vnstock_shared.models import MarketDataCreate, MarketData
 from .models import OHLCV, IngestResult
 import structlog
 from .disclaimer import build_meta_disclaimer
@@ -18,8 +19,7 @@ logger = structlog.get_logger()
 settings = get_settings()
 
 
-def calculate_technical_indicators(datas: List[Dict]) -> Dict:
-    return {}
+SourceName = Literal["CAFEF", "VNDIRECT"]
 
 
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
@@ -80,32 +80,67 @@ async def ingest_data_for_date(
     session: httpx.AsyncClient, 
     db_session: AsyncSession, 
     date: datetime,
-    symbol: str
+    symbol: str,
+    source: Optional[SourceName] = None
 ) -> IngestResult:
-    """Ingest data for a single symbol and date with fallback logic."""
+    """Ingest data for a single symbol and date.
+
+    When ``source`` is given (CAFEF or VNDIRECT) that source is forced and the
+    fallback is bypassed; otherwise the primary (CAFEF) is tried first with
+    VNDIRECT as fallback. Rows are written with a PostgreSQL
+    ``ON CONFLICT (symbol, time) DO UPDATE`` upsert so a re-ingest of the same
+    symbol/date with changed source data updates the stored values instead of
+    skipping them.
+    """
     logger.info("Starting ingestion", date=date.strftime("%Y-%m-%d"), symbol=symbol)
     
     result = IngestResult(symbol=symbol, status="failed", source="", rows_upserted=0)
     
     try:
-        cafef_data = await fetch_from_cafef(session, date, symbol)
-        if cafef_data:
-            result.source = "CAFEF"
-            db_record = cafef_data.normalize("1D")
-        else:
-            logger.info("Primary source CAFEF failed, trying VNDIRECT", symbol=symbol)
+        if source == "VNDIRECT":
             vndirect_data = await fetch_from_vndirect(session, date, symbol)
-            if vndirect_data:
-                result.source = "VNDIRECT"
-                db_record = vndirect_data.normalize("1D")
-            else:
+            if not vndirect_data:
                 result.status = "failed"
-                result.error = "Both primary and fallback sources failed"
-                logger.error("All sources failed", symbol=symbol, date=date)
+                result.error = "Forced source VNDIRECT failed"
+                logger.error("Forced source VNDIRECT failed", symbol=symbol, date=date)
                 return result
+            result.source = "VNDIRECT"
+            db_record = vndirect_data.normalize("1D")
+        else:
+            cafef_data = await fetch_from_cafef(session, date, symbol)
+            if cafef_data:
+                result.source = "CAFEF"
+                db_record = cafef_data.normalize("1D")
+            elif source == "CAFEF":
+                result.status = "failed"
+                result.error = "Forced source CAFEF failed"
+                logger.error("Forced source CAFEF failed", symbol=symbol, date=date)
+                return result
+            else:
+                logger.info("Primary source CAFEF failed, trying VNDIRECT", symbol=symbol)
+                vndirect_data = await fetch_from_vndirect(session, date, symbol)
+                if vndirect_data:
+                    result.source = "VNDIRECT"
+                    db_record = vndirect_data.normalize("1D")
+                else:
+                    result.status = "failed"
+                    result.error = "Both primary and fallback sources failed"
+                    logger.error("All sources failed", symbol=symbol, date=date)
+                    return result
         
         try:
-            db_session.add(db_record)
+            payload = db_record.model_dump()
+            stmt = pg_insert(MarketData).values(**payload)
+            update_cols = {
+                c.name: stmt.excluded[c.name]
+                for c in MarketData.__table__.columns
+                if c.name not in ("symbol", "time")
+            }
+            stmt = stmt.on_conflict_do_update(
+                index_elements=["symbol", "time"],
+                set_=update_cols,
+            )
+            await db_session.execute(stmt)
             await db_session.commit()
             result.status = "success"
             result.rows_upserted = 1
@@ -157,9 +192,14 @@ def is_trading_day(date: datetime) -> bool:
 async def run_ingestion_job(
     db_url: str,
     symbols: List[str],
-    target_date: Optional[datetime] = None
+    target_date: Optional[datetime] = None,
+    source: Optional[SourceName] = None
 ) -> Tuple[List[IngestResult], Dict[str, Any]]:
-    """Main ingestion job that processes data for given symbols and date."""
+    """Main ingestion job that processes data for given symbols and date.
+
+    ``source`` optionally forces a single source (CAFEF/VNDIRECT), bypassing the
+    CAFEF-first fallback logic for every symbol in the run.
+    """
     logger.info("Starting ingestion job", symbols=symbols, target_date=target_date)
     
     results: List[IngestResult] = []
@@ -187,7 +227,13 @@ async def run_ingestion_job(
             )()
             
             for symbol in symbols:
-                result = await ingest_data_for_date(http_client, async_session, target_date, symbol)
+                result = await ingest_data_for_date(
+                    http_client,
+                    async_session,
+                    target_date,
+                    symbol,
+                    source=source,
+                )
                 results.append(result)
                 
                 if result.status == "success":

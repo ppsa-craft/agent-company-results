@@ -1,8 +1,8 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
-from typing import Optional, List, Dict
-from fastapi import FastAPI, HTTPException, Query
-from pydantic import BaseModel, Field
+from typing import Optional, List, Dict, Literal
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field, field_validator
 
 from vnstock_shared.config import get_settings
 from vnstock_shared.models import HealthCheck
@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
     # Startup
     scheduler.add_job(
         scheduled_ingestion_job,
-        CronTrigger(hour=6, minute=0, timezone="Asia/Ho_Chi_Minh"),  # Run at 6:00 AM ICT (after market close)
+        CronTrigger(hour=15, minute=30, timezone="Asia/Ho_Chi_Minh"),  # Run at 15:30 VN time on trading days (after market close, per task AC)
         id="daily_ingestion",
         replace_existing=True,
     )
@@ -67,8 +67,28 @@ async def scheduled_ingestion_job():
 class IngestRunRequest(BaseModel):
     """Request model for manual ingestion trigger."""
     date: Optional[str] = Field(None, description="Target date in YYYY-MM-DD format (defaults to latest trading day)")
-    symbols: Optional[List[str]] = Field(None, description="List of symbols to ingest (defaults to all)")
-    source: Optional[str] = Field(None, description="Force specific source (CAFEF, VNDIRECT) - bypasses fallback")
+    symbols: Optional[List[str]] = Field(
+        None,
+        min_length=1,
+        max_length=200,
+        description="List of symbols to ingest (defaults to all)",
+    )
+    source: Optional[Literal["CAFEF", "VNDIRECT"]] = Field(
+        None,
+        description="Force specific source (CAFEF, VNDIRECT) - bypasses fallback",
+    )
+
+    @field_validator("symbols")
+    @classmethod
+    def validate_symbols(cls, symbols: Optional[List[str]]) -> Optional[List[str]]:
+        if symbols is None:
+            return symbols
+        for symbol in symbols:
+            if not isinstance(symbol, str) or not symbol.strip() or len(symbol) > 20:
+                raise ValueError(f"Invalid ticker symbol: {symbol!r} (expected 1-20 chars, uppercase letters/digits)")
+            if not symbol.isupper() or not symbol.isalnum():
+                raise ValueError(f"Invalid ticker symbol: {symbol!r} (expected uppercase alphanumeric, e.g. VNM)")
+        return symbols
 
 
 class IngestResultResponse(BaseModel):
@@ -187,12 +207,12 @@ async def run_ingest(request: IngestRunRequest):
         raise HTTPException(status_code=400, detail="No symbols provided")
     
     # Run ingestion job with source override if specified
-    if request.source:
-        # Note: run_ingestion_job doesn't support source parameter, 
-        # this would need to be implemented in a future enhancement
-        pass
-    
-    results, summary = await run_ingestion_job(settings.database_url, symbols, target_date)
+    results, summary = await run_ingestion_job(
+        settings.database_url,
+        symbols,
+        target_date,
+        source=request.source,
+    )
     
     # Convert to response model
     response_results = [
