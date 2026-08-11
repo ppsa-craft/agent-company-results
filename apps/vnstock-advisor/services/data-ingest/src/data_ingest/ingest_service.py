@@ -22,6 +22,15 @@ settings = get_settings()
 SourceName = Literal["CAFEF", "VNDIRECT"]
 
 
+class DatabaseUnavailableError(Exception):
+    """Raised when PostgreSQL cannot be reached at connection time.
+
+    Surfaced to the API layer as a clean RFC-7807 problem+json 503 response so a
+    DB-unreachable failure never leaks a raw driver exception / stack trace to the
+    client (TESTER defect 4: uncaught asyncpg ConnectionRefusedError at engine.begin()).
+    """
+
+
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
 async def fetch_from_cafef(session: httpx.AsyncClient, date: datetime, symbol: str) -> Optional[OHLCV]:
     """Fetch data from CAFEF primary source with retry logic."""
@@ -218,31 +227,44 @@ async def run_ingestion_job(
         return results, summary
 
     async with httpx.AsyncClient() as http_client:
-        engine = create_async_engine(db_url)
-        async with engine.begin() as conn:
-            async_session = sessionmaker(
-                bind=conn,
-                class_=AsyncSession,
-                expire_on_commit=False
-            )()
-            
-            for symbol in symbols:
-                result = await ingest_data_for_date(
-                    http_client,
-                    async_session,
-                    target_date,
-                    symbol,
-                    source=source,
-                )
-                results.append(result)
+        try:
+            engine = create_async_engine(db_url)
+            async with engine.begin() as conn:
+                async_session = sessionmaker(
+                    bind=conn,
+                    class_=AsyncSession,
+                    expire_on_commit=False
+                )()
                 
-                if result.status == "success":
-                    if result.duplicate_skipped:
-                        summary["duplicates_skipped"] += 1
+                for symbol in symbols:
+                    result = await ingest_data_for_date(
+                        http_client,
+                        async_session,
+                        target_date,
+                        symbol,
+                        source=source,
+                    )
+                    results.append(result)
+                    
+                    if result.status == "success":
+                        if result.duplicate_skipped:
+                            summary["duplicates_skipped"] += 1
+                        else:
+                            summary["success"] += 1
                     else:
-                        summary["success"] += 1
-                else:
-                    summary["failed"] += 1
+                        summary["failed"] += 1
+        except DatabaseUnavailableError:
+            # Already sanitized — re-raise so the API layer returns the RFC-7807 503.
+            raise
+        except Exception as e:
+            # DB unreachable at connection time (engine creation / begin / connect):
+            # asyncpg raises OSError subclasses (e.g. ConnectionRefusedError), and
+            # SQLAlchemy raises SQLAlchemyError subclasses for bad URLs/dialects.
+            # Do NOT leak the raw driver exception to the client — log it server-side
+            # and raise a sanitized domain error. The per-symbol try/except inside
+            # ingest_data_for_date is unaffected (it catches its own DB errors).
+            logger.error("Database unreachable during ingestion job", error=str(e))
+            raise DatabaseUnavailableError("Database unavailable; ingestion could not run. Check DATABASE_URL and PostgreSQL availability.") from e
     
     logger.info("Ingestion job completed", summary=summary)
     # Add disclaimer to summary for API responses
