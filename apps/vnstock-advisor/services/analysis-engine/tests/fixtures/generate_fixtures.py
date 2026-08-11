@@ -26,8 +26,17 @@ def _typical(h: float, l: float, c: float) -> float:
     return (h + l + c) / 3
 
 
-def _bars(symbol: str, start: float, drift: float, vol, n: int, seed: int) -> list:
-    """Generate a deterministic log-normal-ish random walk of ``n`` daily bars."""
+def _bars(
+    symbol: str, start: float, drift: float, vol: float, n: int, seed: int, volume: int = 1_000_000
+) -> list:
+    """Generate a deterministic log-normal-ish random walk of ``n`` daily bars.
+
+    ``vol`` is the per-day VOLATILITY in percent (e.g. 0.15 == 0.15% daily);
+    ``volume`` is the base daily volume the log-normal sampler scales around.
+    Keeping them separate prevents the volume value (hundreds of thousands /
+    millions) from being misread as volatility, which would explode the price
+    walk into negative OHLC values (bug fixed cycle 150).
+    """
     rng = random.Random(seed)
     price = float(start)
     bars = []
@@ -43,7 +52,7 @@ def _bars(symbol: str, start: float, drift: float, vol, n: int, seed: int) -> li
         l = min(o, price) * (1 - abs(rng.gauss(0, vol / 2)) / 100)
         o = min(h, max(l, o))
         c = min(h, max(l, price))
-        v = int(abs(rng.lognormvariate(0.0, 0.4)) * vol)
+        v = int(abs(rng.lognormvariate(0.0, 0.4)) * volume)
         bars.append(
             {
                 "time": (base_time + datetime.timedelta(days=day)).isoformat(),
@@ -80,7 +89,7 @@ def gen_normal_trading() -> None:
     for sym, (start, vol, base_vol) in profiles.items():
         # give each symbol a slightly different drift
         drift = {"VNM": 0.16, "VCB": 0.0, "FPT": 0.35, "HPG": 0.05, "MWG": 0.4}[sym]
-        rows.extend(_bars(sym, start, drift, base_vol, 250, seed=42))
+        rows.extend(_bars(sym, start, drift, vol, 250, seed=42, volume=base_vol))
     _write("normal-trading.json", rows)
 
 
@@ -91,7 +100,7 @@ def generate_insufficient() -> None:
     lengths = {"ABC": 10, "XYZ": 15, "DEF": 50, "GHI": 199}
     rows = []
     for sym, n in lengths.items():
-        rows.extend(_bars(sym, 40000, 0.2, 800000, n, seed=42))
+        rows.extend(_bars(sym, 40000, 0.2, 0.5, n, seed=42, volume=800000))
     _write("insufficient-data.json", rows)
 
 
