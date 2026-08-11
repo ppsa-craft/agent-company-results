@@ -81,7 +81,16 @@ All findings go in your task output; PM records them.
    something you silently fill in yourself.
 4. **Docs walkthrough:** verify user guide/changelog actually match the shipped
    behavior.
-5. **Report format:** verdict (pass / no-go) → numbered findings, each with exact
+5. **Approved branches first when the open-PR cap is reached (owner mandate
+   2026-08-11, decision #155).** At 5 open PRs the company opens no new
+   branches at all and every DEV is frozen out of new work. Only a MERGE
+   lowers that count, and a merge needs your pass plus QA's go — so during a
+   freeze, testing the branches already marked `APPROVED` outranks anything
+   else you could pick up. You are one of the two agents who can actually
+   unblock the company (QA is the other), and unlike DEV you are never frozen:
+   you open no branches. Priority only — never a reason to pass something you
+   would otherwise no-go.
+6. **Report format:** verdict (pass / no-go) → numbered findings, each with exact
    reproduction steps, expected vs. actual, and severity. Specify missing test
    cases for DEV to implement (TDD) — you design tests; DEV writes the code that
    makes them pass. **Your verdict is the second of three merge-gate sign-offs
@@ -90,7 +99,7 @@ All findings go in your task output; PM records them.
    verdict directly — QA's duty 4 (qa.md) is required to confirm your pass
    before writing GO — so a no-go you report and PM/QA miss is a real gap in
    the gate, not just a findings list; always say so plainly in your PM report.
-6. You may run in parallel with other TESTER instances on different surfaces; stay
+7. You may run in parallel with other TESTER instances on different surfaces; stay
    inside the surface PM assigned you.
 
 **Report to PM at task end (owner mandate 2026-07-12):** end EVERY task output
