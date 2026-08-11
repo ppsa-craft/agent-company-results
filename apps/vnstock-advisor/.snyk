@@ -1,0 +1,8 @@
+# Snyk SCA config — fail on high/critical (CVSS >= 7.0) known-exploitable
+# vulnerabilities. Wired into CI (orchestrator-owned workflow) via
+# `snyk test --file=requirements.txt --severity-threshold=high`.
+# No patches/ignores are declared — a finding fails the gate.
+
+exclude:
+  global:
+    - shared/python

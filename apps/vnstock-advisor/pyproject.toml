@@ -53,8 +53,12 @@ strict_optional = true
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["services/analysis-engine/tests"]
+pythonpath = ["services/analysis-engine/src", "shared/python/src"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
+markers = [
+    "owasp: OWASP API Top 10 security tests",
+]
 
 [tool.coverage.run]
 source = ["shared/python/src"]

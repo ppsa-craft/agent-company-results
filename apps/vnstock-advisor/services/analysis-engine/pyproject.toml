@@ -12,7 +12,8 @@ dependencies = [
     "uvicorn[standard]>=0.27.0",
     "pandas>=2.1.0",
     "numpy>=1.26.0",
-    
+    "pydantic>=2.5.0",
+    "structlog>=23.2.0",
     "vnstock-shared-python @ file:../../shared/python",
 ]
 

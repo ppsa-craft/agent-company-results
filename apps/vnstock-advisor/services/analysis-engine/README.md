@@ -27,12 +27,12 @@ The `vnstock-shared-python` dependency is installed as a local path package
 ## Run the service
 
 ```bash
-uvicorn main:app --host 0.0.0.0 --port 8002
+uvicorn analysis_engine.main:app --host 0.0.0.0 --port 8002
 ```
 
-(equivalently `python -m uvicorn main:app --host 0.0.0.0 --port 8002`).
-The app module lives in `src/`; uvicorn picks it up from the console-script
-entry when running inside the activated venv. Health check:
+(equivalently `python -m uvicorn analysis_engine.main:app --host 0.0.0.0 --port 8002`).
+The app module lives in `src/analysis_engine/`; uvicorn picks it up from the
+console-script entry when running inside the activated venv. Health check:
 
 ```bash
 curl http://localhost:8002/health
@@ -69,9 +69,10 @@ environment variables).
 ## Project layout
 
 ```
-src/
-  main.py          FastAPI app + /analyze endpoint
+src/analysis_engine/
+  main.py          FastAPI app + /analyze + /rank endpoints
   indicators.py    indicator computation (compute_all_indicators)
+  schemas.py       frozen-contract Pydantic request/response models
 tests/
   test_main.py     endpoint + payload tests
   test_indicators.py

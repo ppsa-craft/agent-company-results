@@ -11,7 +11,7 @@ import pytest
 import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src'))
-from indicators import (
+from analysis_engine.indicators import (
     OHLCV,
     compute_all_indicators,
     rsi,
