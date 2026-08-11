@@ -84,7 +84,18 @@ def rank_symbols(
             "volatility": 0.1,
         }
     
-    # Validate weights
+    # Validate weights: required key SET plus sum (TESTER D2 — a partial set that
+    # sums to 1.0 passed the sum check and crashed on the missing key at scoring).
+    _REQUIRED_WEIGHT_KEYS = {"momentum", "trend", "volume", "volatility"}
+    missing_keys = _REQUIRED_WEIGHT_KEYS - set(weights.keys())
+    extra_keys = set(weights.keys()) - _REQUIRED_WEIGHT_KEYS
+    if missing_keys or extra_keys:
+        problems = []
+        if missing_keys:
+            problems.append(f"missing key(s): {', '.join(sorted(missing_keys))}")
+        if extra_keys:
+            problems.append(f"unexpected key(s): {', '.join(sorted(extra_keys))}")
+        raise RankingError("Weights must contain exactly momentum/trend/volume/volatility; " + "; ".join(problems))
     if abs(sum(weights.values()) - 1.0) > 0.001:
         raise RankingError("Weights must sum to 1.0")
     
@@ -193,6 +204,11 @@ def calculate_trend(indicator_data: Dict[str, Any]) -> float:
 def calculate_volume(indicator_data: Dict[str, Any]) -> float:
     """Calculate volume score from volume ratio and OBV trend."""
     volume_ratio = indicator_data.get("volume_ratio", 1.0)
+    # TESTER D3: all-zero-volume series yields volume_ratio=None (key present,
+    # value None) — .get() default only applies to MISSING keys, so coerce
+    # explicitly; None means "no volume activity" → 0.0.
+    if volume_ratio is None:
+        volume_ratio = 0.0
     obv_trend = indicator_data.get("obv_trend", 0.0)
     
     # Normalize volume ratio (assuming 0.1-10 range)
@@ -300,6 +316,20 @@ def create_components(
     return components
 
 
+def _volume_ratio_or_zero(indicator_data: Dict[str, Any]) -> Any:
+    """Return the volume ratio, coercing None to 0.0 (TESTER D3).
+
+    indicators.py emits ``None`` volume_ratio entries when every volume is 0;
+    the response body must never carry ``"volume_ratio": null``. A MISSING key
+    keeps the historical 1.0 default (unchanged behavior); a present-but-None
+    value means "no volume activity" → 0.0.
+    """
+    volume_ratio = indicator_data.get("volume_ratio", 1.0)
+    if volume_ratio is None:
+        return 0.0
+    return volume_ratio
+
+
 def create_sub_components(indicator_data: Dict[str, Any]) -> Dict[str, Any]:
     """Create sub-components breakdown."""
     sub_components = {}
@@ -316,7 +346,7 @@ def create_sub_components(indicator_data: Dict[str, Any]) -> Dict[str, Any]:
     }
     
     sub_components["volume"] = {
-        "volume_ratio": indicator_data.get("volume_ratio", 1.0),
+        "volume_ratio": _volume_ratio_or_zero(indicator_data),
         "obv_trend": indicator_data.get("obv_trend", 0.0),
     }
     
