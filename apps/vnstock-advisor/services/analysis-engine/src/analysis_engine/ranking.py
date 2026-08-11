@@ -7,7 +7,6 @@ and provides deterministic reasoning for each ranked symbol.
 
 from __future__ import annotations
 
-import os
 from dataclasses import dataclass
 from typing import List, Optional, Dict, Any
 
@@ -56,47 +55,6 @@ class RankedSymbol:
 class RankingError(Exception):
     """Raised when ranking encounters validation errors."""
     pass
-
-
-def percentile_rank(sorted_values: List[float], value: float) -> float:
-    """Calculate percentile rank using linear interpolation (spec compliant).
-    
-    Args:
-        sorted_values: Sorted list of values in ascending order
-        value: Value to rank
-        
-    Returns:
-        Percentile rank between 0.0 and 100.0
-    """
-    if not sorted_values:
-        return 50.0
-    
-    # Handle edge cases
-    if value <= sorted_values[0]:
-        return 0.0
-    if value >= sorted_values[-1]:
-        return 100.0
-    
-    # Find position where value would be inserted
-    for i, val in enumerate(sorted_values):
-        if val >= value:
-            lower_idx = i - 1 if i > 0 else 0
-            upper_idx = i
-            
-            lower_val = sorted_values[lower_idx]
-            upper_val = sorted_values[upper_idx]
-            
-            # Linear interpolation
-            if upper_val == lower_val:
-                return 50.0
-                
-            position = (value - lower_val) / (upper_val - lower_val)
-            lower_percentile = (lower_idx) / (len(sorted_values) - 1) * 100
-            upper_percentile = (upper_idx) / (len(sorted_values) - 1) * 100
-            
-            return lower_percentile + position * (upper_percentile - lower_percentile)
-    
-    return 100.0
 
 
 def rank_symbols(
@@ -158,7 +116,7 @@ def rank_symbols(
             )
             continue
         
-        # Calculate component scores (simplified implementations for now)
+        # Calculate component scores
         momentum_score = calculate_momentum(indicator_data)
         trend_score = calculate_trend(indicator_data)
         volume_score = calculate_volume(indicator_data)
@@ -247,7 +205,12 @@ def calculate_volume(indicator_data: Dict[str, Any]) -> float:
 
 
 def calculate_volatility(indicator_data: Dict[str, Any]) -> float:
-    """Calculate volatility score from ATR percentile (inverted)."""
+    """Calculate volatility score from ATR percentile (inverted).
+
+    The score is already inverted: lower ATR percentile (less volatile) yields a
+    higher score. ``create_components`` consumes this inverted score directly and
+    must NOT invert again (see cycle-147 drift fix).
+    """
     atr_percentile = indicator_data.get("atr_percentile", 50.0)
     
     # Inverted: lower ATR = lower volatility = higher score
@@ -285,7 +248,13 @@ def create_components(
     volume: float,
     volatility: float,
 ) -> List[Dict[str, Any]]:
-    """Create component breakdown."""
+    """Create component breakdown.
+
+    ``volatility`` here is the already-inverted volatility SCORE (100 - ATR
+    percentile) returned by ``calculate_volatility``; it is used as-is so the
+    displayed score/band never drifts from the score that fed the composite
+    (cycle-147 drift fix).
+    """
     components = []
     
     # Momentum component
@@ -318,11 +287,11 @@ def create_components(
         "description": f"Volume in {volume_band} band",
     })
     
-    # Volatility component (inverted)
-    volatility_band = get_band(100 - volatility)  # Invert for display
+    # Volatility component (score already inverted in calculate_volatility)
+    volatility_band = get_band(volatility)
     components.append({
         "name": "volatility",
-        "score": round(100 - volatility, 2),
+        "score": round(volatility, 2),
         "band": volatility_band,
         "weight": 0.1,
         "description": f"Volatility in {volatility_band} band",
@@ -369,42 +338,3 @@ def get_band(score: float) -> str:
         return "weak"
     else:
         return "very weak"
-
-
-if __name__ == "__main__":
-    # Simple test case
-    sample_indicators = {
-        "VNM": {
-            "roc10": 15.5,
-            "rsi": 65.0,
-            "trend_conditions": [True, True, True, True, False, False, False],
-            "total_trend_conditions": 7,
-            "volume_ratio": 2.5,
-            "obv_trend": 0.3,
-            "atr_percentile": 30.0,
-            "atr": 1.5,
-            "valid_bars": 250,
-        },
-        "FPT": {
-            "roc10": 8.2,
-            "rsi": 72.0,
-            "trend_conditions": [True, True, True, True, True, True, True],
-            "total_trend_conditions": 7,
-            "volume_ratio": 1.2,
-            "obv_trend": 0.1,
-            "atr_percentile": 45.0,
-            "atr": 2.0,
-            "valid_bars": 300,
-        },
-    }
-    
-    screened_symbols = ["VNM", "FPT"]
-    
-    results = rank_symbols(sample_indicators, screened_symbols)
-    
-    print("Ranking Results:")
-    for result in results:
-        print(f"\nRank {result['rank']}: {result['symbol']}")
-        print(f"  Composite Score: {result['composite_score']:.2f}")
-        print(f"  Components: {result['components']}")
-        print(f"  Reasoning: {result['reasoning']}")
