@@ -56,7 +56,7 @@ testpaths = ["services", "shared/python/tests"]
 pythonpath = ["services/analysis-engine/src", "services/data-ingest/src", "shared/python/src"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
-importmode = "importlib"
+addopts = ["--import-mode=importlib"]
 markers = [
     "owasp: OWASP API Top 10 security tests",
 ]
