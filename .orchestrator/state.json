@@ -1,16 +1,16 @@
 {
-  "cycleCount": 20,
-  "lastCycleAt": "2026-08-12T19:16:03.580Z",
+  "cycleCount": 21,
+  "lastCycleAt": "2026-08-12T19:17:05.069Z",
   "milestoneId": "M1/M2 SHIPPED (data-ingest 9f1ca33 + analysis-engine/ranking 0dcd72e, both security-gated on main); next = M3 (suggestion-api + web-ui), staged & debate-ready, opens post-freeze",
-  "milestoneCycles": 3,
+  "milestoneCycles": 4,
   "milestoneStartedAt": 1786561922429,
   "milestoneEscalated": false,
   "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": "ses_008d8d58bffeFn5smsBbq1wScc",
-  "ceoSessionRequests": 7,
+  "ceoSessionId": null,
+  "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
       "id": "ses_0095219eaffeXSV0EGxgRRHa7q",
