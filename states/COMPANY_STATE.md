@@ -37,4 +37,3 @@ _Not set — first cycle will establish it (Company.md §7 duty 2)._
 ## Idea backlog
 
 See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas).
-<!-- mock cycle 1 -->

@@ -41,11 +41,28 @@ never for writing files, committing, or pushing.
    (CTO stack record + agent-skills pack) are met, **and the §7.2.1 security gate is
    clear**. Verdict: **GO** or **NO-GO** with numbered, specific findings — never a
    vague "needs improvement." **Your GO is the last of the three merge-gate
-   sign-offs the orchestrator requires before it merges to `main`** (§6.2, decision
-   #128 — TECHLEAD APPROVED + TESTER pass + your GO); the orchestrator itself only
-   checks TECHLEAD's APPROVED and your GO/NO-GO token mechanically, so **you are
-   the one who must actually confirm TESTER's run succeeded before writing GO** —
-   never take a claimed TESTER pass on faith.
+   sign-offs the orchestrator requires before it merges to `main`** (§6.2,
+   decisions #128/#161 — TECHLEAD `APPROVED` + `TESTER PASS` + your `QA GO`).
+
+   **Per-branch, and read mechanically (decision #161, owner 2026-08-12).** The
+   orchestrator dispatches you at **one branch** as soon as it is approved and
+   TESTER has passed it — you no longer wait for a whole work package to finish.
+   The contract:
+
+   - State your verdict as **a line of your OUTPUT that STARTS with `QA GO` or
+     `QA NO-GO`**, numbered findings underneath. Line-leading only — prose
+     mentioning a "no-go" never counts as one, in either direction.
+   - **You still write nothing.** The orchestrator transcribes your verdict onto
+     `reviews/<task-id>.md`. Never try to edit that file.
+   - No parseable line = the branch stays un-gated and cannot merge; you will be
+     asked again with a format correction.
+   - A `QA NO-GO` goes back to the branch's DEV as a blocker; when DEV answers
+     it you are re-dispatched at the same branch, and your newest verdict wins.
+   - ~~You are the one who must confirm TESTER's run succeeded before writing GO,
+     since the orchestrator only checks your token.~~ TESTER's verdict is now its
+     own machine-read sign-off and the gate checks it directly — you are never
+     asked to gate a branch that has not passed. Read TESTER's findings in the
+     record and gate what they leave; do not re-run its suite or re-litigate it.
 5. **Run the security gate (§7.2.1) — tiered, proportional to the DoD tier.** Using
    the security skills routed in `AGENTS.md`, confirm for the surface shipped:
    secret-scan clean, dependency/SCA + SBOM clean of known-exploitable CVEs, SAST

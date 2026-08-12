@@ -1,0 +1,115 @@
+{
+  "cycleCount": 0,
+  "lastCycleAt": null,
+  "milestoneId": null,
+  "milestoneCycles": 0,
+  "milestoneStartedAt": null,
+  "milestoneEscalated": false,
+  "modelIndex": 0,
+  "failedStarts": 0,
+  "providerTransientRetries": 0,
+  "contextOverflowRetries": 0,
+  "ceoSessionId": null,
+  "ceoSessionRequests": 0,
+  "agentSessions": {},
+  "agentInterrupted": {},
+  "reviewFixInterrupted": {},
+  "markerMisses": {},
+  "ciRedStreak": {},
+  "conflictStreak": {},
+  "abandonedPrs": {},
+  "shipBlocked": {},
+  "shipConflicts": {},
+  "resumedByProbe": false,
+  "interrupted": {
+    "cycle": 1,
+    "reason": "process restart (SIGINT) mid-cycle",
+    "at": "2026-08-12T15:18:17.081Z"
+  },
+  "pendingPrompt": null,
+  "idleStreaks": {},
+  "capacityPressure": {},
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 0,
+    "boundaryViolations": 0,
+    "workspaceDirty": 0,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 0,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 0,
+    "contextCompactions": 0,
+    "contextBytesSaved": 0,
+    "diskBytesReclaimed": 0,
+    "providerTransientSessionResets": 0,
+    "toolCallsBrokenRotations": 0,
+    "contextOverflowSessionResets": 0,
+    "sessionTokenRenewals": 0,
+    "invalidRequestPauses": 0,
+    "modelIncompatibleRotations": 0
+  },
+  "openPrLive": true,
+  "openPrIndex": {
+    "task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev": 17,
+    "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev": 16,
+    "task/vnstock-advisor-5c-dev-ranking-dev": 15,
+    "task/vnstock-advisor-4-dev-data-ingest-dev": 14,
+    "task/vnstock-advisor-4-dev-data-ingest": 13,
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
+  },
+  "openPrMeta": {
+    "task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev": {
+      "number": 17,
+      "createdAt": "2026-08-11T12:18:12Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/17",
+      "title": "task/vnstock-advisor-15-dev-analysis-engine-security-gate",
+      "draft": false
+    },
+    "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev": {
+      "number": 16,
+      "createdAt": "2026-08-11T12:18:09Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/16",
+      "title": "task/vnstock-advisor-14-dev-data-ingest-security-gate",
+      "draft": false
+    },
+    "task/vnstock-advisor-5c-dev-ranking-dev": {
+      "number": 15,
+      "createdAt": "2026-08-11T11:06:36Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/15",
+      "title": "task/vnstock-advisor-5c-dev-ranking",
+      "draft": false
+    },
+    "task/vnstock-advisor-4-dev-data-ingest-dev": {
+      "number": 14,
+      "createdAt": "2026-08-11T08:51:20Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/14",
+      "title": "task/vnstock-advisor-4-dev-data-ingest",
+      "draft": false
+    },
+    "task/vnstock-advisor-4-dev-data-ingest": {
+      "number": 13,
+      "createdAt": "2026-08-11T08:51:17Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/13",
+      "title": "task/vnstock-advisor-4-dev-data",
+      "draft": false
+    },
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": {
+      "number": 11,
+      "createdAt": "2026-08-10T22:27:39Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/11",
+      "title": "task/vnstock-advisor-5-dev-analysis-engine",
+      "draft": false
+    }
+  },
+  "prSeen": {
+    "task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev": 17,
+    "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev": 16,
+    "task/vnstock-advisor-5c-dev-ranking-dev": 15,
+    "task/vnstock-advisor-4-dev-data-ingest-dev": 14,
+    "task/vnstock-advisor-4-dev-data-ingest": 13,
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
+  },
+  "prCapEngaged": true
+}
