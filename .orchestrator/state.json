@@ -1,0 +1,142 @@
+{
+  "cycleCount": 14,
+  "lastCycleAt": "2026-08-12T18:18:15.137Z",
+  "milestoneId": "M1/M2 ship — data-ingest (merged on main, PR #12) + analysis-engine/ranking (6 open PRs draining)",
+  "milestoneCycles": 12,
+  "milestoneStartedAt": 1786549967314,
+  "milestoneEscalated": false,
+  "modelIndex": 0,
+  "failedStarts": 0,
+  "providerTransientRetries": 0,
+  "contextOverflowRetries": 0,
+  "ceoSessionId": "ses_008d8d58bffeFn5smsBbq1wScc",
+  "ceoSessionRequests": 1,
+  "agentSessions": {
+    "tester": {
+      "id": "ses_0095219eaffeXSV0EGxgRRHa7q",
+      "requests": 3
+    },
+    "dev": {
+      "id": "ses_008cd8ae5ffeiRRkJPSuY1cKun",
+      "requests": 1
+    },
+    "qa": {
+      "id": "ses_008b6ed5fffeXaxeUsPl581ozo",
+      "requests": 1
+    },
+    "pm": {
+      "id": "ses_008b1587dffeqGXniAkGn4hO9Z",
+      "requests": 0
+    }
+  },
+  "agentInterrupted": {},
+  "reviewFixInterrupted": {},
+  "markerMisses": {},
+  "ciRedStreak": {},
+  "conflictStreak": {
+    "vnstock-advisor-14-dev-data-ingest-security-gate": {
+      "count": 1,
+      "at": "2026-08-12T18:18:22.492Z"
+    }
+  },
+  "abandonedPrs": {},
+  "shipBlocked": {},
+  "shipConflicts": {},
+  "resumedByProbe": false,
+  "interrupted": null,
+  "pendingPrompt": null,
+  "idleStreaks": {
+    "ba": 6,
+    "cto": 6,
+    "hr": 6,
+    "pm": 6,
+    "qa": 1,
+    "techlead": 1,
+    "tester": 1
+  },
+  "capacityPressure": {},
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 0,
+    "boundaryViolations": 0,
+    "workspaceDirty": 2,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 23,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 6,
+    "contextCompactions": 1,
+    "contextBytesSaved": 56959,
+    "diskBytesReclaimed": 1094074585,
+    "providerTransientSessionResets": 0,
+    "toolCallsBrokenRotations": 0,
+    "contextOverflowSessionResets": 0,
+    "sessionTokenRenewals": 0,
+    "invalidRequestPauses": 0,
+    "modelIncompatibleRotations": 0
+  },
+  "openPrLive": true,
+  "openPrIndex": {
+    "task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev": 17,
+    "task/vnstock-advisor-5c-dev-ranking-dev": 15,
+    "task/vnstock-advisor-4-dev-data-ingest-dev": 14,
+    "task/vnstock-advisor-4-dev-data-ingest": 13,
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
+  },
+  "openPrMeta": {
+    "task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev": {
+      "number": 17,
+      "createdAt": "2026-08-11T12:18:12Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/17",
+      "title": "task/vnstock-advisor-15-dev-analysis-engine-security-gate",
+      "draft": false
+    },
+    "task/vnstock-advisor-5c-dev-ranking-dev": {
+      "number": 15,
+      "createdAt": "2026-08-11T11:06:36Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/15",
+      "title": "task/vnstock-advisor-5c-dev-ranking",
+      "draft": false
+    },
+    "task/vnstock-advisor-4-dev-data-ingest-dev": {
+      "number": 14,
+      "createdAt": "2026-08-11T08:51:20Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/14",
+      "title": "task/vnstock-advisor-4-dev-data-ingest",
+      "draft": false
+    },
+    "task/vnstock-advisor-4-dev-data-ingest": {
+      "number": 13,
+      "createdAt": "2026-08-11T08:51:17Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/13",
+      "title": "task/vnstock-advisor-4-dev-data",
+      "draft": false
+    },
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": {
+      "number": 11,
+      "createdAt": "2026-08-10T22:27:39Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/11",
+      "title": "task/vnstock-advisor-5-dev-analysis-engine",
+      "draft": false
+    }
+  },
+  "prSeen": {
+    "task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev": 17,
+    "task/vnstock-advisor-5c-dev-ranking-dev": 15,
+    "task/vnstock-advisor-4-dev-data-ingest-dev": 14,
+    "task/vnstock-advisor-4-dev-data-ingest": 13,
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
+  },
+  "prCapEngaged": true,
+  "stallRetries": 0,
+  "lastAuditedRunId": 31564177653,
+  "pendingConflictNotes": [
+    "STALE BRANCH CONFLICT (§6.1): 1 open task branch(es) can no longer take main cleanly — task(s) vnstock-advisor-14-dev-data-ingest-security-gate. The assigned DEV has been dispatched to merge main in and resolve by hand (never force-push, never auto-resolve — decision #40). Nothing on those branches can ship until they're current with main."
+  ],
+  "pendingBoundaryNote": null,
+  "signOffInterrupted": {},
+  "reviewPrSyncHashes": {
+    "vnstock-advisor-14-dev-data-ingest-security-gate": "53c491b290fa2078dd769adfaeaebe35aabee059"
+  }
+}

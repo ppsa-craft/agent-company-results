@@ -1,0 +1,126 @@
+{
+  "generatedAt": "2026-08-12T18:52:52.304Z",
+  "working": [],
+  "recent": [
+    {
+      "instance": "qa",
+      "role": "qa",
+      "what": "ship gate on \"current\"",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T18:50:24.016Z",
+      "ended": "2026-08-12T18:52:52.304Z",
+      "ok": true
+    },
+    {
+      "instance": "pm",
+      "role": "pm",
+      "what": "verifying \"current\"",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T18:49:10.404Z",
+      "ended": "2026-08-12T18:50:24.014Z",
+      "ok": true
+    },
+    {
+      "instance": "dev",
+      "role": "dev",
+      "what": "resuming vnstock-advisor-14-dev-data-ingest-security-gate-fix",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-fix-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate-fix",
+      "since": "2026-08-12T18:46:27.422Z",
+      "ended": "2026-08-12T18:49:10.401Z",
+      "ok": true
+    },
+    {
+      "instance": "qa",
+      "role": "qa",
+      "what": "running the ship gate",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
+      "since": "2026-08-12T18:43:04.902Z",
+      "ended": "2026-08-12T18:46:05.837Z",
+      "ok": true
+    },
+    {
+      "instance": "tester",
+      "role": "tester",
+      "what": "testing the branch",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
+      "since": "2026-08-12T18:29:50.824Z",
+      "ended": "2026-08-12T18:43:04.868Z",
+      "ok": true
+    },
+    {
+      "instance": "dev",
+      "role": "dev",
+      "what": "clearing 2 blockers",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
+      "since": "2026-08-12T18:18:22.534Z",
+      "ended": "2026-08-12T18:29:50.794Z",
+      "ok": true
+    },
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 14",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T18:17:18.662Z",
+      "ended": "2026-08-12T18:18:15.136Z",
+      "ok": true
+    },
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 14",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T18:06:02.717Z",
+      "ended": "2026-08-12T18:16:47.851Z",
+      "ok": false
+    },
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 14",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T17:48:11.939Z",
+      "ended": "2026-08-12T18:05:42.067Z",
+      "ok": false
+    },
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 14",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T17:31:55.956Z",
+      "ended": "2026-08-12T17:47:41.092Z",
+      "ok": false
+    },
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 13",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T17:30:33.926Z",
+      "ended": "2026-08-12T17:31:08.813Z",
+      "ok": true
+    },
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 12",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T17:29:26.182Z",
+      "ended": "2026-08-12T17:29:47.534Z",
+      "ok": true
+    }
+  ]
+}

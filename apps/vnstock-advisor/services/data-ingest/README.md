@@ -7,7 +7,7 @@ Market data ingestion service for Vietnamese equities. Fetches OHLCV data from f
 ### Prerequisites
 - Python 3.11+
 - PostgreSQL 15+ (running locally or via Docker)
-- `uv` (recommended) or `pip`
+- `pip` (verified install path; `uv` is an alternative, unverified in this environment)
 
 ### Environment Variables
 
@@ -23,22 +23,34 @@ INGEST_SYMBOLS=VNM,VCB,FPT,HPG,MWG
 # Service port (optional, default: 8001)
 DATA_INGEST_PORT=8001
 
-# Optional: CAFEF/VNDIRECT API timeouts
-INGEST_TIMEOUT_SECONDS=30
-
-# JWT (required — dev placeholders, rotate in production)
+# JWT keys — REQUIRED by the shared Settings schema (server will not start without them)
+# DEV PLACEHOLDERS ONLY — change in production; real deployments must inject
+# real RSA keys via env vars, never commit them.
 JWT_PRIVATE_KEY=dev-private-key-change-in-production
 JWT_PUBLIC_KEY=dev-public-key-change-in-production
+
+# Optional: CAFEF/VNDIRECT API timeouts
+INGEST_TIMEOUT_SECONDS=30
 ```
 
 ### Install Dependencies
 
+**Verified path (recommended) — from the repo root (`apps/vnstock-advisor/`):**
+
 ```bash
-# From repo root (apps/vnstock-advisor/)
-uv sync --all-extras
-# or
-pip install -e services/data-ingest/
+pip install -r requirements.txt
 ```
+
+This installs the data-ingest runtime + test deps and the monorepo-internal
+`vnstock_shared` package (editable `-e ./shared/python`).
+
+> The alternative `pip install -e services/data-ingest/` does **not** work: the
+> service `pyproject.toml` references `vnstock-shared-python @ file:../../shared/python`,
+> which pip cannot resolve in an editable install (`InvalidRequirement`).
+>
+> `uv sync --all-extras` (from the repo root) is the project's other intended
+> path but is **unverified in this environment** (uv is not installed here);
+> use the pip path above.
 
 ### Initialize Database
 
@@ -50,27 +62,38 @@ psql $DATABASE_URL -f scripts/init-db.sql
 ### Run Service (Development)
 
 ```bash
-# From repo root
-uvicorn data_ingest.main:app --port 8001
+# From the repo root (apps/vnstock-advisor/), with the venv active:
+#   python3 -m venv .venv && . .venv/bin/activate   (once, after installing deps)
+uvicorn data_ingest.main:app --app-dir services/data-ingest/src --reload --port 8001
 ```
 
 Service available at `http://localhost:8001`
 
+> The package lives at `services/data-ingest/src/data_ingest/`, so the module
+> path is `data_ingest.main:app` with `--app-dir services/data-ingest/src`
+> (there is no `services.data_ingest.src.main` module).
+
 ### Run Tests
 
 ```bash
-# From repo root
+# From the repo root (apps/vnstock-advisor/), with the venv active:
 pytest services/data-ingest/tests/ -v
+# or, without an activated venv:
+.venv/bin/python -m pytest -q
 ```
 
-### Run with Docker Compose (Recommended)
+### Run with Docker Compose (Infrastructure)
+
+The compose file (`docker-compose.yml` at the app root) defines the backing
+services — PostgreSQL and Redis — not the data-ingest service itself.
 
 ```bash
-# From repo root
-docker-compose up -d data-ingest
+# From the app root (apps/vnstock-advisor/): start PostgreSQL + Redis
+docker-compose up -d postgres redis
 ```
 
-This starts PostgreSQL, Redis, and the data-ingest service together.
+Then run the data-ingest service with the dev run step above (uvicorn),
+pointing `DATABASE_URL` at the compose Postgres.
 
 ## API Endpoints
 
@@ -197,8 +220,8 @@ Every API response includes the mandatory disclaimer per `docs/compliance/discla
 
 | Issue | Solution |
 |-------|----------|
-| `ModuleNotFoundError: vnstock_shared` | Run `uv sync --all-extras` from repo root |
-| DB connection failed | Check `DATABASE_URL`, ensure PostgreSQL running, run `init-db.sql` |
+| `ModuleNotFoundError: vnstock_shared` | Run `pip install -r requirements.txt` from the repo root |
+| DB connection failed | Check `DATABASE_URL`, ensure PostgreSQL running, run `init-db.sql`; `/ingest/run` returns a clean `503 application/problem+json` body (no stack trace) when Postgres is unreachable |
 | CAFEF returns 403/500 | Service auto-falls back to VNDIRECT; check logs |
 | Port 8001 in use | Set `DATA_INGEST_PORT` env var |
 | Tests fail with DB errors | Tests mock DB; ensure no real DB needed for unit tests |

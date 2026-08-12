@@ -81,6 +81,48 @@ def test_ingest_run_endpoint_validation():
             assert_meta_disclaimer(response.json())
 
 
+def test_ingest_run_rejects_invalid_symbols():
+    """Test that /ingest/run rejects invalid ticker symbols (C4 bound)."""
+    response = client.post(
+        "/ingest/run",
+        json={"date": "2024-01-15", "symbols": ["vnm"]},
+    )
+    assert response.status_code == 422
+
+
+def test_ingest_run_rejects_empty_symbols():
+    """Test that an explicit empty symbols list is rejected, not silently
+    falling back to the default symbol set (TESTER defect 3: dead guard)."""
+    response = client.post(
+        "/ingest/run",
+        json={"date": "2024-01-15", "symbols": []},
+    )
+    assert response.status_code == 422
+
+
+def test_ingest_run_rejects_unknown_source():
+    """Test that /ingest/run rejects a source outside CAFEF/VNDIRECT (C4)."""
+    response = client.post(
+        "/ingest/run",
+        json={"date": "2024-01-15", "source": "OTHER"},
+    )
+    assert response.status_code == 422
+
+
+def test_ingest_run_passes_source_override():
+    """Test that /ingest/run forwards a forced source to the ingestion job (C4)."""
+    with patch("data_ingest.main.run_ingestion_job", new_callable=AsyncMock) as mock_job:
+        mock_job.return_value = ([], {"total": 0, "success": 0, "failed": 0, "duplicates_skipped": 0})
+        response = client.post(
+            "/ingest/run",
+            json={"date": "2024-01-15", "source": "VNDIRECT"},
+        )
+        assert response.status_code == 200
+        mock_job.assert_awaited_once()
+        _, kwargs = mock_job.call_args
+        assert kwargs.get("source") == "VNDIRECT"
+
+
 def test_is_trading_day_weekend():
     """Test that weekends are not trading days."""
     saturday = datetime(2024, 1, 6, tzinfo=timezone.utc)  # Saturday
@@ -233,7 +275,7 @@ async def test_ohlcv_normalize():
         source="CAFEF",
     )
     
-    normalized = ohlcv.normalize()
+    normalized = ohlcv.normalize("1D")
     
     assert normalized.symbol == "VNM"
     assert normalized.open == Decimal("100000")
@@ -390,6 +432,90 @@ async def test_primary_source_failure_triggers_fallback():
 
 
 @pytest.mark.asyncio
+async def test_forced_source_skips_fallback():
+    """Test that a forced source bypasses the fallback logic (C4)."""
+    monday = datetime(2024, 1, 8, tzinfo=timezone.utc)
+
+    mock_conn = AsyncMock()
+    mock_session = AsyncMock()
+    mock_engine = MagicMock()
+    mock_engine.begin = lambda: make_async_context_manager(mock_conn)
+
+    with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_cafef:
+        mock_cafef.return_value = OHLCV(
+            time=datetime(2024, 1, 8, tzinfo=timezone.utc),
+            symbol="VNM",
+            open=Decimal("100000"),
+            high=Decimal("105000"),
+            low=Decimal("99000"),
+            close=Decimal("102000"),
+            volume=1000000,
+            source="CAFEF",
+            raw_data={},
+        )
+        with patch("data_ingest.ingest_service.fetch_from_vndirect", new_callable=AsyncMock) as mock_vndirect:
+            mock_vndirect.return_value = OHLCV(
+                time=datetime(2024, 1, 8, tzinfo=timezone.utc),
+                symbol="VNM",
+                open=Decimal("101000"),
+                high=Decimal("106000"),
+                low=Decimal("99000"),
+                close=Decimal("103000"),
+                volume=1200000,
+                source="VNDIRECT",
+                raw_data={},
+            )
+            with patch("data_ingest.ingest_service.create_async_engine") as mock_engine_factory:
+                mock_engine_factory.return_value = mock_engine
+                with patch("data_ingest.ingest_service.sessionmaker") as mock_sessionmaker:
+                    mock_sessionmaker.return_value.return_value = mock_session
+                    mock_session.add = AsyncMock()
+                    mock_session.commit = AsyncMock()
+                    mock_session.rollback = AsyncMock()
+
+                    results, summary = await run_ingestion_job(
+                        "postgresql://test", ["VNM"], monday, source="VNDIRECT"
+                    )
+
+                    assert len(results) == 1
+                    assert results[0].status == "success"
+                    assert results[0].source == "VNDIRECT"
+                    assert summary["success"] == 1
+                    mock_cafef.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_forced_source_failure_does_not_fallback():
+    """Test that a forced source failure does not fall back (C4)."""
+    monday = datetime(2024, 1, 8, tzinfo=timezone.utc)
+
+    with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_cafef:
+        mock_cafef.return_value = None
+        with patch("data_ingest.ingest_service.fetch_from_vndirect", new_callable=AsyncMock) as mock_vndirect:
+            mock_vndirect.return_value = OHLCV(
+                time=datetime(2024, 1, 8, tzinfo=timezone.utc),
+                symbol="VNM",
+                open=Decimal("101000"),
+                high=Decimal("106000"),
+                low=Decimal("99000"),
+                close=Decimal("103000"),
+                volume=1200000,
+                source="VNDIRECT",
+                raw_data={},
+            )
+            with patch("data_ingest.ingest_service.create_async_engine"):
+                results, summary = await run_ingestion_job(
+                    "postgresql://test", ["VNM"], monday, source="CAFEF"
+                )
+
+                assert len(results) == 1
+                assert results[0].status == "failed"
+                assert results[0].error == "Forced source CAFEF failed"
+                assert summary["failed"] == 1
+                mock_vndirect.assert_not_awaited()
+
+
+@pytest.mark.asyncio
 async def test_both_sources_fail():
     """Test that when both primary and fallback sources fail, ingestion fails gracefully."""
     monday = datetime(2024, 1, 8, tzinfo=timezone.utc)
@@ -421,3 +547,46 @@ async def test_both_sources_fail():
                     assert results[0].error == "Both primary and fallback sources failed"
                     assert summary["success"] == 0
                     assert summary["failed"] == 1
+
+
+def test_ingest_run_db_unreachable_returns_clean_error():
+    """Worst-flow: DB unreachable at connection time → clean RFC-7807 503, no stack trace.
+
+    Reproduces TESTER defect 4: live /ingest/run on a trading day with no reachable
+    Postgres previously returned HTTP 500 with a raw asyncpg ConnectionRefusedError
+    stack trace leaking from run_ingestion_job's engine.begin() (outside the
+    per-symbol try/except). The endpoint must instead return a clean RFC-7807
+    problem+json body with no raw driver exception / traceback leakage.
+    """
+    class RaisingAsyncContextManager:
+        """Async context manager whose __aenter__ raises — simulates a DB connection failure."""
+
+        def __init__(self, exc):
+            self._exc = exc
+
+        async def __aenter__(self):
+            raise self._exc
+
+        async def __aexit__(self, exc_type, exc_val, exc_tb):
+            return None
+
+    mock_engine = MagicMock()
+    mock_engine.begin = lambda: RaisingAsyncContextManager(
+        ConnectionRefusedError("[Errno 111] Connection refused")
+    )
+
+    with patch("data_ingest.ingest_service.create_async_engine", return_value=mock_engine):
+        response = client.post("/ingest/run", json={"date": "2024-01-15", "symbols": ["VNM"]})
+
+    # Clean RFC-7807 problem+json error body — 5xx, no stack trace / raw driver error
+    assert response.status_code == 503
+    assert response.headers["content-type"].startswith("application/problem+json")
+    data = response.json()
+    assert data["type"] == "about:blank"
+    assert data["title"] == "Database unavailable"
+    assert data["status"] == 503
+    assert data["detail"]
+    body = response.text.lower()
+    assert "traceback" not in body
+    assert "connectionrefused" not in body
+    assert "asyncpg" not in body

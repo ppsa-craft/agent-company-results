@@ -1,34 +1,16 @@
 from contextlib import asynccontextmanager
 from datetime import datetime
-from typing import Optional, List, Dict
-from fastapi import FastAPI, HTTPException, Query
-from pydantic import BaseModel, Field
+from typing import Optional, List, Dict, Literal
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field, field_validator
 
 from vnstock_shared.config import get_settings
 from vnstock_shared.models import HealthCheck
-from .ingest_service import run_ingestion_job, is_trading_day
+from .ingest_service import run_ingestion_job, is_trading_day, DatabaseUnavailableError
 from .disclaimer import build_meta_disclaimer
 
 settings = get_settings()
-
-
-# Disclaimer constants per docs/compliance/disclaimer.md
-DISCLAIMER_VN = (
-    "⚠️ **Thông tin chỉ mang tính chất tham khảo, không phải lời khuyên đầu tư.**\n\n"
-    "Dữ liệu và phân tích trên vnstock-advisor được cung cấp nhằm mục đích thông tin và nghiên cứu cá nhân. "
-    "Chúng tôi không đảm bảo tính chính xác, đầy đủ hoặc kịp thời của dữ liệu. Mọi quyết định đầu tư dựa trên "
-    "thông tin này đều do bạn tự chịu rủi ro. Vui lòng tham khảo ý kiến chuyên gia tài chính độc lập trước khi đầu tư."
-)
-
-DISCLAIMER_EN = (
-    "⚠️ **Information for reference only — not financial advice.**\n\n"
-    "Data and analysis on vnstock-advisor are provided for informational and personal research purposes only. "
-    "We do not guarantee the accuracy, completeness, or timeliness of the data. All investment decisions based on "
-    "this information are at your own risk. Please consult a qualified independent financial advisor before investing."
-)
-
-DISCLAIMER_SHORT_VN = "⚠️ Chỉ mang tính chất tham khảo — Không phải lời khuyên đầu tư."
-DISCLAIMER_SHORT_EN = "⚠️ Reference only — Not financial advice."
 
 
 # Scheduler for scheduled ingestion
@@ -43,7 +25,7 @@ async def lifespan(app: FastAPI):
     # Startup
     scheduler.add_job(
         scheduled_ingestion_job,
-        CronTrigger(hour=6, minute=0, timezone="Asia/Ho_Chi_Minh"),  # Run at 6:00 AM ICT (after market close)
+        CronTrigger(hour=15, minute=30, timezone="Asia/Ho_Chi_Minh"),  # Run at 15:30 VN time on trading days (after market close, per task AC)
         id="daily_ingestion",
         replace_existing=True,
     )
@@ -59,6 +41,26 @@ app = FastAPI(
     version="0.1.0",
     lifespan=lifespan,
 )
+
+
+@app.exception_handler(DatabaseUnavailableError)
+async def database_unavailable_handler(request, exc: DatabaseUnavailableError):
+    """Return a clean RFC-7807 problem+json 503 when PostgreSQL is unreachable.
+
+    Prevents the raw asyncpg/SQLAlchemy driver exception (and its stack trace)
+    from leaking to the client (TESTER defect 4). Logged server-side at the
+    raise site in run_ingestion_job.
+    """
+    return JSONResponse(
+        status_code=503,
+        content={
+            "type": "about:blank",
+            "title": "Database unavailable",
+            "status": 503,
+            "detail": str(exc) or "Database unavailable; ingestion could not run.",
+        },
+        media_type="application/problem+json",
+    )
 
 
 DEFAULT_SYMBOLS = ["VNM", "VCB", "BID", "FPT", "HPG", "MSN", "VIC", "VHM", "GAS", "TCB"]
@@ -86,8 +88,28 @@ async def scheduled_ingestion_job():
 class IngestRunRequest(BaseModel):
     """Request model for manual ingestion trigger."""
     date: Optional[str] = Field(None, description="Target date in YYYY-MM-DD format (defaults to latest trading day)")
-    symbols: Optional[List[str]] = Field(None, description="List of symbols to ingest (defaults to all)")
-    source: Optional[str] = Field(None, description="Force specific source (CAFEF, VNDIRECT) - bypasses fallback")
+    symbols: Optional[List[str]] = Field(
+        None,
+        min_length=1,
+        max_length=200,
+        description="List of symbols to ingest (defaults to all)",
+    )
+    source: Optional[Literal["CAFEF", "VNDIRECT"]] = Field(
+        None,
+        description="Force specific source (CAFEF, VNDIRECT) - bypasses fallback",
+    )
+
+    @field_validator("symbols")
+    @classmethod
+    def validate_symbols(cls, symbols: Optional[List[str]]) -> Optional[List[str]]:
+        if symbols is None:
+            return symbols
+        for symbol in symbols:
+            if not isinstance(symbol, str) or not symbol.strip() or len(symbol) > 20:
+                raise ValueError(f"Invalid ticker symbol: {symbol!r} (expected 1-20 chars, uppercase letters/digits)")
+            if not symbol.isupper() or not symbol.isalnum():
+                raise ValueError(f"Invalid ticker symbol: {symbol!r} (expected uppercase alphanumeric, e.g. VNM)")
+        return symbols
 
 
 class IngestResultResponse(BaseModel):
@@ -199,19 +221,18 @@ async def run_ingest(request: IngestRunRequest):
             detail=f"{target_date.strftime('%Y-%m-%d')} is not a trading day (weekend or holiday)"
         )
     
-    # Determine symbols
-    symbols = request.symbols if request.symbols else DEFAULT_SYMBOLS
-    
-    if not symbols:
-        raise HTTPException(status_code=400, detail="No symbols provided")
+    # Determine symbols. An explicit empty list is rejected at the request-model
+    # boundary (min_length=1 -> 422) before this handler runs; absent (None)
+    # falls back to the default symbol set. No dead guard here.
+    symbols = request.symbols if request.symbols is not None else DEFAULT_SYMBOLS
     
     # Run ingestion job with source override if specified
-    if request.source:
-        # Note: run_ingestion_job doesn't support source parameter, 
-        # this would need to be implemented in a future enhancement
-        pass
-    
-    results, summary = await run_ingestion_job(settings.database_url, symbols, target_date)
+    results, summary = await run_ingestion_job(
+        settings.database_url,
+        symbols,
+        target_date,
+        source=request.source,
+    )
     
     # Convert to response model
     response_results = [
