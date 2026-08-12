@@ -25,6 +25,10 @@ DATA_INGEST_PORT=8001
 
 # Optional: CAFEF/VNDIRECT API timeouts
 INGEST_TIMEOUT_SECONDS=30
+
+# JWT (required — dev placeholders, rotate in production)
+JWT_PRIVATE_KEY=dev-private-key-change-in-production
+JWT_PUBLIC_KEY=dev-public-key-change-in-production
 ```
 
 ### Install Dependencies
@@ -47,7 +51,7 @@ psql $DATABASE_URL -f scripts/init-db.sql
 
 ```bash
 # From repo root
-uvicorn services.data_ingest.src.main:app --reload --port 8001
+uvicorn data_ingest.main:app --port 8001
 ```
 
 Service available at `http://localhost:8001`
