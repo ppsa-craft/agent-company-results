@@ -29,12 +29,12 @@
   "interrupted": null,
   "pendingPrompt": null,
   "idleStreaks": {
-    "ba": 1,
-    "cto": 1,
-    "hr": 1,
-    "pm": 1,
-    "qa": 1,
-    "techlead": 1
+    "ba": 2,
+    "cto": 2,
+    "hr": 2,
+    "pm": 2,
+    "qa": 2,
+    "techlead": 2
   },
   "capacityPressure": {},
   "noopStreak": 0,
