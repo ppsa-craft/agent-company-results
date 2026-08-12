@@ -28,10 +28,13 @@ each service is its own milestone with the full DoD artifact set.
   suite incl. OWASP + DB-down regression; README-verbatim walkthrough fixed.
 - **M2 SHIPPED** — analysis-engine + ranking security-gate merged (`0dcd72e`,
   PR 17). 40-pass suite incl. 11 OWASP; ranking/indicator contract fixes.
-- M3 (suggestion API + web UI) is staged (BA use cases, CTO stack record seams
-  M3-A/M3-B/M3-C/M3-D, PM analytics plan) — **debate-ready**, opens post-freeze.
-- PR cap freeze (#155) holds: 4 superseded PRs (11/13/14/15, content ⊂ merged
-  16/17) await orchestrator close — no agent-side drain work remains.
+- **M3 DECIDED (cycle 22 §5.1 debate):** API-first release — M3-A (auth+hardening,
+  app-wide authn/z) ∥ M3-B (suggestion API) wave 1, M3-C assembly serial, web-ui
+  deferred to M3.5. Wave-1 tasks staged ready in `tasks/backlog.md`
+  (vnstock-advisor-15..22); opens the moment the freeze lifts.
+- PR cap freeze (#155) holds (5th cycle): 4 superseded PRs (11/13/14/15, content
+  ⊂ merged 16/17) await orchestrator close — escalated as an owner health probe
+  in the cycle-22 report; no agent-side drain work remains.
 
 ## Ranked ideas
 
