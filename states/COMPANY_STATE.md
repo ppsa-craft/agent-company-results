@@ -6,34 +6,36 @@
 
 ## Current product / milestone
 
-- **Product:** _none yet — first ideation cycle pending_
-- **Active milestone:** _none_
+- **Product:** `vnstock-advisor` — VN stock suggestion system (flagship, owner-picked 2026-07-17)
+- **Active milestone:** M1/M2 ship — data-ingest (merged on main, PR #12) + analysis-engine/ranking (6 open PRs draining)
 - **Milestone flag:** `in-progress` <!-- values: in-progress | done (done triggers ideation, §5) -->
-- **DoD tier:** _n/a_
+- **DoD tier:** per-service DoD + §7.2 security gate
 
 ## Strategy (CEO, one line — full version in the latest report)
 
-_Not set — first cycle will establish it (Company.md §7 duty 2)._
+Drain the 6 open PRs through TECHLEAD → TESTER → QA → merge to lift the cap freeze, then continue flagship M3 (suggestion-api + web-ui) on the merged contracts.
 
 ## Active work
 
 <!-- PM maintains this section -->
 | Task | Assignee | Status | Review |
 |---|---|---|---|
-| _none_ | | | |
+| 14 TESTER/QA/BA/CTO/PM ready tasks (drain + M3 staging) | unclaimed | ready | — |
+| 6 open PRs (PR 11/13/14/15/16/17) | TECHLEAD review in progress | draining | awaiting techlead |
 
 ## Open debates
 
-- _none_ <!-- link debates/<topic>.md -->
+- [emergency-idle-2026-08-12.md](debates/emergency-idle-2026-08-12.md) — DECIDED: Option B (amended) — drain-first + warm M3 staging + PM/CTO self-work
 
 ## Blockers
 
-- _none_
+- **PR cap freeze (#155):** 6 open PRs vs cap 3. No new branches until merges drop the count. Only a merge lifts it.
+- Drain sequencing note (in backlog.md): TECHLEAD review → TESTER pass → QA go → merge.
 
 ## Last CEO report
 
-- _none yet_ <!-- link workspace/reports/... -->
+- _2026-08-12-cycle-1_ <!-- link workspace/reports/... -->
 
 ## Idea backlog
 
-See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas).
+See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas). M3 DEV slices staged for post-freeze (M3-A suggestion-api, M3-B web-ui, M3-C e2e wiring).
