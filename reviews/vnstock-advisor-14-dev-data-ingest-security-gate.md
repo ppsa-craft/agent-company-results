@@ -137,3 +137,110 @@ Precondition gap: TESTER PASS is NOT met — the authoritative lane log (run e41
 6. F6 — INFO: ci-status file absent.
 
 Gate blockers: F1 + F2 must be fixed by DEV on the PR 16 branch, then TESTER re-runs (README-verbatim clean-checkout walkthrough + DB-down path), then QA re-gates. This branch is NOT merge-ready and must not merge.
+
+## Round 1 — DEV resolutions (blocker 2: TESTER FAIL findings F1–F6)
+
+All six findings resolved on the branch (commits `29a7972`, `f008ca3`, `5efbd08`,
+`2784934`; tip `2784934`). Blockers 1 and 2 both cleared.
+
+**Blocked-merge resolution (blocker 1):** merged `origin/main` into
+`task/vnstock-advisor-14-dev-data-ingest-security-gate-dev` (commit `29a7972`).
+The five add/add conflicts (data-ingest README, pyproject.toml, ingest_service.py,
+main.py, tests/test_main.py) were resolved by taking the `origin/main` side — it
+was a strict superset carrying the F1/F2/F5 fixes and the TECHLEAD C3/C6 fixes
+that the branch's older copies lacked; the branch's unique security-gate value
+(gate configs, OWASP suite, shared/python) lived in non-conflicted files and was
+preserved. Verified: `git merge-base --is-ancestor origin/main HEAD` passes —
+`origin/main` is now an ancestor, branch merges cleanly.
+
+1. **F1 — BLOCKING: README-verbatim install/run.** Resolved via merge + verified.
+   README now documents the verified path `pip install -r requirements.txt` (installs
+   data-ingest runtime+test deps and `vnstock_shared` editable `-e ./shared/python`),
+   explicitly warns `pip install -e services/data-ingest/` fails on the CWD-relative
+   `file:../../shared/python` resolution, marks `uv sync --all-extras` unverified, and
+   the run step is `uvicorn data_ingest.main:app --app-dir services/data-ingest/src
+   --reload --port 8001` with the `--app-dir` module-path note restored. Walkthrough
+   works verbatim from a clean checkout.
+2. **F2 — HIGH: raw 500 + traceback when PostgreSQL is down.** Resolved. A domain
+   `DatabaseUnavailableError` wraps the DB-connection failure in
+   `run_ingestion_job` (raw asyncpg/SQLAlchemy driver exceptions logged server-side,
+   never leaked), and `main.py` registers an `@app.exception_handler` returning a
+   clean RFC-7807 `application/problem+json` **503**. Committed regression test
+   `test_ingest_run_db_unreachable_returns_clean_error` (Test Plan item 4 / test-first)
+   asserts 503, `about:blank` type, and no `traceback`/`connectionrefused`/`asyncpg`
+   in the body. Suite: **37 passed** from the app root.
+3. **F3 — MEDIUM: dead empty-symbols guard.** Resolved (commit `f008ca3`).
+   `IngestRunRequest.symbols` now carries `min_length=1`, so an explicit `"symbols": []`
+   is rejected with **422 at the request-model boundary**; the handler only
+   distinguishes `None` (→ `DEFAULT_SYMBOLS`) from a non-empty list, and the
+   unreachable `if not symbols:` guard is deleted. New test
+   `test_ingest_run_rejects_empty_symbols` asserts the 422. Code and docs now agree
+   (no silent fallback).
+4. **F4 — LOW: docker-compose reference.** Resolved (commit `2784934`). README section
+   retitled "Run with Docker Compose (Infrastructure)": points at the services compose
+   actually defines — `docker-compose up -d postgres redis` — and notes the
+   data-ingest service itself runs via the uvicorn dev step. No undefined-service
+   reference remains.
+5. **F5 — LOW: docs drift.** Resolved (commits `29a7972` + `2784934`). Verified install
+   path + `--app-dir` note restored (see F1). `SECURITY_GATE_RESULTS.md` count corrected
+   to **37 passed** (34 data-ingest incl. the F2 503 test and the F3 empty-symbols test,
+   + 3 shared/python) — measured, not estimated.
+6. **F6 — INFO: ci-status file.** Resolved by the orchestrator's mechanical CI pickup —
+   no code change. `ci-status/vnstock-advisor-14-dev-data-ingest-security-gate.md`
+   exists and reads **SUCCESS** (test: completed/success, lane: completed/success,
+   refreshed 2026-08-12T18:18Z).
+
+**TECHLEAD v1.1 fold-ins:** C1 (engine/session lifecycle — major) **done**, commit
+`5efbd08`: engine + session tracked and cleaned up in a `finally`
+(`async_session.close()` + `engine.dispose()`), covering both the success and the
+DB-down paths — closes the per-run pool leak on the daily scheduled job. C2 (drop
+unused `httpx2`) **done**, commit `2784934`: removed from `requirements.txt`; never
+imported (starlette TestClient falls back to plain `httpx`). C3 (implement `source`
+override), C6 (remove dead `calculate_technical_indicators` stub), and the C4-bound
+symbol validation arrived via the merge (already on `origin/main`). C4 (2024-only
+holidays), C5 (silent parse fallback), C7 (health-check outbound calls), C8 (compose
+default creds) remain as backlog v1.1 items — not blockers, tracked.
+
+Requesting TECHLEAD re-review + TESTER re-run (README-verbatim clean-checkout
+walkthrough, F2 DB-down regression, F3 `"symbols": []` → 422, full suite 37 passed).
+
+
+## TESTER verdict — 2026-08-12T18:43:04.870Z (tester, transcribed by the orchestrator)
+
+TESTER PASS
+
+Branch `task/vnstock-advisor-14-dev-data-ingest-security-gate-dev` at tip **`2784934`** (3 fix commits ahead of the `8eaabba` tree previously FAILed: F3 boundary, C1 dispose, F4/F5+C2 — all verified in the diff and live). Tested from a clean checkout (the branch's registered worktree `/data/worktrees/dev-di-task14`, which is the decision-#17 checkout — a second `.checkouts/` copy is blocked by git because the branch is already checked out there; verified clean at tip, zero uncommitted changes, no tracked `.env`).
+
+**1. AC1 — README-verbatim walkthrough now succeeds (previously F1, BLOCKING → fixed).** README documents the verified path: `.env` per spec (incl. JWT keys) → `pip install -r requirements.txt` from repo root (succeeds) → `uvicorn data_ingest.main:app --app-dir services/data-ingest/src --reload --port 8001` (boots; the `--app-dir` note is documented). `/`, `/health`, `/ingest/status` all 200 with the VN/EN disclaimer. F4 compose reference also corrected (README points at `postgres redis`, notes the service runs via uvicorn). A `.env.example` is now present.
+
+**2. F2 (previously HIGH, DB-down 500 crash) → fixed and verified.** `run_ingestion_job` now wraps engine/session in try/except/finally (`engine.dispose()`, `async_session.close()`, C1 satisfied) and raises a sanitized `DatabaseUnavailableError`; an exception handler returns clean RFC-7807 `application/problem+json`. Live reproduction with Postgres down: `POST /ingest/run {"date":"2024-01-15","symbols":["VNM"]}` → **503** `{"title":"Database unavailable","status":503,...}`, no traceback, server stays up. New committed test covers this.
+
+**3. F3 (previously MEDIUM, dead empty-symbols guard) → fixed and verified.** Request model now `min_length=1`; live `"symbols":[]` → **422** (not silent default fallback). Invalid symbols `["vnm!","123"]` → 422; unknown `source` → 422; PUT/DELETE → 405; invalid date → 400; weekend → 400 with message. Restart: first boot healthy, terminate, second boot healthy, root 200.
+
+**4. CI-mirror suite on current tip: 37 passed** — matches the updated `SECURITY_GATE_RESULTS.md` ("37 passed (34 data-ingest + 3 shared)"); F5 count fixed. Gate configs unchanged and intact: `.gitleaks.toml` (useDefault + empty allowlist), `.semgrep.yml` (3 ERROR rules), `.snyk` (CVSS≥7.0, nothing ignored); C2 `httpx2` removed from `requirements.txt` (verified 0 occurrences). OWASP suite passes in-app.
+
+**Findings:**
+1. **INFO** — `ci-status/vnstock-advisor-14-dev-data-ingest-security-gate.md` absent in-pod (no `ci-status/` dir); authoritative GitHub Actions result is re-checked mechanically by the orchestrator at merge. Not a code defect.
+2. **INFO (backlog, not blocking)** — TECHLEAD's remaining v1.1 items stand: 2024-only `vietnam_holidays`, silent `2024-01-01` fallback in `_parse_*_time`, dead `calculate_technical_indicators` stub, health-check live-HTTP latency, compose default-password warning. TECHLEAD approved with these; none affects this gate.
+3. **INFO** — scheduler cron in `main.py` is 15:30 ICT (documented as post-close per task AC); `/ingest/status` reports it correctly.
+
+**Status:** done. All previously blocking/high findings are fixed and independently verified; no new crash paths found; hardening gates intact and documented honestly. Branch is clear to proceed to QA/merge.
+timestamp=2026-08-12T18:43:04.729Z level=INFO run=4b47d025 message="disposing instance" directory=/data
+
+
+## QA verdict — 2026-08-12T18:46:05.838Z (qa, transcribed by the orchestrator)
+
+QA GO
+
+Ship gate (§7.2) run on `task/vnstock-advisor-14-dev-data-ingest-security-gate-dev` (PR 16, tip `2784934`), branch diff read in `worktrees/dev-di-task14` vs `origin/main` (10 files, +253/−10), TECHLEAD APPROVED + TESTER PASS (lane `4b47d025`) + CI SUCCESS (`ci-status/…14….md` 18:18Z) all verified on authoritative records.
+
+**DoD tier check:** PASS — security-gate task DoD met. §7.2.1 gate configs committed and strict (`.gitleaks.toml` useDefault + empty allowlist; `.semgrep.yml` 3 ERROR rules; `.snyk` CVSS≥7.0, nothing ignored); OWASP suite committed and passing; `SECURITY_GATE_RESULTS.md` honest (in-pod vs CI-authoritative separated, test count 37 matches measured); scope clean (zero files outside `apps/`); mergeable (`origin/main` is an ancestor); no tracked `.env`, only a placeholder-only `.env.example` (gitignored); no secret-like patterns in the tracked tree.
+
+**Findings:**
+1. INFO (non-blocking) — v1.1 backlog items stand as TECHLEAD approved: 2024-only `vietnam_holidays` (C4), silent `2024-01-01` parse fallback (C5), dead `calculate_technical_indicators` stub (C6), health-check live-HTTP latency (C7), compose default-password warning (C8). Track to the hardening pass.
+2. INFO (non-blocking, pre-existing on `origin/main`) — `apps/vnstock-advisor/README.md` is the upstream gitleaks README, not an app how-to-run; the verbatim-verified how-to-run lives in `services/data-ingest/README.md`. Backlog: fix app-root README.
+3. INFO (non-blocking, pre-existing on `origin/main`) — no `CHANGELOG.md` exists for vnstock-advisor (other apps have one); add one on the next build.
+4. INFO — the authoritative gitleaks/SCA CI run is orchestrator-owned (decision #133) and re-checked mechanically at merge; CI currently reads SUCCESS.
+
+No blocking or high finding outstanding. Branch is clear to merge. Report to CEO: QA GO on PR 16, 4 non-blocking findings (all pre-existing or tracked v1.1 backlog), status done.
+timestamp=2026-08-12T18:46:05.691Z level=INFO run=7ec8cfd8 message="disposing instance" directory=/data

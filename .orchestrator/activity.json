@@ -1,7 +1,67 @@
 {
-  "generatedAt": "2026-08-12T18:18:15.136Z",
+  "generatedAt": "2026-08-12T18:52:52.304Z",
   "working": [],
   "recent": [
+    {
+      "instance": "qa",
+      "role": "qa",
+      "what": "ship gate on \"current\"",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T18:50:24.016Z",
+      "ended": "2026-08-12T18:52:52.304Z",
+      "ok": true
+    },
+    {
+      "instance": "pm",
+      "role": "pm",
+      "what": "verifying \"current\"",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T18:49:10.404Z",
+      "ended": "2026-08-12T18:50:24.014Z",
+      "ok": true
+    },
+    {
+      "instance": "dev",
+      "role": "dev",
+      "what": "resuming vnstock-advisor-14-dev-data-ingest-security-gate-fix",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-fix-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate-fix",
+      "since": "2026-08-12T18:46:27.422Z",
+      "ended": "2026-08-12T18:49:10.401Z",
+      "ok": true
+    },
+    {
+      "instance": "qa",
+      "role": "qa",
+      "what": "running the ship gate",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
+      "since": "2026-08-12T18:43:04.902Z",
+      "ended": "2026-08-12T18:46:05.837Z",
+      "ok": true
+    },
+    {
+      "instance": "tester",
+      "role": "tester",
+      "what": "testing the branch",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
+      "since": "2026-08-12T18:29:50.824Z",
+      "ended": "2026-08-12T18:43:04.868Z",
+      "ok": true
+    },
+    {
+      "instance": "dev",
+      "role": "dev",
+      "what": "clearing 2 blockers",
+      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev",
+      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
+      "since": "2026-08-12T18:18:22.534Z",
+      "ended": "2026-08-12T18:29:50.794Z",
+      "ok": true
+    },
     {
       "instance": "ceo",
       "role": "ceo",
@@ -60,66 +120,6 @@
       "taskId": null,
       "since": "2026-08-12T17:29:26.182Z",
       "ended": "2026-08-12T17:29:47.534Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 11",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T17:28:13.766Z",
-      "ended": "2026-08-12T17:28:40.148Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 10",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T17:26:55.483Z",
-      "ended": "2026-08-12T17:27:26.845Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 9",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T17:25:44.972Z",
-      "ended": "2026-08-12T17:26:08.317Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 8",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T17:24:31.964Z",
-      "ended": "2026-08-12T17:24:58.233Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 7",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T17:19:44.406Z",
-      "ended": "2026-08-12T17:23:45.722Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 6",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T17:09:46.216Z",
-      "ended": "2026-08-12T17:18:58.094Z",
       "ok": true
     }
   ]
