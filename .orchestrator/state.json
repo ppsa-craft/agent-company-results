@@ -45,15 +45,7 @@
   "resumedByProbe": false,
   "interrupted": null,
   "pendingPrompt": null,
-  "idleStreaks": {
-    "ba": 6,
-    "cto": 6,
-    "hr": 6,
-    "pm": 6,
-    "qa": 1,
-    "techlead": 1,
-    "tester": 1
-  },
+  "idleStreaks": {},
   "capacityPressure": {},
   "noopStreak": 0,
   "counters": {
@@ -68,7 +60,7 @@
     "stalls": 6,
     "contextCompactions": 1,
     "contextBytesSaved": 56959,
-    "diskBytesReclaimed": 1094074585,
+    "diskBytesReclaimed": 1350660259,
     "providerTransientSessionResets": 0,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
@@ -138,5 +130,8 @@
   "signOffInterrupted": {},
   "reviewPrSyncHashes": {
     "vnstock-advisor-14-dev-data-ingest-security-gate": "53c491b290fa2078dd769adfaeaebe35aabee059"
-  }
+  },
+  "pendingQaNotes": [
+    "QA already ran the ship gate on work package \"\" this cycle (metrics/agents/14/qa.md) — verdict **GO**. Ratify it in your own report this cycle if you agree (§7.2 — you ratify, never override): restate **GO** so the merge gate (§6.2, decision #128) can act on it, or start a fix loop with PM/DEV if it's NO-GO."
+  ]
 }

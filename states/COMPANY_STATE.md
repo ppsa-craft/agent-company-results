@@ -7,7 +7,7 @@
 ## Current product / milestone
 
 - **Product:** `vnstock-advisor` — VN stock suggestion system (flagship, owner-picked 2026-07-17)
-- **Active milestone:** M1/M2 ship — data-ingest (merged on main, PR #12) + analysis-engine/ranking (6 open PRs draining)
+- **Active milestone:** M1/M2 ship — data-ingest (merged on main, PR #12) + analysis-engine/ranking (5 open PRs draining)
 - **Milestone flag:** `in-progress` <!-- values: in-progress | done (done triggers ideation, §5) -->
 - **DoD tier:** per-service DoD + §7.2 security gate
 
@@ -20,10 +20,10 @@ Close the 4 superseded PRs (11/13/14/15) and merge the 2 canonical PRs (16, 17) 
 <!-- PM maintains this section -->
 | Task | Assignee | Status | Review |
 |---|---|---|---|
-| PR 17 merge (vnstock-advisor-15-dev-analysis-engine-security-gate, merge-ready) | orchestrator | merge-ready | TECHLEAD APPROVED + TESTER PASS + QA GO all on record → orchestrator merges next (CI re-checked mechanically at merge) |
-| PR 16 DEV fix (vnstock-advisor-14-dev-data-ingest-security-gate-fix, drain-critical) | dev (claimed cycle 14) | claimed:dev — fixing on existing PR 16 branch | TESTER FAIL F1/F2 on record → DEV fix, then TESTER re-run, then QA GO |
+| PR 16 (vnstock-advisor-14-dev-data-ingest-security-gate) | dev | MERGED (9f1ca33, 18:46Z — QA GO consumed) | TECHLEAD APPROVED → merged via §6.2 gate #128; worktree removed post-merge; fix task stays done |
+| PR 17 re-sync (vnstock-advisor-15-dev-analysis-engine-security-gate) | dev | QA NO-GO (stale vs new main, 7 add/add conflicts) — DEV re-sync in flight on existing branch | re-sync (main's data-ingest side, analysis-engine byte-identical to 38b129a) → CI re-run → TESTER re-verify (merged tree only) → QA re-gate → merge |
 | M3 staging (BA use cases + disclaimer doc, CTO stack record, PM analytics plan) | BA/CTO/PM | done (freeze-safe, debate-ready) | §5.1 debate before M3 build |
-| QA ship gates (both services) | QA | PR 17 = QA GO (merge-ready); PR 16 not gated (DEV fix + TESTER re-run pending) | re-dispatch after PR 16 TESTER re-run |
+| QA ship gates (both services) | QA | PR 16 QA GO consumed by merge; PR 17 QA NO-GO (stale) — re-gate after DEV re-sync + TESTER re-verify | re-dispatch after PR 17 re-sync + TESTER re-verify |
 | json-formatter audit fix (audit-json-formatter) | _ready_ | ready (blocked on cap freeze) | — |
 
 ## Open debates
@@ -37,10 +37,10 @@ Close the 4 superseded PRs (11/13/14/15) and merge the 2 canonical PRs (16, 17) 
 
 ## Blockers
 
-- **PR cap freeze (#155):** 6 open PRs vs cap 3. No new branches until the count drops. Closing superseded PRs 11/13/14/15 (orchestrator action) drops it 6→2; merging 16+17 lifts it entirely.
-- **Canonical PR 16:** blocked on DEV fix (F1 README install/run BLOCKING, F2 DB-down crash HIGH — fix spec `vnstock-advisor-14-dev-data-ingest-security-gate-fix` ready) → TESTER re-run → QA GO.
-- **Canonical PR 17:** merge-READY — TECHLEAD APPROVED + TESTER PASS + QA GO all on record; orchestrator merges next (mechanical CI re-check at merge). Merging 17 (and 16) plus closing 11/13/14/15 lifts the cap.
-- Drain sequencing note (in backlog.md): TECHLEAD review (DONE, 6/6) → TESTER pass (17 done; 16 needs re-run after DEV fix) → QA go (17 = GO) → merge.
+- **PR cap freeze (#155):** 5 open PRs vs cap 3. No new branches until the count drops. Closing superseded PRs 11/13/14/15 (orchestrator action) drops it 5→1; merging PR 17 lifts it entirely.
+- **Canonical PR 16:** MERGED (9f1ca33, 18:46Z — QA GO consumed; fix task done).
+- **Canonical PR 17:** blocked on DEV re-sync — QA NO-GO (record `metrics/agents/14/qa.md`, cycle 14): branch at `38b129a` predates the PR 16 merge → 7 add/add conflicts (data-ingest subtree in pre-fix form) would regress shipped F1/F2/F3/C1/C2. DEV merges origin/main on the existing branch (main's data-ingest side; analysis-engine subtree byte-identical to `38b129a`) → push → CI re-run → TESTER re-verify (merged tree only) → QA re-gate → merge.
+- Drain sequencing note (in backlog.md): PR 16 MERGED (QA GO consumed). PR 17: QA NO-GO → DEV re-sync (in flight) → TESTER re-verify → QA re-gate → merge. PRs 11/13/14/15 superseded-close pending (orchestrator).
 
 ## Last CEO report
 
