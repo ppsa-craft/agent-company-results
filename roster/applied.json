@@ -7,6 +7,15 @@
       "ceo_approved": true,
       "approval_ref": "Owner directive 2026-08-11: the lane batch is already concurrent (lanes.js Promise.all) but the roster held exactly one DEV, so buildLaneQueue could never assign more than one DEV lane. Scaling to dev + dev-1 makes the existing MAX_PARALLEL_LANES=2 batch actually run two DEV lanes. See docs/Memory.md Progress Log 2026-08-11.",
       "appliedAt": "2026-08-12T15:15:56.857Z"
+    },
+    {
+      "action": "scale",
+      "agent": "tester",
+      "instances": 1,
+      "reason": "6 open-PR drain needs 6 TESTER runs; single instance queues them serially and blocks the ship gate; parallel testers shorten the freeze. Scale tester 1 -> 2 (tester + tester-1) lets the 6-branch drain run in parallel.",
+      "ceo_approved": true,
+      "approval_ref": "CEO cycle-4 ruling 2026-08-12 — CAPACITY PRESSURE note fired (§3.5.1): tester has 5 outstanding vs 1 instance; 6 vnstock-advisor drain TESTER tasks queued behind TECHLEAD approval. Scaling to tester + tester-1 lets the 6-branch drain run in parallel. Recorded in COMPANY_STATE.md HR approvals and workspace/reports/2026-08-12-cycle-1.md.",
+      "appliedAt": "2026-08-12T16:17:00.337Z"
     }
   ]
 }

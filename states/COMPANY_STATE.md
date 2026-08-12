@@ -27,9 +27,14 @@ Drain the 6 open PRs through TECHLEAD → TESTER → QA → merge to lift the ca
 
 - [emergency-idle-2026-08-12.md](debates/emergency-idle-2026-08-12.md) — DECIDED: Option B (amended) — drain-first + warm M3 staging + PM/CTO self-work
 
+## HR approvals (CEO-recorded, 2026-08-12)
+
+- **Scale TESTER 1 → 2** (approval_ref: "CEO cycle-4 ruling 2026-08-12 — CAPACITY PRESSURE note fired (§3.5.1): tester 5 outstanding vs 1 instance; 6 drain TESTER tasks queued on TECHLEAD approval. Scale makes the 6-branch drain parallel. See workspace/reports/2026-08-12-cycle-1.md"). Executed via HR.
+
 ## Blockers
 
 - **PR cap freeze (#155):** 6 open PRs vs cap 3. No new branches until merges drop the count. Only a merge lifts it.
+- **Critical path:** all 6 PRs `awaiting: techlead` (per pr-queue.json 16:06) — TECHLEAD review must land before TESTER/QA can drain. Reviews still empty as of cycle 4.
 - Drain sequencing note (in backlog.md): TECHLEAD review → TESTER pass → QA go → merge.
 
 ## Last CEO report

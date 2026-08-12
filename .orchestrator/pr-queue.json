@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T16:00:13.506Z",
+  "generatedAt": "2026-08-12T16:15:13.512Z",
   "cycle": 3,
   "cap": 3,
   "drain": true,
@@ -30,7 +30,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 1,
-      "ageHours": 41.5
+      "ageHours": 41.8
     },
     {
       "taskId": "vnstock-advisor-4-dev-data",
@@ -57,7 +57,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 2,
-      "ageHours": 31.1
+      "ageHours": 31.4
     },
     {
       "taskId": "vnstock-advisor-4-dev-data-ingest",
@@ -84,7 +84,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 3,
-      "ageHours": 31.1
+      "ageHours": 31.4
     },
     {
       "taskId": "vnstock-advisor-5c-dev-ranking",
@@ -111,7 +111,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 4,
-      "ageHours": 28.9
+      "ageHours": 29.1
     },
     {
       "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
@@ -138,7 +138,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 5,
-      "ageHours": 27.7
+      "ageHours": 28
     },
     {
       "taskId": "vnstock-advisor-15-dev-analysis-engine-security-gate",
@@ -165,7 +165,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 6,
-      "ageHours": 27.7
+      "ageHours": 28
     }
   ]
 }

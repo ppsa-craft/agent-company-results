@@ -10,7 +10,7 @@
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
   "ceoSessionId": "ses_00973ef2affeyM2mdGg3fm6GJs",
-  "ceoSessionRequests": 6,
+  "ceoSessionRequests": 7,
   "agentSessions": {
     "tester": {
       "id": "ses_0095219eaffeXSV0EGxgRRHa7q",
@@ -27,15 +27,17 @@
   "shipConflicts": {},
   "resumedByProbe": false,
   "interrupted": null,
-  "pendingPrompt": null,
-  "idleStreaks": {
-    "ba": 1,
-    "cto": 1,
-    "hr": 1,
-    "its": 1,
-    "qa": 1
+  "pendingPrompt": {
+    "cycle": 4,
+    "session": "ses_00973ef2affeyM2mdGg3fm6GJs"
   },
-  "capacityPressure": {},
+  "idleStreaks": {
+    "hr": 2,
+    "its": 2
+  },
+  "capacityPressure": {
+    "tester": 1
+  },
   "noopStreak": 0,
   "counters": {
     "backoffs": 0,
@@ -46,10 +48,10 @@
     "outOfChainDelegations": 5,
     "noopCycles": 0,
     "noopRotations": 0,
-    "stalls": 2,
+    "stalls": 3,
     "contextCompactions": 0,
     "contextBytesSaved": 0,
-    "diskBytesReclaimed": 747308961,
+    "diskBytesReclaimed": 747453369,
     "providerTransientSessionResets": 0,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
@@ -119,7 +121,7 @@
     "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
   },
   "prCapEngaged": true,
-  "stallRetries": 0,
+  "stallRetries": 1,
   "lastAuditedRunId": 31564177653,
   "pendingConflictNotes": [],
   "pendingBoundaryNote": null
