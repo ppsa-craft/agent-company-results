@@ -8,7 +8,7 @@
 > `- [role] [product] tasks/<id>.md — status: ready | claimed:<agent> | done`
 
 - [tester] vnstock-advisor tasks/vnstock-advisor-5-dev-analysis-engine-tester.md — status: done
-- [tester] vnstock-advisor tasks/vnstock-advisor-14-dev-data-ingest-security-gate-tester.md — status: ready
+- [tester] vnstock-advisor tasks/vnstock-advisor-14-dev-data-ingest-security-gate-tester.md — status: done
 - [tester] vnstock-advisor tasks/vnstock-advisor-15-dev-analysis-engine-security-gate-tester.md — status: ready
 - [tester] vnstock-advisor tasks/vnstock-advisor-4-dev-data-tester.md — status: ready
 - [tester] vnstock-advisor tasks/vnstock-advisor-4-dev-data-ingest-tester.md — status: ready

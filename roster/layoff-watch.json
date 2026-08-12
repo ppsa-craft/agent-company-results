@@ -1,3 +1,9 @@
 {
-  "watch": []
+  "watch": [
+    {
+      "name": "its",
+      "idleCycles": 3,
+      "stage": "watch"
+    }
+  ]
 }

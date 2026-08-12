@@ -1,20 +1,20 @@
 {
-  "cycleCount": 3,
-  "lastCycleAt": "2026-08-12T15:53:24.428Z",
+  "cycleCount": 4,
+  "lastCycleAt": "2026-08-12T16:17:21.194Z",
   "milestoneId": "M1/M2 ship — data-ingest (merged on main, PR #12) + analysis-engine/ranking (6 open PRs draining)",
-  "milestoneCycles": 1,
+  "milestoneCycles": 2,
   "milestoneStartedAt": 1786549967314,
   "milestoneEscalated": false,
   "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": "ses_00973ef2affeyM2mdGg3fm6GJs",
-  "ceoSessionRequests": 7,
+  "ceoSessionId": null,
+  "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
       "id": "ses_0095219eaffeXSV0EGxgRRHa7q",
-      "requests": 0
+      "requests": 1
     }
   },
   "agentInterrupted": {},
@@ -27,10 +27,7 @@
   "shipConflicts": {},
   "resumedByProbe": false,
   "interrupted": null,
-  "pendingPrompt": {
-    "cycle": 4,
-    "session": "ses_00973ef2affeyM2mdGg3fm6GJs"
-  },
+  "pendingPrompt": null,
   "idleStreaks": {
     "hr": 2,
     "its": 2
@@ -45,7 +42,7 @@
     "boundaryViolations": 0,
     "workspaceDirty": 2,
     "reviewEscalations": 0,
-    "outOfChainDelegations": 5,
+    "outOfChainDelegations": 8,
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 3,
@@ -121,7 +118,7 @@
     "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
   },
   "prCapEngaged": true,
-  "stallRetries": 1,
+  "stallRetries": 0,
   "lastAuditedRunId": 31564177653,
   "pendingConflictNotes": [],
   "pendingBoundaryNote": null
