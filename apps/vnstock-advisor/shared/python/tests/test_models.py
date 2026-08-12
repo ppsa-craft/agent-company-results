@@ -14,6 +14,7 @@ def test_market_data_create():
         close=Decimal("103.0"),
         volume=1000000,
         source="vnstock",
+        timeframe="1W",
     )
     assert data.symbol == "VCB"
     assert data.volume == 1000000
