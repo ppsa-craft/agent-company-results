@@ -1,8 +1,8 @@
 {
-  "cycleCount": 1,
-  "lastCycleAt": "2026-08-12T15:37:31.408Z",
+  "cycleCount": 2,
+  "lastCycleAt": "2026-08-12T15:39:24.811Z",
   "milestoneId": null,
-  "milestoneCycles": 1,
+  "milestoneCycles": 2,
   "milestoneStartedAt": null,
   "milestoneEscalated": false,
   "modelIndex": 0,
@@ -10,7 +10,7 @@
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
   "ceoSessionId": "ses_00973ef2affeyM2mdGg3fm6GJs",
-  "ceoSessionRequests": 2,
+  "ceoSessionRequests": 3,
   "agentSessions": {},
   "agentInterrupted": {},
   "reviewFixInterrupted": {},
@@ -32,7 +32,7 @@
     "boundaryViolations": 0,
     "workspaceDirty": 1,
     "reviewEscalations": 0,
-    "outOfChainDelegations": 3,
+    "outOfChainDelegations": 4,
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 1,
@@ -110,8 +110,6 @@
   "prCapEngaged": true,
   "stallRetries": 0,
   "lastAuditedRunId": 31564177653,
-  "pendingConflictNotes": [
-    "SCHEDULED AUDIT REGRESSION (decision #137): the nightly full apps/ CI audit found 1 already-shipped app(s) now failing on main: json-formatter. New backlog task(s) (audit-<slug>, status: ready) already created mechanically — have PM assign a DEV."
-  ],
-  "pendingBoundaryNote": "WORKSPACE DIRTY after last cycle: uncommitted changes in workspace/ or a DEV worktree: worktrees/tester-di-task14/apps/vnstock-advisor/uv.lock. DEV work must be committed on its task branch; if TESTER or QA wrote these, that is a violation (Company.md §3.2) — investigate, clean up, record a lesson (§7.3)."
+  "pendingConflictNotes": [],
+  "pendingBoundaryNote": null
 }
