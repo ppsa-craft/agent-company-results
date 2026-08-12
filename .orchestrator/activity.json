@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-08-12T19:30:07.951Z",
+  "generatedAt": "2026-08-12T19:31:34.927Z",
   "working": [],
   "recent": [
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 23",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T19:30:42.373Z",
+      "ended": "2026-08-12T19:31:34.927Z",
+      "ok": true
+    },
     {
       "instance": "tester",
       "role": "tester",
@@ -110,16 +120,6 @@
       "taskId": null,
       "since": "2026-08-12T18:49:10.404Z",
       "ended": "2026-08-12T18:50:24.014Z",
-      "ok": true
-    },
-    {
-      "instance": "dev",
-      "role": "dev",
-      "what": "resuming vnstock-advisor-14-dev-data-ingest-security-gate-fix",
-      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-fix-dev",
-      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate-fix",
-      "since": "2026-08-12T18:46:27.422Z",
-      "ended": "2026-08-12T18:49:10.401Z",
       "ok": true
     }
   ]
