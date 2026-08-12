@@ -7,13 +7,13 @@
 ## Current product / milestone
 
 - **Product:** `vnstock-advisor` — VN stock suggestion system (flagship, owner-picked 2026-07-17)
-- **Active milestone:** M1/M2 SHIPPED (data-ingest `9f1ca33` + analysis-engine/ranking `0dcd72e`, both security-gated on main); M3 (suggestion-api first release) DECIDED by §5.1 debate — wave-1 tasks staged ready, opens on freeze lift
-- **Milestone flag:** `done` <!-- values: in-progress | done (done triggers ideation, §5) — M1/M2 merged; M3 debate decided 08-12, wave-1 tasks staged; opens when the cap freeze lifts -->
+- **Active milestone:** M1/M2 SHIPPED (data-ingest `9f1ca33` + analysis-engine/ranking `0dcd72e`, both security-gated on main); M3 (suggestion-api first release) DECIDED by §5.1 debate (cycle 22) — wave-1 tasks staged HELD post-freeze (cycle 24 fix), opens on freeze lift
+- **Milestone flag:** `done` <!-- values: in-progress | done (done triggers ideation, §5) — M1/M2 merged; M3 debate decided 08-12, wave-1 tasks staged held; opens when the cap freeze lifts -->
 - **DoD tier:** per-service DoD + §7.2 security gate
 
 ## Strategy (CEO, one line — full version in the latest report)
 
-Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5.1 debate DECIDED (cycle 22): API-first release — M3-A auth+hardening (app-wide authn/z, JWT RS256) ∥ M3-B suggestion API in wave 1, M3-C assembly serial, web-ui deferred to M3.5; wave-1 tasks staged ready. Freeze still holds on 4 SUPERSEDED PRs (11/13/14/15) awaiting orchestrator close — 5th cycle, escalated as an owner health probe.
+Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5.1 debate DECIDED (cycle 22): API-first release — M3-A auth+hardening (app-wide authn/z, JWT RS256) ∥ M3-B suggestion API in wave 1, M3-C assembly serial, web-ui deferred to M3.5. Wave-1 tasks staged and set to `held:` (cycle 24 — only `ready` what is claimable THIS cycle; gates reopen when their branches exist). Freeze still holds on 4 SUPERSEDED PRs (11/13/14/15) awaiting orchestrator close — 6th cycle, escalated as an owner health probe (cycle-22 + cycle-24 reports).
 
 ## Active work
 
@@ -38,15 +38,15 @@ Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5
 
 ## Blockers
 
-- **PR cap freeze (#155) — 5th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for 5 cycles (17→22) — reported as an owner health probe in the cycle-22 report; no agent-side drain work exists.**
+- **PR cap freeze (#155) — 6th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for 6 cycles (17→23) — reported as an owner health probe in the cycle-22 + cycle-24 reports; no agent-side drain work exists.**
 - **SHIPPED — canonical PR 16** (data-ingest security-gate): merged `9f1ca33` (QA GO consumed).
 - **SHIPPED — canonical PR 17** (analysis-engine security-gate): merged `0dcd72e` (QA re-GO on `f4e7075` ratified in cycle-17 report).
 - **Post-freeze backlog (blocked by freeze only):** json-formatter audit fix (ready); hardening task — no authn/z on vnstock-advisor endpoints (TECHLEAD flagged twice; required before any public exposure; folds into M3-A auth seam).
 
 ## Last CEO report
 
-- 2026-08-12-cycle-22 (workspace/reports/2026-08-12-cycle-22.md — covers 21→22: M3 §5.1 debate DECIDED (API-first), wave-1 tasks staged, close-lane stall escalated as owner health probe)
+- 2026-08-12-cycle-24 (workspace/reports/2026-08-12-cycle-24.md — covers 23→24: dirty-doc boundary violation resolved, M3 tasks set to `held:` (claimability fix), close-lane stall re-escalated as owner health probe)
 
 ## Idea backlog
 
-See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas). M3 DECIDED (API-first release): wave-1 tasks staged ready in tasks/backlog.md (M3-A ∥ M3-B, then gates; M3-C serial; M3.5 web-ui wave-2) — claimable the moment the freeze lifts.
+See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas). M3 DECIDED (API-first release): wave-1 tasks staged in tasks/backlog.md but set to `held:` (cycle 24 — only `ready` what is claimable THIS cycle; PM reopens to ready when the freeze lifts / input branches exist).

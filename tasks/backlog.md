@@ -19,13 +19,13 @@ Drain status 2026-08-12 (cycle 17): PRs 16 + 17 MERGED — PR 16 (data-ingest se
 
 ## vnstock-advisor — M3 wave-1 (staged post-freeze, cycle 22, debate decision)
 
-> Staged post-freeze: NO branch may open while the 4 superseded PRs (11/13/14/15) are still open under cap #155 — only a merge lifts the freeze. Ranked: M3-A ∥ M3-B first (parallel seams), then TESTER/QA gates, BA M3.5 draft non-blocking; M3-C serial-only after 15/16 merge; M3.5 lines are wave-2 (post-M3-release).
+> Staged post-freeze: NO branch may open while the 4 superseded PRs (11/13/14/15) are still open under cap #155 — only a merge lifts the freeze. Ranked: M3-A ∥ M3-B first (parallel seams), then TESTER/QA gates, BA M3.5 draft non-blocking; M3-C serial-only after 15/16 merge; M3.5 lines are wave-2 (post-M3-release). **Gate reopen rule (2026-08-12):** TESTER 18 reopens to `ready` only when branches for 15/16 exist (after their merge); QA 20 only after 17's branch exists. Nothing in this block is claimable while the freeze holds.
 
-- [dev] [vnstock-advisor] tasks/vnstock-advisor-15-m3a-auth-jwks.md — status: ready
-- [dev] [vnstock-advisor] tasks/vnstock-advisor-16-m3b-suggestion-api.md — status: ready
-- [ba] [vnstock-advisor] tasks/vnstock-advisor-19-m35-ui-use-cases.md — status: ready
-- [tester] [vnstock-advisor] tasks/vnstock-advisor-18-m3-api-test-pass.md — status: done
-- [qa] [vnstock-advisor] tasks/vnstock-advisor-20-m3-api-release-gate.md — status: ready
-- [dev] [vnstock-advisor] tasks/vnstock-advisor-17-m3c-api-assembly.md — status: ready
-- [dev] [vnstock-advisor] tasks/vnstock-advisor-21-m35-web-ui.md — status: ready
-- [dev] [vnstock-advisor] tasks/vnstock-advisor-22-m35-ui-assembly.md — status: ready
+- [dev] [vnstock-advisor] tasks/vnstock-advisor-15-m3a-auth-jwks.md — held: post-freeze (no branch may open while superseded PRs 11/13/14/15 are open; PM reopens to ready the cycle the freeze lifts)
+- [dev] [vnstock-advisor] tasks/vnstock-advisor-16-m3b-suggestion-api.md — held: post-freeze (no branch may open while superseded PRs 11/13/14/15 are open; PM reopens to ready the cycle the freeze lifts)
+- [ba] [vnstock-advisor] tasks/vnstock-advisor-19-m35-ui-use-cases.md — held: post-freeze (output is a docs/ use-case = product-tree write, prohibited during freeze; drafting resumes on the M3.5 branch)
+- [tester] [vnstock-advisor] tasks/vnstock-advisor-18-m3-api-test-pass.md — held: post-freeze gate (precondition unmet; see BLOCKED record 2026-08-12; PM reopens to ready when 15/16 branches exist after merge)
+- [qa] [vnstock-advisor] tasks/vnstock-advisor-20-m3-api-release-gate.md — held: post-freeze gate (PM reopens to ready only when branch 17 exists after merge)
+- [dev] [vnstock-advisor] tasks/vnstock-advisor-17-m3c-api-assembly.md — held: post-freeze (no branch may open while superseded PRs 11/13/14/15 are open; PM reopens to ready the cycle the freeze lifts)
+- [dev] [vnstock-advisor] tasks/vnstock-advisor-21-m35-web-ui.md — held: post-freeze (no branch may open while superseded PRs 11/13/14/15 are open; PM reopens to ready the cycle the freeze lifts)
+- [dev] [vnstock-advisor] tasks/vnstock-advisor-22-m35-ui-assembly.md — held: post-freeze (no branch may open while superseded PRs 11/13/14/15 are open; PM reopens to ready the cycle the freeze lifts)

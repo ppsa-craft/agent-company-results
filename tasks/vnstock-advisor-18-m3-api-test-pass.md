@@ -18,3 +18,9 @@ Per AC, one scenario at a time, state running verdict per scenario as you go. De
 Weights-override behavior matches the frozen schema (4 keys, [0,1], sum 1.0 ±0.001); disclaimer text byte-matches the single source; RFC 7807 bodies on every error.
 
 ## Report to PM at end: per-scenario verdicts (PASS/FAIL), defect list, overall verdict.
+
+---
+
+## BLOCKED record
+
+**2026-08-12 — claimed by tester lane (cycle 23), done-BLOCKED: precondition unmet (no M3 branches/reviews yet; tasks 15/16/17 not merged).** TESTER behaved correctly — idle-first claim, verified the precondition, reported BLOCKED with no verdict, touched no files (lane log: `/data/metrics/agents/22/tester.md`). Reopen (set backlog status back to `ready`) the cycle M3 branches exist: after 15/16 merge for this gate; QA gate 20 after 17.
