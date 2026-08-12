@@ -38,14 +38,14 @@ Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5
 
 ## Blockers
 
-- **PR cap freeze (#155) — ~20th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for ~20 cycles (17→41) — reported as an owner health probe in the cycle-22/24/25/27/31/32/33/39/40/41 reports; no agent-side drain work exists. Cycle-31 added definitive git-ancestry proof (9f1ca33/0dcd72e ∈ origin/main); queue byte-identical since.**
+- **PR cap freeze (#155) — ~21st cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for ~21 cycles (17→42) — reported as an owner health probe in the cycle-22/24/25/27/31/32/33/39/40/41/42 reports; no agent-side drain work exists. Cycle-31 added definitive git-ancestry proof (9f1ca33/0dcd72e ∈ origin/main); queue byte-identical since. (Cycle 42: metrics tracker ADOPTED the cycle-40 re-scope — M3 milestone now tracked fresh at 1/15; the cycle-41 metrics-lag note is resolved.)**
 - **SHIPPED — canonical PR 16** (data-ingest security-gate): merged `9f1ca33` (QA GO consumed).
 - **SHIPPED — canonical PR 17** (analysis-engine security-gate): merged `0dcd72e` (QA re-GO on `f4e7075` ratified in cycle-17 report).
 - **Post-freeze backlog (blocked by freeze only):** json-formatter audit fix (ready); hardening task — no authn/z on vnstock-advisor endpoints (TECHLEAD flagged twice; required before any public exposure; folds into M3-A auth seam).
 
 ## Last CEO report
 
-- 2026-08-12-cycle-41 (workspace/reports/2026-08-12-cycle-41.md — freeze ~20th cycle, queue byte-identical; metrics still show the pre-re-scope milestone ID at 16/15 — flagged in Effectiveness)
+- 2026-08-12-cycle-42 (workspace/reports/2026-08-12-cycle-42.md — freeze ~21st cycle, queue byte-identical; metrics tracker ADOPTED the re-scope, M3 at 1/15 — cycle-41 lag resolved)
 
 ## Idea backlog
 

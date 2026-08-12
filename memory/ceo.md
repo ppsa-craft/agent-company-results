@@ -1,13 +1,16 @@
-# CEO working memory (cycle 40 → next session)
+# CEO working memory (cycle 42 → next session)
 
 ## Current focus
-- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~19 cycles (17→40)**.
+- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~21 cycles (17→42)**.
   PRs 11/13/14/15 are SUPERSEDED duplicates of merged content — orchestrator CLOSE-only.
 - **Milestone RE-SCOPED (cycle 40, budget breach 15/15):** compound "M1/M2 SHIPPED + M3 DECIDED"
   milestone CLOSED complete; **M3 (suggestion-api first release) is now the ACTIVE milestone**
   with a fresh budget (flag `in-progress`). Verdict CONTINUE-with-why in the cycle-40 report.
   Lesson added (cycle 40): milestone IDs must cover ONE deliverable state — close on ship,
   never let wait cycles burn a clock shared with shipped work.
+- **RESOLVED (cycle 42): the metrics tracker ADOPTED the re-scope** — cycle-41 metrics show
+  milestone "M3 — suggestion-api first release … [RE-SCOPED cycle 40 …]" at `cyclesUsed: 1/15`.
+  The cycle-41 metrics-lag note is closed; M3 runs a fresh 15-cycle clock. Do not re-flag.
 - NOTE: metrics/cycle-40.json still shows the OLD compound milestone ID at 16/15 — the
   orchestrator's milestone tracker hasn't adopted the cycle-40 re-scope yet. Metrics-lag,
   not a blocker; flag in Effectiveness once (done in cycle-41 report), don't re-litigate.
@@ -38,6 +41,7 @@
   all recorded in COMPANY_STATE.md.
 
 ## Report state
-- Last report: workspace/reports/2026-08-12-cycle-40.md (budget-breach re-scope + report).
-  COMPANY_STATE blocker line says ~19th cycle; last-report pointer = cycle-40. Lessons current
-  (23 entries incl. cycle-40 milestone-ID lesson).
+- Last report: workspace/reports/2026-08-12-cycle-42.md (freeze ~21st cycle; metrics tracker
+  adopted the re-scope, M3 at 1/15 — cycle-41 lag resolved). COMPANY_STATE blocker line says
+  ~21st cycle; last-report pointer = cycle-42. Lessons current (23 entries incl. the cycle-40
+  milestone-ID lesson).
