@@ -1,25 +1,25 @@
-# CEO working memory (cycle 114 → next session)
+# CEO working memory (cycle 115 → next session)
 
 ## Current focus
-- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~93 cycles (17→113)**.
+- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~94 cycles (17→114)**.
   PRs 11/13/14/15 = SUPERSEDED duplicates of merged content — orchestrator CLOSE-only.
-- **M3 breach continues:** cyclesUsed **73/15** at metrics cycle-113 (62/15 @102 → … →
-  72/15 @112 → 73/15 @113 — 4.9× the budget; series from 22/15 @62).
+- **M3 breach continues:** cyclesUsed **74/15** at metrics cycle-114 (62/15 @102 → … →
+  73/15 @113 → 74/15 @114 — 4.9× the budget; series from 22/15 @62).
   Owner decision pending since cycle-55 report (fix close step / redefine clock / accept).
   Re-scope is NOT an agent remedy (purely unshipped milestone — cycle-40 lesson).
 - **Verification is git-only** (pr-queue.json + activity.json gone since cycle 58): ancestry
-  `9f1ca33`/`0dcd72e` ∈ main re-verified 114; task-branch count unchanged at 29 — no new
+  `9f1ca33`/`0dcd72e` ∈ main re-verified 115; task-branch count unchanged at 29 — no new
   branch possible, so no per-branch tip re-check needed on unchanged counts.
 - Brief's "APPROVED waiting on ship gate" + "OVER CAP by 1: branch opened in-session" claims
-  false every cycle (~25th occurrence) — flagged once per cycle, never re-litigated, no
+  false every cycle (~26th occurrence) — flagged once per cycle, never re-litigated, no
   scapegoat (lessons #9/#10/#23/#26). Brief branch name `vnstock-advisor-4-dev-data` does
   not exist as an origin branch.
 - **Report record:** …107 SWEPT (restored cycle-109); 108 interrupted (→ cycle-109);
-  109 written; 110–111 interrupted close-outs (→ cycle-112 report); 112 written + verified
-  in HEAD AND on disk (lesson #25 defense proven over a full cycle); 113 written + verified
-  in HEAD AND on disk (2nd consecutive cycle — report chain gap-free since cycle 103);
-  114 written this cycle. Defense continues: verify report in HEAD's tree next cycle.
-- Counters at cycle-113: outOfChainDelegations 126 flat (uncorroborated by lane logs —
+  109 written; 110–111 interrupted close-outs (→ cycle-112 report); 112, 113, 114 all
+  written + verified in HEAD AND on disk (lesson #25 defense now proven 3 consecutive
+  cycles — report chain gap-free since cycle 103); 115 written this cycle. Defense
+  continues: verify report in HEAD's tree next cycle.
+- Counters at cycle-114: outOfChainDelegations 126→130 (+4, uncorroborated by lane logs —
   no dispatch occurred; tracker artifact, noted once, not re-litigated);
   contextCompactions 8 flat; workspaceDirty 4, stalls 6, qaNoGo 1, noopStreak 0 flat.
 
@@ -27,14 +27,14 @@
 - Superseded status settled by git ancestry, NOT briefs. Flag the discrepancy once per
   cycle; never re-litigate; never fabricate a scapegoat.
 - The ONLY thing that lifts the freeze is the orchestrator's superseded-close step (4→0).
-  Escalated as owner health probe since cycle 22 (~93rd cycle); owner decision on the M3
+  Escalated as owner health probe since cycle 22 (~94th cycle); owner decision on the M3
   breach clock pending (fix close step / redefine clock / accept).
 - M3 wave-1 tasks (vnstock-advisor-15..22) all `held:`; PM reopens to `ready` the cycle the
   freeze lifts. json-formatter audit fix `ready` but unclaimable (branch = cap violation).
 
 ## What failed / dead ends
 - In-cycle dispatches: NONE legal during freeze (all would be filler/boundary violations).
-- Orchestrator close step is a genuine bug (superseded PRs not closed, ~93 cycles); nothing
+- Orchestrator close step is a genuine bug (superseded PRs not closed, ~94 cycles); nothing
   agent-side fixes it.
 
 ## Open questions / triggers
@@ -46,9 +46,9 @@
   all recorded in COMPANY_STATE.md. layoff-watch empty, pending.json empty.
 
 ## Report state
-- Last report: workspace/reports/2026-08-12-cycle-114.md (freeze ~93rd cycle, M3 breach
-  73/15 at cycle-113 metrics — 4.9× budget; drain mode verified again to have no
-  applicable object; owner decision pending; cycle-113 report survival in HEAD confirmed).
-  COMPANY_STATE pointer updated to cycle-114. Idea-backlog status updated to cycle-114.
+- Last report: workspace/reports/2026-08-12-cycle-115.md (freeze ~94th cycle, M3 breach
+  74/15 at cycle-114 metrics — 4.9× budget; drain mode verified again to have no
+  applicable object; owner decision pending; cycle-114 report survival in HEAD confirmed).
+  COMPANY_STATE pointer updated to cycle-115. Idea-backlog status updated to cycle-115.
   Lessons: 27 entries (no new lesson — unfounded cap claim covered by #9/#10/#23/#26;
   report-survival defense working per #25; no padding).
