@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-12T19:00:21.063Z",
-  "cycle": 14,
+  "generatedAt": "2026-08-12T19:02:19.147Z",
+  "cycle": 15,
   "cap": 3,
   "drain": true,
   "live": true,
@@ -30,7 +30,7 @@
       "action": "signed off — waiting on the milestone ship gate",
       "actor": "ship",
       "position": 1,
-      "ageHours": 50.1
+      "ageHours": 50.2
     },
     {
       "taskId": "vnstock-advisor-5-dev-analysis-engine",
@@ -57,7 +57,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 2,
-      "ageHours": 44.5
+      "ageHours": 44.6
     },
     {
       "taskId": "vnstock-advisor-4-dev-data",
