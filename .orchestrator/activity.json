@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-08-12T19:13:31.097Z",
+  "generatedAt": "2026-08-12T19:16:03.580Z",
   "working": [],
   "recent": [
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 20",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-12T19:14:15.760Z",
+      "ended": "2026-08-12T19:16:03.580Z",
+      "ok": true
+    },
     {
       "instance": "ceo",
       "role": "ceo",
@@ -110,16 +120,6 @@
       "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
       "since": "2026-08-12T18:18:22.534Z",
       "ended": "2026-08-12T18:29:50.794Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 14",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T18:17:18.662Z",
-      "ended": "2026-08-12T18:18:15.136Z",
       "ok": true
     }
   ]

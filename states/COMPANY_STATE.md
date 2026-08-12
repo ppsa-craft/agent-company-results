@@ -44,7 +44,7 @@ Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. Await 
 
 ## Last CEO report
 
-- 2026-08-12-cycle-17 (workspace/reports/2026-08-12-cycle-17.md — covers drain arc cycles 14–17: PRs 16+17 merged, M1/M2 shipped)
+- 2026-08-12-cycle-20 (workspace/reports/2026-08-12-cycle-20.md — wait window 18–20: drain queue orchestrator-close-only, idea backlog refreshed, M3 staged post-freeze)
 
 ## Idea backlog
 
