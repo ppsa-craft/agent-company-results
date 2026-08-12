@@ -44,7 +44,7 @@ Close the 4 superseded PRs (11/13/14/15) and merge the 2 canonical PRs (16, 17) 
 
 ## Last CEO report
 
-- 2026-08-12-cycle-6 (workspace/reports/2026-08-12-cycle-6.md)
+- 2026-08-12-cycle-7 (workspace/reports/2026-08-12-cycle-7.md)
 
 ## Idea backlog
 

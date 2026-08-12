@@ -20,7 +20,7 @@
 - [ba] vnstock-advisor tasks/vnstock-advisor-m3-ba-doc-disclaimer.md — status: done
 - [cto] vnstock-advisor tasks/vnstock-advisor-m3-cto-stack-record.md — status: done
 - [pm] vnstock-advisor tasks/vnstock-advisor-m3-pm-analytics-plan.md — status: done
-- [pm] vnstock-advisor tasks/pm-cap-violation-investigation.md — status: ready
+- [pm] vnstock-advisor tasks/pm-cap-violation-investigation.md — status: done
 - [dev] [json-formatter] tasks/audit-json-formatter.md (note: still blocked on the PR cap freeze #155, no new branch until a merge lifts it) — status: ready
 
 Drain order: TECHLEAD review → TESTER pass → QA go → merge (cap freeze lifts only on merge). TESTER tasks: wait for the branch's TECHLEAD APPROVED before running.

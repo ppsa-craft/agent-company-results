@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T17:19:08.694Z",
+  "generatedAt": "2026-08-12T17:21:16.163Z",
   "cycle": 6,
   "cap": 3,
   "drain": true,
@@ -138,7 +138,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 5,
-      "ageHours": 29
+      "ageHours": 29.1
     },
     {
       "taskId": "vnstock-advisor-15-dev-analysis-engine-security-gate",
@@ -165,7 +165,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 6,
-      "ageHours": 29
+      "ageHours": 29.1
     }
   ]
 }
