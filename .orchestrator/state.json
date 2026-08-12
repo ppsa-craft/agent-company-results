@@ -29,11 +29,13 @@
   "interrupted": null,
   "pendingPrompt": null,
   "idleStreaks": {
-    "hr": 2,
-    "its": 2
+    "its": 3,
+    "ba": 1,
+    "cto": 1,
+    "qa": 1
   },
   "capacityPressure": {
-    "tester": 1
+    "tester": 2
   },
   "noopStreak": 0,
   "counters": {
@@ -121,5 +123,5 @@
   "stallRetries": 0,
   "lastAuditedRunId": 31564177653,
   "pendingConflictNotes": [],
-  "pendingBoundaryNote": null
+  "pendingBoundaryNote": "LAYOFF WATCH (§3.5.4 ladder): its idle 3 cycles — each takes the NEXT ready task for its role (PM assigns idle-first, see roster/layoff-watch.json) or gets laid off. Do NOT invent filler work to save them (§3.5.4).\n- CAPACITY PRESSURE (§3.5.1): tester: 4 outstanding vs 1 instance(s), 2 cycle(s) running — every instance is busy and work is queuing. This is the moment hiring IS justified: consider ordering HR to scale the role up."
 }

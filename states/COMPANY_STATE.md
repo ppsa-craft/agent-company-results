@@ -13,15 +13,18 @@
 
 ## Strategy (CEO, one line — full version in the latest report)
 
-Drain the 6 open PRs through TECHLEAD → TESTER → QA → merge to lift the cap freeze, then continue flagship M3 (suggestion-api + web-ui) on the merged contracts.
+Close the 4 superseded PRs (11/13/14/15) and merge the 2 canonical PRs (16, 17) to lift the cap freeze, then continue flagship M3 (suggestion-api + web-ui) on the merged contracts.
 
 ## Active work
 
 <!-- PM maintains this section -->
 | Task | Assignee | Status | Review |
 |---|---|---|---|
-| 14 TESTER/QA/BA/CTO/PM ready tasks (drain + M3 staging) | unclaimed | ready | — |
-| 6 open PRs (PR 11/13/14/15/16/17) | TECHLEAD review in progress | draining | awaiting techlead |
+| PR 16 DEV fix (vnstock-advisor-14-dev-data-ingest-security-gate-fix, drain-critical) | _ready_ | ready | TESTER FAIL F1/F2 on record → DEV fix, then TESTER re-run, then QA GO |
+| PR 17 TESTER run (vnstock-advisor-15-...-tester) | claimed:tester | claimed | no verdict yet (3 in-cycle runs died environmentally); QA gate ready after PASS |
+| M3 staging (BA use cases + disclaimer doc, CTO stack record, PM analytics plan) | BA/CTO/PM | done (freeze-safe, debate-ready) | §5.1 debate before M3 build |
+| QA ship gates (both services) | QA | done this cycle: 0 GO / 0 NO-GO (nothing met the merge precondition) | re-dispatch after TESTER passes |
+| json-formatter audit fix (audit-json-formatter) | _ready_ | ready (blocked on cap freeze) | — |
 
 ## Open debates
 
@@ -29,18 +32,20 @@ Drain the 6 open PRs through TECHLEAD → TESTER → QA → merge to lift the ca
 
 ## HR approvals (CEO-recorded, 2026-08-12)
 
-- **Scale TESTER 1 → 2** (approval_ref: "CEO cycle-4 ruling 2026-08-12 — CAPACITY PRESSURE note fired (§3.5.1): tester 5 outstanding vs 1 instance; 6 drain TESTER tasks queued on TECHLEAD approval. Scale makes the 6-branch drain parallel. See workspace/reports/2026-08-12-cycle-1.md"). Executed via HR.
+- **Scale TESTER 1 → 2** (approval_ref: "CEO cycle-4 ruling 2026-08-12 — CAPACITY PRESSURE note fired (§3.5.1): tester 5 outstanding vs 1 instance; 6 drain TESTER tasks queued on TECHLEAD approval. Scale makes the 6-branch drain parallel. See workspace/reports/2026-08-12-cycle-1.md"). Executed via HR; confirmed live cycle 5 (capacityPressure.tester=2).
+- **Lay off `its` (soft-disable)** (approval_ref: "CEO cycle-5 ruling 2026-08-12 — layoff-watch ladder decision (§3.5.4): its idle 3+ cycles, zero ready its-role tasks exist, role is not summonable in this roster; no filler invented. Recorded in COMPANY_STATE.md HR approvals and workspace/reports/2026-08-12-cycle-5.md."). Proposal in roster/pending.json; orchestrator validation pending.
 
 ## Blockers
 
-- **PR cap freeze (#155):** 6 open PRs vs cap 3. No new branches until merges drop the count. Only a merge lifts it.
-- **Critical path:** all 6 PRs `awaiting: techlead` (per pr-queue.json 16:06) — TECHLEAD review must land before TESTER/QA can drain. Reviews still empty as of cycle 4.
-- Drain sequencing note (in backlog.md): TECHLEAD review → TESTER pass → QA go → merge.
+- **PR cap freeze (#155):** 6 open PRs vs cap 3. No new branches until the count drops. Closing superseded PRs 11/13/14/15 (orchestrator action) drops it 6→2; merging 16+17 lifts it entirely.
+- **Canonical PR 16:** blocked on DEV fix (F1 README install/run BLOCKING, F2 DB-down crash HIGH — fix spec `vnstock-advisor-14-dev-data-ingest-security-gate-fix` ready) → TESTER re-run → QA GO.
+- **Canonical PR 17:** blocked on TESTER PASS — 3 in-cycle dispatch attempts died (terminal echo-loop pattern); retry next cycle, cap at 2 retries.
+- Drain sequencing note (in backlog.md): TECHLEAD review (DONE, 6/6) → TESTER pass → QA go → merge.
 
 ## Last CEO report
 
-- _2026-08-12-cycle-1_ <!-- link workspace/reports/... -->
+- 2026-08-12-cycle-5 (workspace/reports/2026-08-12-cycle-5.md)
 
 ## Idea backlog
 
-See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas). M3 DEV slices staged for post-freeze (M3-A suggestion-api, M3-B web-ui, M3-C e2e wiring).
+See [tasks/idea-backlog.md](tasks/idea-backlog.md) (CEO-owned, min. 3 ranked ideas). M3 DEV slices staged for post-freeze per CTO stack record seams (M3-A auth, M3-B suggestions, M3-D web-ui parallel; M3-C assembly serial).
