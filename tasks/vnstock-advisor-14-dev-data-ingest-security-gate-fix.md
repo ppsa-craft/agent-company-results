@@ -1,6 +1,6 @@
 # DEV fix — PR 16 TESTER FAIL findings, data-ingest security-gate (vnstock-advisor)
 
-- **App:** vnstock-advisor | **DoD tier:** 3 (fix — failing-test-first + changelog + README run-steps update) | **Assignee:** _ready_
+- **App:** vnstock-advisor | **DoD tier:** 3 (fix — failing-test-first + changelog + README run-steps update) | **Assignee:** dev (claimed cycle 14, drain-mode takeover of existing PR 16 branch — no new branch)
 - **Goal:** Fix the TESTER FAIL findings (F1–F6) on PR 16 (`task/vnstock-advisor-14-dev-data-ingest-security-gate-dev`, tip `8eaabba`) so the drain queue resumes: TESTER re-run → QA gate → merge. DRAIN MODE (#160): this is the orchestrator's drain-mode DEV assignment target — no new branch; the existing PR branch is the work target.
 - **Background:** PR 16 is the canonical data-ingest security-gate merge (supersedes PR 13/14; TECHLEAD APPROVED with non-blocking v1.1 items). TESTER's cycle-4 run (`metrics/agents/4/tester.md`) returned **TESTER FAIL**: README-verbatim install + run is broken (F1) and `/ingest/run` crashes to a raw 500 when PostgreSQL is down (F2). Findings are transcribed below verbatim from the TESTER lane log. The TESTER FAIL is not yet transcribed onto `reviews/vnstock-advisor-14-*.md` nor pr-queue (orchestrator mechanical pickup — lag; do not wait on it, the findings here are authoritative).
 

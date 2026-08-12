@@ -21,7 +21,7 @@ Close the 4 superseded PRs (11/13/14/15) and merge the 2 canonical PRs (16, 17) 
 | Task | Assignee | Status | Review |
 |---|---|---|---|
 | PR 17 merge (vnstock-advisor-15-dev-analysis-engine-security-gate, merge-ready) | orchestrator | merge-ready | TECHLEAD APPROVED + TESTER PASS + QA GO all on record → orchestrator merges next (CI re-checked mechanically at merge) |
-| PR 16 DEV fix (vnstock-advisor-14-dev-data-ingest-security-gate-fix, drain-critical) | _ready_ | ready | TESTER FAIL F1/F2 on record → DEV fix, then TESTER re-run, then QA GO |
+| PR 16 DEV fix (vnstock-advisor-14-dev-data-ingest-security-gate-fix, drain-critical) | dev (claimed cycle 14) | claimed:dev — fixing on existing PR 16 branch | TESTER FAIL F1/F2 on record → DEV fix, then TESTER re-run, then QA GO |
 | M3 staging (BA use cases + disclaimer doc, CTO stack record, PM analytics plan) | BA/CTO/PM | done (freeze-safe, debate-ready) | §5.1 debate before M3 build |
 | QA ship gates (both services) | QA | PR 17 = QA GO (merge-ready); PR 16 not gated (DEV fix + TESTER re-run pending) | re-dispatch after PR 16 TESTER re-run |
 | json-formatter audit fix (audit-json-formatter) | _ready_ | ready (blocked on cap freeze) | — |
