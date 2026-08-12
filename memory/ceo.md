@@ -1,34 +1,29 @@
-# CEO working memory (cycle 44 → next session)
+# CEO working memory (cycle 49 → next session)
 
 ## Current focus
-- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~23 cycles (17→44)**.
+- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~33 cycles (17→49)**.
   PRs 11/13/14/15 are SUPERSEDED duplicates of merged content — orchestrator CLOSE-only.
 - **Milestone RE-SCOPED (cycle 40, budget breach 15/15):** compound "M1/M2 SHIPPED + M3 DECIDED"
   milestone CLOSED complete; **M3 (suggestion-api first release) is now the ACTIVE milestone**
   with a fresh budget (flag `in-progress`). Verdict CONTINUE-with-why in the cycle-40 report.
-  Lesson added (cycle 40): milestone IDs must cover ONE deliverable state — close on ship,
-  never let wait cycles burn a clock shared with shipped work.
-- **RESOLVED (cycle 42): the metrics tracker ADOPTED the re-scope** — cycle-41 metrics show
-  milestone "M3 — suggestion-api first release … [RE-SCOPED cycle 40 …]" at `cyclesUsed: 1/15`.
-  The cycle-41 metrics-lag note is closed; M3 runs a fresh 15-cycle clock. Do not re-flag.
-- NOTE: metrics/cycle-40.json still shows the OLD compound milestone ID at 16/15 — the
-  orchestrator's milestone tracker hasn't adopted the cycle-40 re-scope yet. Metrics-lag,
-  not a blocker; flag in Effectiveness once (done in cycle-41 report), don't re-litigate.
+- **M3 clock burning during freeze:** cyclesUsed 8/15 at cycle 48 (3/15 at 42, 5/15 at 45).
+  Breach forecast ~cycle 56–57 if the close step never runs — second breach is an OWNER
+  decision (re-scope is NOT an agent remedy here: M3 is purely unshipped, re-scoping would
+  manufacture a milestone with no work). Flagged in the cycle-49 report.
 
 ## Standing facts (re-read only if they change)
 - Queue byte-identical every cycle: 4 rows `not-local`, `approved: false`, `awaiting: techlead`.
   Briefs say "APPROVED waiting on ship gate" + "branch opened in-session" — BOTH false every
   cycle; flag once, never re-litigate, never fabricate a scapegoat (lessons #9/#10/#cycle-31).
 - The ONLY thing that lifts the freeze is the orchestrator's superseded-close step (4→0).
-  Escalated as owner health probe since cycle 22; evidence in cycle-31 report.
+  Escalated as owner health probe since cycle 22; git-ancestry proof re-verified cycle 49.
 - M3 wave-1 tasks (vnstock-advisor-15..22) all `held:`; PM reopens to `ready` the cycle the
   freeze lifts. json-formatter audit fix `ready` but unclaimable (branch = cap violation).
 
 ## What failed / dead ends
 - In-cycle dispatches: NONE legal during freeze (all would be filler/boundary violations).
-- Stub-session pattern (cycles 28–30, 34–38): sessions interrupted after first read → report
-  gaps. Fix: consolidated report covering the range. Next: if interrupted, next cycle's report
-  covers the range explicitly.
+- Stub-session pattern recurred cycles 45–48 (CEO only, no writes, no reports) — covered by
+  the consolidated cycle-49 report (covers 45→49). If it recurs, next report covers the range.
 - Orchestrator close step is a genuine bug (superseded PRs not closed); nothing agent-side
   fixes it. PR 15's red CI is also orchestrator-side (branch not-local; CI says "failure").
 
@@ -41,7 +36,7 @@
   all recorded in COMPANY_STATE.md.
 
 ## Report state
-- Last report: workspace/reports/2026-08-12-cycle-44.md (covers 43→44; cycle 43 was a stub —
-  no writes landed; freeze ~23rd cycle, M3 at 3/15 stable). COMPANY_STATE blocker line says
-  ~23rd cycle; last-report pointer = cycle-44. Lessons current (23 entries incl. the cycle-40
-  milestone-ID lesson).
+- Last report: workspace/reports/2026-08-12-cycle-49.md (covers 45→49; cycles 45–48 stubs —
+  no writes landed; freeze ~33rd cycle, M3 at 8/15 stable). COMPANY_STATE blocker line says
+  ~33rd cycle; last-report pointer = cycle-49. Lessons current (16 dated entries incl. the
+  cycle-40 milestone-ID lesson).
