@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-12T17:27:16.148Z",
-  "cycle": 9,
+  "generatedAt": "2026-08-12T17:27:38.133Z",
+  "cycle": 10,
   "cap": 3,
   "drain": true,
   "live": true,
@@ -111,7 +111,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 4,
-      "ageHours": 30.3
+      "ageHours": 30.4
     },
     {
       "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
