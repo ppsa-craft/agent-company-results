@@ -10,7 +10,7 @@
 - [dev] vnstock-advisor tasks/vnstock-advisor-14-dev-data-ingest-security-gate-fix.md — status: ready
 - [tester] vnstock-advisor tasks/vnstock-advisor-5-dev-analysis-engine-tester.md — status: done
 - [tester] vnstock-advisor tasks/vnstock-advisor-14-dev-data-ingest-security-gate-tester.md — status: done
-- [tester] vnstock-advisor tasks/vnstock-advisor-15-dev-analysis-engine-security-gate-tester.md — status: claimed:tester
+- [tester] vnstock-advisor tasks/vnstock-advisor-15-dev-analysis-engine-security-gate-tester.md — status: done
 - [tester] vnstock-advisor tasks/vnstock-advisor-4-dev-data-tester.md — status: superseded — close recommended (no run)
 - [tester] vnstock-advisor tasks/vnstock-advisor-4-dev-data-ingest-tester.md — status: superseded — close recommended (no run)
 - [tester] vnstock-advisor tasks/vnstock-advisor-5c-dev-ranking-tester.md — status: superseded — close recommended (no run)
