@@ -90,6 +90,16 @@ def test_ingest_run_rejects_invalid_symbols():
     assert response.status_code == 422
 
 
+def test_ingest_run_rejects_empty_symbols():
+    """Test that an explicit empty symbols list is rejected, not silently
+    falling back to the default symbol set (TESTER defect 3: dead guard)."""
+    response = client.post(
+        "/ingest/run",
+        json={"date": "2024-01-15", "symbols": []},
+    )
+    assert response.status_code == 422
+
+
 def test_ingest_run_rejects_unknown_source():
     """Test that /ingest/run rejects a source outside CAFEF/VNDIRECT (C4)."""
     response = client.post(

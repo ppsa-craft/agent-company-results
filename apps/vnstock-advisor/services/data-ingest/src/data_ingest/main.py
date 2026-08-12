@@ -221,11 +221,10 @@ async def run_ingest(request: IngestRunRequest):
             detail=f"{target_date.strftime('%Y-%m-%d')} is not a trading day (weekend or holiday)"
         )
     
-    # Determine symbols
-    symbols = request.symbols if request.symbols else DEFAULT_SYMBOLS
-    
-    if not symbols:
-        raise HTTPException(status_code=400, detail="No symbols provided")
+    # Determine symbols. An explicit empty list is rejected at the request-model
+    # boundary (min_length=1 -> 422) before this handler runs; absent (None)
+    # falls back to the default symbol set. No dead guard here.
+    symbols = request.symbols if request.symbols is not None else DEFAULT_SYMBOLS
     
     # Run ingestion job with source override if specified
     results, summary = await run_ingestion_job(

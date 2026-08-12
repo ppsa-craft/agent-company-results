@@ -227,6 +227,8 @@ async def run_ingestion_job(
         return results, summary
 
     async with httpx.AsyncClient() as http_client:
+        engine = None
+        async_session = None
         try:
             engine = create_async_engine(db_url)
             async with engine.begin() as conn:
@@ -265,6 +267,11 @@ async def run_ingestion_job(
             # ingest_data_for_date is unaffected (it catches its own DB errors).
             logger.error("Database unreachable during ingestion job", error=str(e))
             raise DatabaseUnavailableError("Database unavailable; ingestion could not run. Check DATABASE_URL and PostgreSQL availability.") from e
+        finally:
+            if async_session is not None:
+                await async_session.close()
+            if engine is not None:
+                engine.dispose()
     
     logger.info("Ingestion job completed", summary=summary)
     # Add disclaimer to summary for API responses
