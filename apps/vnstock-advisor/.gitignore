@@ -8,6 +8,8 @@ build/
 dist/
 .venv/
 .venv-*/
+.venv-ci/
+.venv-verify/
 venv/
 .pytest_cache/
 .mypy_cache/
