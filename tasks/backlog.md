@@ -24,7 +24,7 @@ Drain status 2026-08-12 (cycle 17): PRs 16 + 17 MERGED — PR 16 (data-ingest se
 - [dev] [vnstock-advisor] tasks/vnstock-advisor-15-m3a-auth-jwks.md — status: ready
 - [dev] [vnstock-advisor] tasks/vnstock-advisor-16-m3b-suggestion-api.md — status: ready
 - [ba] [vnstock-advisor] tasks/vnstock-advisor-19-m35-ui-use-cases.md — status: ready
-- [tester] [vnstock-advisor] tasks/vnstock-advisor-18-m3-api-test-pass.md — status: ready
+- [tester] [vnstock-advisor] tasks/vnstock-advisor-18-m3-api-test-pass.md — status: done
 - [qa] [vnstock-advisor] tasks/vnstock-advisor-20-m3-api-release-gate.md — status: ready
 - [dev] [vnstock-advisor] tasks/vnstock-advisor-17-m3c-api-assembly.md — status: ready
 - [dev] [vnstock-advisor] tasks/vnstock-advisor-21-m35-web-ui.md — status: ready

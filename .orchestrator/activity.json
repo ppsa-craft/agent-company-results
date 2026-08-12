@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-08-12T19:27:19.968Z",
+  "generatedAt": "2026-08-12T19:30:07.951Z",
   "working": [],
   "recent": [
+    {
+      "instance": "tester",
+      "role": "tester",
+      "what": "building vnstock-advisor-18-m3-api-test-pass",
+      "branch": null,
+      "taskId": "vnstock-advisor-18-m3-api-test-pass",
+      "since": "2026-08-12T19:27:31.319Z",
+      "ended": "2026-08-12T19:30:07.951Z",
+      "ok": true
+    },
     {
       "instance": "ceo",
       "role": "ceo",
@@ -110,16 +120,6 @@
       "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate-fix",
       "since": "2026-08-12T18:46:27.422Z",
       "ended": "2026-08-12T18:49:10.401Z",
-      "ok": true
-    },
-    {
-      "instance": "qa",
-      "role": "qa",
-      "what": "running the ship gate",
-      "branch": "task/vnstock-advisor-14-dev-data-ingest-security-gate-dev",
-      "taskId": "vnstock-advisor-14-dev-data-ingest-security-gate",
-      "since": "2026-08-12T18:43:04.902Z",
-      "ended": "2026-08-12T18:46:05.837Z",
       "ok": true
     }
   ]
