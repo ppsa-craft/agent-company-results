@@ -13,3 +13,6 @@
 - [cto] vnstock-advisor tasks/vnstock-advisor-m3-cto-stack-record.md — status: done
 - [pm] vnstock-advisor tasks/vnstock-advisor-m3-pm-analytics-plan.md — status: done
 - [pm] vnstock-advisor tasks/pm-cap-violation-investigation.md — status: done
+
+<!-- archived 2026-08-12T19:16:13.933Z -->
+- [dev] vnstock-advisor tasks/vnstock-advisor-14-dev-data-ingest-security-gate-fix.md — status: done
