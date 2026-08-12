@@ -1,38 +1,38 @@
-# CEO working memory (cycle 85 → next session)
+# CEO working memory (cycle 86 → next session)
 
 ## Current focus
-- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~67 cycles (17→84)**.
+- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~68 cycles (17→85)**.
   PRs 11/13/14/15 = SUPERSEDED duplicates of merged content — orchestrator CLOSE-only.
-- **M3 breach continues:** cyclesUsed **44/15** at metrics cycle-84 (22/15 @62 → 42/15 @82 →
-  43/15 @83 → 44/15 @84 — nearly 3× the budget). Owner decision pending since cycle-55
-  report (fix close step / redefine clock / accept). Re-scope is NOT an agent remedy
-  (purely unshipped milestone — cycle-40 lesson).
+- **M3 breach continues:** cyclesUsed **45/15** at metrics cycle-85 (22/15 @62 → 43/15 @83 →
+  44/15 @84 → 45/15 @85 — double the budget and counting). Owner decision pending since
+  cycle-55 report (fix close step / redefine clock / accept). Re-scope is NOT an agent
+  remedy (purely unshipped milestone — cycle-40 lesson).
 - **Verification is git-only** (pr-queue.json + activity.json gone since cycle 58): ancestry
-  `9f1ca33`/`0dcd72e` ∈ main re-verified 85; task-branch count unchanged at 29 — no new
+  `9f1ca33`/`0dcd72e` ∈ main re-verified 86; task-branch count unchanged at 29 — no new
   branch possible, so no per-branch tip re-check needed on unchanged counts.
 - Brief's "APPROVED waiting on ship gate" + "OVER CAP by 1: branch opened in-session" claims
   false every cycle — flagged once per cycle, never re-litigated, no scapegoat
   (lessons #9/#10/#23/#26). The brief's "cap of 3" vs decision #155's cap-5 — moot.
 - **Report gaps:** 63–66 (swept) consolidated into cycle-67 report; 72–74 (interrupted
   close-outs) consolidated into cycle-75 report; 84 (interrupted close-out) consolidated
-  into cycle-85 report. Cycle-85 report written and verified on disk.
+  into cycle-85 report. Cycle-86 report written and verified on disk.
 
 ## Standing facts (re-read only if they change)
 - Superseded status settled by git ancestry, NOT briefs. Flag the discrepancy once per
   cycle; never re-litigate; never fabricate a scapegoat.
 - The ONLY thing that lifts the freeze is the orchestrator's superseded-close step (4→0).
-  Escalated as owner health probe since cycle 22 (~67th cycle); owner decision on the M3
+  Escalated as owner health probe since cycle 22 (~68th cycle); owner decision on the M3
   breach clock pending (fix close step / redefine clock / accept).
 - M3 wave-1 tasks (vnstock-advisor-15..22) all `held:`; PM reopens to `ready` the cycle the
   freeze lifts. json-formatter audit fix `ready` but unclaimable (branch = cap violation).
 
 ## What failed / dead ends
 - In-cycle dispatches: NONE legal during freeze (all would be filler/boundary violations).
-- Orchestrator close step is a genuine bug (superseded PRs not closed, ~67 cycles); nothing
+- Orchestrator close step is a genuine bug (superseded PRs not closed, ~68 cycles); nothing
   agent-side fixes it.
-- Metrics-tracker delta persists: cycle-84 `activity.seen` = [ceo, dev] with the dev line
-  uncorroborated by lane logs (ceo-only reality) — noted once, not re-litigated.
-- Counters at cycle-84: outOfChainDelegations 96 (uncorroborated by lane logs);
+- Metrics-tracker delta persists: cycle-85 `activity.seen` lists 7 roles with idle `[ba,
+  cto]`, uncorroborated by lane logs (ceo-only reality) — noted once, not re-litigated.
+- Counters at cycle-85: outOfChainDelegations 98 (uncorroborated by lane logs, +2);
   workspaceDirty 4, stalls 6, qaNoGo 1, contextCompactions 5 unchanged.
 
 ## Open questions / triggers
@@ -44,9 +44,8 @@
   all recorded in COMPANY_STATE.md.
 
 ## Report state
-- Last report: workspace/reports/2026-08-12-cycle-85.md (freeze ~67th cycle, M3 breach
-  44/15 at cycle-84 metrics — nearly 3× the budget; drain mode verified to have no
-  applicable object; cycle-84 gap consolidated; owner decision pending). COMPANY_STATE
-  pointer updated to cycle-85. Lessons: 27 entries (no new lesson — the unfounded
-  cap-violation claim is covered by #9/#10/#23/#26; adding a 4th duplicate would pad
-  the file).
+- Last report: workspace/reports/2026-08-12-cycle-86.md (freeze ~68th cycle, M3 breach
+  45/15 at cycle-85 metrics — double the budget and counting; drain mode verified to have
+  no applicable object; owner decision pending). COMPANY_STATE pointer updated to cycle-86.
+  Lessons: 27 entries (no new lesson — the unfounded cap-violation claim is covered by
+  #9/#10/#23/#26; adding a 4th duplicate would pad the file).
