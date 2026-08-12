@@ -54,7 +54,8 @@ Result: **all OWASP assertions pass** (included in the full app-root suite run).
   `test_owasp_security.py`).
 - The app-root CI install layer (`requirements.txt` + root pytest testpaths/
   pythonpath) makes the existing workflow's `pytest -q` collect and run the
-  data-ingest suite; local mirror run: **27 passed**.
+  data-ingest suite; local mirror run: **37 passed** (34 data-ingest incl. the
+  F2 DB-unreachable 503 test and the F3 empty-symbols test, + 3 shared/python).
 
 ## 6. Residual / gate status
 

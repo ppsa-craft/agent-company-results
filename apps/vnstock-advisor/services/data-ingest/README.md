@@ -82,14 +82,18 @@ pytest services/data-ingest/tests/ -v
 .venv/bin/python -m pytest -q
 ```
 
-### Run with Docker Compose (Recommended)
+### Run with Docker Compose (Infrastructure)
+
+The compose file (`docker-compose.yml` at the app root) defines the backing
+services — PostgreSQL and Redis — not the data-ingest service itself.
 
 ```bash
-# From repo root
-docker-compose up -d data-ingest
+# From the app root (apps/vnstock-advisor/): start PostgreSQL + Redis
+docker-compose up -d postgres redis
 ```
 
-This starts PostgreSQL, Redis, and the data-ingest service together.
+Then run the data-ingest service with the dev run step above (uvicorn),
+pointing `DATABASE_URL` at the compose Postgres.
 
 ## API Endpoints
 
