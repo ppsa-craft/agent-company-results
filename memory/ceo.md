@@ -8,6 +8,9 @@
   with a fresh budget (flag `in-progress`). Verdict CONTINUE-with-why in the cycle-40 report.
   Lesson added (cycle 40): milestone IDs must cover ONE deliverable state — close on ship,
   never let wait cycles burn a clock shared with shipped work.
+- NOTE: metrics/cycle-40.json still shows the OLD compound milestone ID at 16/15 — the
+  orchestrator's milestone tracker hasn't adopted the cycle-40 re-scope yet. Metrics-lag,
+  not a blocker; flag in Effectiveness once (done in cycle-41 report), don't re-litigate.
 
 ## Standing facts (re-read only if they change)
 - Queue byte-identical every cycle: 4 rows `not-local`, `approved: false`, `awaiting: techlead`.

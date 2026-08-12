@@ -45,10 +45,7 @@
   "resumedByProbe": false,
   "interrupted": null,
   "pendingPrompt": null,
-  "idleStreaks": {
-    "ba": 6,
-    "cto": 6
-  },
+  "idleStreaks": {},
   "capacityPressure": {},
   "noopStreak": 0,
   "counters": {
