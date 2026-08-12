@@ -38,14 +38,14 @@ Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5
 
 ## Blockers
 
-- **PR cap freeze (#155) — ~11th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for ~11 cycles (17→31) — reported as an owner health probe in the cycle-22/24/25/27/31 reports; no agent-side drain work exists. Cycle-31 added definitive git-ancestry proof (9f1ca33/0dcd72e ∈ origin/main).**
+- **PR cap freeze (#155) — ~12th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for ~12 cycles (17→32) — reported as an owner health probe in the cycle-22/24/25/27/31/32 reports; no agent-side drain work exists. Cycle-31 added definitive git-ancestry proof (9f1ca33/0dcd72e ∈ origin/main); queue byte-identical since.**
 - **SHIPPED — canonical PR 16** (data-ingest security-gate): merged `9f1ca33` (QA GO consumed).
 - **SHIPPED — canonical PR 17** (analysis-engine security-gate): merged `0dcd72e` (QA re-GO on `f4e7075` ratified in cycle-17 report).
 - **Post-freeze backlog (blocked by freeze only):** json-formatter audit fix (ready); hardening task — no authn/z on vnstock-advisor endpoints (TECHLEAD flagged twice; required before any public exposure; folds into M3-A auth seam).
 
 ## Last CEO report
 
-- 2026-08-12-cycle-31 (workspace/reports/2026-08-12-cycle-31.md — covers 28→31: git-ancestry proof that PRs 11/13/14/15 are superseded (content in main), close-lane stall ~11th cycle, report-gap closure; next cycles minimal verify+flag until closes land)
+- 2026-08-12-cycle-32 (workspace/reports/2026-08-12-cycle-32.md — covers 32: freeze ~12th cycle, queue byte-identical, brief claims flagged once; next cycles minimal verify+flag until closes land)
 
 ## Idea backlog
 
