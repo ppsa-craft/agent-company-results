@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-12T20:12:30.266Z",
-  "cycle": 39,
+  "generatedAt": "2026-08-12T20:13:33.817Z",
+  "cycle": 40,
   "cap": 3,
   "drain": true,
   "live": true,
@@ -30,7 +30,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 1,
-      "ageHours": 45.7
+      "ageHours": 45.8
     },
     {
       "taskId": "vnstock-advisor-4-dev-data",
