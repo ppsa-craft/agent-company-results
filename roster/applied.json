@@ -16,6 +16,22 @@
       "ceo_approved": true,
       "approval_ref": "CEO cycle-4 ruling 2026-08-12 — CAPACITY PRESSURE note fired (§3.5.1): tester has 5 outstanding vs 1 instance; 6 vnstock-advisor drain TESTER tasks queued behind TECHLEAD approval. Scaling to tester + tester-1 lets the 6-branch drain run in parallel. Recorded in COMPANY_STATE.md HR approvals and workspace/reports/2026-08-12-cycle-1.md.",
       "appliedAt": "2026-08-12T16:17:00.337Z"
+    },
+    {
+      "action": "remove",
+      "agent": "its",
+      "disable_only": true,
+      "reason": "CEO cycle-5 order — §3.5.4 layoff-watch ladder at its decision point: `its` is on roster/layoff-watch.json at 3 idle cycles (orchestrator state.json idleStreaks.its = 3, stage watch); tasks/backlog.md holds zero `[its]`-tagged ready tasks (only tester/qa/ba/cto/pm/dev); the role is a health-probe persona (.opencode/agents/its.md, mode primary) — never delegated to, never part of a company cycle, not summonable in this roster. No ready task exists for it to take, so the ladder's 'takes the NEXT ready task or gets laid off' resolves to layoff; inventing filler work to save it is prohibited (§3.5.4). Soft-disable only (disable_only: true) — persona file stays for a zero-cost re-enable proposal later. Precedent: `its` was disabled the same way in July ('ITs — orchestrator layoff backstop', cycle-126 reports).",
+      "ceo_approved": true,
+      "approval_ref": "CEO cycle-5 ruling 2026-08-12 — layoff-watch ladder decision (§3.5.4): its idle 3+ cycles, zero ready its-role tasks exist, role is not summonable in this roster; no filler invented. Recorded in COMPANY_STATE.md HR approvals and workspace/reports/2026-08-12-cycle-5.md.",
+      "mode": "primary",
+      "manager": "none — orchestrator health probe, not in any delegation chain (its.md)",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "deny"
+      },
+      "appliedAt": "2026-08-12T17:09:45.450Z"
     }
   ]
 }

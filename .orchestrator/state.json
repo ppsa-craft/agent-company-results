@@ -28,15 +28,8 @@
   "resumedByProbe": false,
   "interrupted": null,
   "pendingPrompt": null,
-  "idleStreaks": {
-    "its": 3,
-    "ba": 1,
-    "cto": 1,
-    "qa": 1
-  },
-  "capacityPressure": {
-    "tester": 2
-  },
+  "idleStreaks": {},
+  "capacityPressure": {},
   "noopStreak": 0,
   "counters": {
     "backoffs": 0,
@@ -50,7 +43,7 @@
     "stalls": 3,
     "contextCompactions": 0,
     "contextBytesSaved": 0,
-    "diskBytesReclaimed": 747453369,
+    "diskBytesReclaimed": 1094074585,
     "providerTransientSessionResets": 0,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
