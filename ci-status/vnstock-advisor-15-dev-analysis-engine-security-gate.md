@@ -1,8 +1,9 @@
 # CI status — vnstock-advisor-15-dev-analysis-engine-security-gate
 
 Branch: `task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev`
-State: **NONE**
+State: **SUCCESS**
 
-(no check runs reported yet)
+- test: completed/success
+- lane: completed/success
 
-_Refreshed 2026-08-12T19:02:10.215Z by the orchestrator — read-only, do not edit._
+_Refreshed 2026-08-12T19:05:49.040Z by the orchestrator — read-only, do not edit._

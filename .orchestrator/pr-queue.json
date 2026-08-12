@@ -1,37 +1,10 @@
 {
-  "generatedAt": "2026-08-12T19:03:20.998Z",
-  "cycle": 15,
+  "generatedAt": "2026-08-12T19:06:03.004Z",
+  "cycle": 16,
   "cap": 3,
   "drain": true,
   "live": true,
   "queue": [
-    {
-      "taskId": "vnstock-advisor-15-dev-analysis-engine-security-gate",
-      "branch": "task/vnstock-advisor-15-dev-analysis-engine-security-gate-dev",
-      "author": "dev",
-      "local": true,
-      "openedAt": "2026-08-10T16:52:55.000Z",
-      "commits": 15,
-      "pr": 17,
-      "prUrl": "https://github.com/ppsa-craft/agent-company-results/pull/17",
-      "review": {
-        "rounds": 1,
-        "approved": true,
-        "awaiting": "dev",
-        "testerPass": true,
-        "testerFail": false,
-        "qaGo": true,
-        "qaNoGo": false,
-        "signedOff": true
-      },
-      "ci": "none",
-      "blockers": [],
-      "state": "ready-to-ship",
-      "action": "signed off — waiting on the milestone ship gate",
-      "actor": "ship",
-      "position": 1,
-      "ageHours": 50.2
-    },
     {
       "taskId": "vnstock-advisor-5-dev-analysis-engine",
       "branch": "task/vnstock-advisor-5-dev-analysis-engine-dev",
@@ -56,7 +29,7 @@
       "state": "not-local",
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
-      "position": 2,
+      "position": 1,
       "ageHours": 44.6
     },
     {
@@ -83,7 +56,7 @@
       "state": "not-local",
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
-      "position": 3,
+      "position": 2,
       "ageHours": 34.2
     },
     {
@@ -110,7 +83,7 @@
       "state": "not-local",
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
-      "position": 4,
+      "position": 3,
       "ageHours": 34.2
     },
     {
@@ -137,8 +110,8 @@
       "state": "not-local",
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
-      "position": 5,
-      "ageHours": 31.9
+      "position": 4,
+      "ageHours": 32
     }
   ]
 }
