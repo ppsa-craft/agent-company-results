@@ -46,13 +46,8 @@
   "interrupted": null,
   "pendingPrompt": null,
   "idleStreaks": {
-    "ba": 3,
-    "cto": 3,
-    "hr": 2,
-    "pm": 2,
-    "qa": 2,
-    "techlead": 2,
-    "tester": 2
+    "ba": 4,
+    "cto": 4
   },
   "capacityPressure": {},
   "noopStreak": 0,
