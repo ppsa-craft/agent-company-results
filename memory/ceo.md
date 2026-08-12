@@ -1,37 +1,37 @@
-# CEO working memory (cycle 70 → next session)
+# CEO working memory (cycle 71 → next session)
 
 ## Current focus
-- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~53 cycles (17→69)**.
+- Hold-reserve posture: PR cap freeze (#155) at 4 open vs cap 3 for **~54 cycles (17→70)**.
   PRs 11/13/14/15 = SUPERSEDED duplicates of merged content — orchestrator CLOSE-only.
-- **M3 breach continues:** cyclesUsed **29/15** at metrics cycle-69 (22/15 @62, 23/15 @63,
-  24/15 @64, 25/15 @65, 26/15 @66, 27/15 @67, 28/15 @68, 29/15 @69). Owner decision pending
-  since cycle-55 report (fix close step / redefine clock / accept). Re-scope is NOT an agent
-  remedy (purely unshipped milestone — cycle-40 lesson).
+- **M3 breach continues:** cyclesUsed **30/15** at metrics cycle-70 (22/15 @62, 23/15 @63,
+  24/15 @64, 25/15 @65, 26/15 @66, 27/15 @67, 28/15 @68, 29/15 @69, 30/15 @70 — DOUBLE the
+  budget). Owner decision pending since cycle-55 report (fix close step / redefine clock /
+  accept). Re-scope is NOT an agent remedy (purely unshipped milestone — cycle-40 lesson).
 - **Verification is git-only** (pr-queue.json + activity.json gone since cycle 58): ancestry
-  `9f1ca33`/`0dcd72e` ∈ main re-verified 70; task-branch count unchanged at 29 — no new
+  `9f1ca33`/`0dcd72e` ∈ main re-verified 71; task-branch count unchanged at 29 — no new
   branch possible, so no per-branch tip re-check needed on unchanged counts.
 - Brief's "APPROVED waiting on ship gate" + "OVER CAP by 1: branch opened in-session" claims
   false every cycle — flagged once per cycle, never re-litigated, no scapegoat
   (lessons #9/#10/#23/#26).
-- **Report continuity:** reports 67/68/69 all survived their state commits (no sweeps);
-  the 63–66 gap stands consolidated into the cycle-67 report, not re-litigated.
+- **Report continuity:** reports 67–70 all survived their state commits (no sweeps); the
+  63–66 gap stands consolidated into the cycle-67 report, not re-litigated.
 
 ## Standing facts (re-read only if they change)
 - Superseded status settled by git ancestry, NOT briefs. Flag the discrepancy once per
   cycle; never re-litigate; never fabricate a scapegoat.
 - The ONLY thing that lifts the freeze is the orchestrator's superseded-close step (4→0).
-  Escalated as owner health probe since cycle 22 (~53rd cycle); owner decision on the M3
+  Escalated as owner health probe since cycle 22 (~54th cycle); owner decision on the M3
   breach clock pending (fix close step / redefine clock / accept).
 - M3 wave-1 tasks (vnstock-advisor-15..22) all `held:`; PM reopens to `ready` the cycle the
   freeze lifts. json-formatter audit fix `ready` but unclaimable (branch = cap violation).
 
 ## What failed / dead ends
 - In-cycle dispatches: NONE legal during freeze (all would be filler/boundary violations).
-- Orchestrator close step is a genuine bug (superseded PRs not closed, ~53 cycles); nothing
+- Orchestrator close step is a genuine bug (superseded PRs not closed, ~54 cycles); nothing
   agent-side fixes it.
-- Metrics-tracker delta persists: cycle-69 `activity.seen` = 7 roles, idle `[ba, cto]`,
-  while no lane logs/verdicts exist (ceo-only reality) — noted once, not re-litigated.
-- Counters at cycle-69: outOfChainDelegations 84 (was 82 @68 → +2 over 68–69, no lane logs
+- Metrics-tracker delta persists: cycle-70 `activity.seen` = all 9 roles, idle `[]`, while
+  no lane logs/verdicts exist (ceo-only reality) — noted once, not re-litigated.
+- Counters at cycle-70: outOfChainDelegations 86 (was 84 @69 → +2 over 69–70, no lane logs
   corroborate); workspaceDirty 4, stalls 6, qaNoGo 1 unchanged.
 
 ## Open questions / triggers
@@ -43,6 +43,7 @@
   all recorded in COMPANY_STATE.md.
 
 ## Report state
-- Last report: workspace/reports/2026-08-12-cycle-70.md (freeze ~53rd cycle, M3 breach
-  29/15 at cycle-69 metrics — owner decision pending). COMPANY_STATE pointer updated to
-  cycle-70. Lessons current (26 entries; no new lesson needed this cycle).
+- Last report: workspace/reports/2026-08-12-cycle-71.md (freeze ~54th cycle, M3 breach
+  30/15 at cycle-70 metrics — double the budget; owner decision pending). COMPANY_STATE
+  pointer updated to cycle-71. Lessons current (26 entries; no new lesson needed this
+  cycle).
