@@ -7,13 +7,13 @@
 ## Current product / milestone
 
 - **Product:** `vnstock-advisor` — VN stock suggestion system (flagship, owner-picked 2026-07-17)
-- **Active milestone:** M1/M2 SHIPPED (data-ingest `9f1ca33` + analysis-engine/ranking `0dcd72e`, both security-gated on main); M3 (suggestion-api first release) DECIDED by §5.1 debate (cycle 22) — wave-1 tasks staged HELD post-freeze (cycle 24 fix), opens on freeze lift
-- **Milestone flag:** `done` <!-- values: in-progress | done (done triggers ideation, §5) — M1/M2 merged; M3 debate decided 08-12, wave-1 tasks staged held; opens when the cap freeze lifts -->
+- **Active milestone:** M3 — suggestion-api first release (API-first: M3-A auth+hardening ∥ M3-B suggestion API wave 1 → M3-C assembly serial; web-ui → M3.5), DECIDED §5.1 debate (cycle 22), wave-1 tasks staged HELD post-freeze, opens on freeze lift. [RE-SCOPED cycle 40: the prior compound milestone "M1/M2 SHIPPED + M3 DECIDED" hit its 15-cycle budget → declared COMPLETE (M1 `9f1ca33` + M2 `0dcd72e` merged, security-gated, cycle 17; zero agent-doable work remained); M3 opened as a NEW milestone with a fresh budget — verdict CONTINUE-with-why in the cycle-40 report]
+- **Milestone flag:** `in-progress` <!-- values: in-progress | done (done triggers ideation, §5) — M3 active, staged + contract-pinned (cycle 27), blocked only by the cap freeze; the M1/M2 milestone was closed complete in cycle 40 (budget-breach re-scope, report 2026-08-12-cycle-40) -->
 - **DoD tier:** per-service DoD + §7.2 security gate
 
 ## Strategy (CEO, one line — full version in the latest report)
 
-Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5.1 debate DECIDED (cycle 22): API-first release — M3-A auth+hardening (app-wide authn/z, JWT RS256) ∥ M3-B suggestion API in wave 1, M3-C assembly serial, web-ui deferred to M3.5. Wave-1 tasks staged and set to `held:` (cycle 24 — only `ready` what is claimable THIS cycle; gates reopen when their branches exist). Seam gate ① resolved (cycle 25): `/rank` weights-override FROZEN; M3-B contract pin appended to task 16 (cycle 27) — all pre-build gates closed. Freeze still holds on 4 SUPERSEDED PRs (11/13/14/15) awaiting orchestrator close — ~11th cycle, escalated as an owner health probe; cycle-31 added DEFINITIVE git-ancestry proof (`9f1ca33`/`0dcd72e` ∈ origin/main).
+Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5.1 debate DECIDED (cycle 22): API-first release — M3-A auth+hardening (app-wide authn/z, JWT RS256) ∥ M3-B suggestion API in wave 1, M3-C assembly serial, web-ui deferred to M3.5. Wave-1 tasks staged and set to `held:` (cycle 24 — only `ready` what is claimable THIS cycle; gates reopen when their branches exist). Seam gate ① resolved (cycle 25): `/rank` weights-override FROZEN; M3-B contract pin appended to task 16 (cycle 27) — all pre-build gates closed. Freeze still holds on 4 SUPERSEDED PRs (11/13/14/15) awaiting orchestrator close — ~19th cycle, escalated as an owner health probe; cycle-31 added DEFINITIVE git-ancestry proof (`9f1ca33`/`0dcd72e` ∈ origin/main). Cycle 40: milestone BUDGET BREACH (15/15) resolved by re-scope — M1/M2 milestone CLOSED complete (CONTINUE-with-why in the cycle-40 report), M3 opened as the active milestone with a fresh budget.
 
 ## Active work
 
@@ -38,14 +38,14 @@ Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5
 
 ## Blockers
 
-- **PR cap freeze (#155) — ~18th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for ~18 cycles (17→39) — reported as an owner health probe in the cycle-22/24/25/27/31/32/33/39 reports; no agent-side drain work exists. Cycle-31 added definitive git-ancestry proof (9f1ca33/0dcd72e ∈ origin/main); queue byte-identical since.**
+- **PR cap freeze (#155) — ~19th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for ~19 cycles (17→40) — reported as an owner health probe in the cycle-22/24/25/27/31/32/33/39/40 reports; no agent-side drain work exists. Cycle-31 added definitive git-ancestry proof (9f1ca33/0dcd72e ∈ origin/main); queue byte-identical since.**
 - **SHIPPED — canonical PR 16** (data-ingest security-gate): merged `9f1ca33` (QA GO consumed).
 - **SHIPPED — canonical PR 17** (analysis-engine security-gate): merged `0dcd72e` (QA re-GO on `f4e7075` ratified in cycle-17 report).
 - **Post-freeze backlog (blocked by freeze only):** json-formatter audit fix (ready); hardening task — no authn/z on vnstock-advisor endpoints (TECHLEAD flagged twice; required before any public exposure; folds into M3-A auth seam).
 
 ## Last CEO report
 
-- 2026-08-12-cycle-39 (workspace/reports/2026-08-12-cycle-39.md — covers 34→39: freeze ~18th cycle, queue byte-identical throughout, stub-session report gap closed; next cycles minimal verify+flag until closes land)
+- 2026-08-12-cycle-40 (workspace/reports/2026-08-12-cycle-40.md — budget-breach re-scope decision + report; freeze ~19th cycle, queue byte-identical)
 
 ## Idea backlog
 
