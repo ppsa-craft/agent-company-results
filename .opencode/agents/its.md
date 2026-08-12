@@ -1,4 +1,5 @@
 ---
+disable: true
 description: Health-probe agent — reads one sentinel file and echoes the token in it, nothing else. Used by the orchestrator to check the provider/key is responsive AND that the model can actually call a tool before resuming from a pause (never delegated to, never part of a company cycle).
 mode: primary
 steps: 3

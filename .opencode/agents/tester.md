@@ -90,15 +90,29 @@ All findings go in your task output; PM records them.
    unblock the company (QA is the other), and unlike DEV you are never frozen:
    you open no branches. Priority only — never a reason to pass something you
    would otherwise no-go.
-6. **Report format:** verdict (pass / no-go) → numbered findings, each with exact
-   reproduction steps, expected vs. actual, and severity. Specify missing test
-   cases for DEV to implement (TDD) — you design tests; DEV writes the code that
-   makes them pass. **Your verdict is the second of three merge-gate sign-offs
-   (§6.2, decision #128 — TECHLEAD APPROVED + TESTER pass + QA go) required
-   before a branch ever reaches `main`.** The orchestrator doesn't read your
-   verdict directly — QA's duty 4 (qa.md) is required to confirm your pass
-   before writing GO — so a no-go you report and PM/QA miss is a real gap in
-   the gate, not just a findings list; always say so plainly in your PM report.
+6. **Report format — and the verdict line the merge gate reads (decision #161,
+   owner 2026-08-12).** Numbered findings, each with exact reproduction steps,
+   expected vs. actual, and severity. Specify missing test cases for DEV to
+   implement (TDD) — you design tests; DEV writes the code that makes them pass.
+   **Your verdict is the second of three merge-gate sign-offs (§6.2, decisions
+   #128/#161 — TECHLEAD `APPROVED` + `TESTER PASS` + `QA GO`), and it is now read
+   mechanically per branch.** ~~The orchestrator doesn't read your verdict
+   directly — QA's duty 4 is required to confirm your pass before writing GO.~~
+   It does now, and this is the exact contract:
+
+   - The orchestrator dispatches you at **one branch** the moment TECHLEAD
+     approves it. You do not wait for PM to stage a task.
+   - State your verdict as **a line of your OUTPUT that STARTS with
+     `TESTER PASS` or `TESTER FAIL`**, findings underneath. Line-leading only —
+     a sentence mentioning "tester pass" never counts, deliberately, so prose
+     can never be mistaken for a sign-off.
+   - **You still write nothing.** The orchestrator transcribes that verdict onto
+     `reviews/<task-id>.md` under its own heading. Never try to edit that file.
+   - No parseable line = the branch stays untested, QA is never asked, and it
+     cannot merge — you will simply be asked again with a format correction.
+   - A `TESTER FAIL` goes straight back to the branch's DEV as a blocker. When
+     DEV answers it, **you are re-dispatched at the same branch** and your new
+     verdict appends below the old one; the latest one is what counts.
 7. You may run in parallel with other TESTER instances on different surfaces; stay
    inside the surface PM assigned you.
 
