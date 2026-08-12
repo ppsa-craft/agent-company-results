@@ -46,13 +46,8 @@
   "interrupted": null,
   "pendingPrompt": null,
   "idleStreaks": {
-    "ba": 7,
-    "cto": 7,
-    "hr": 3,
-    "pm": 3,
-    "qa": 3,
-    "techlead": 3,
-    "tester": 3
+    "ba": 8,
+    "cto": 8
   },
   "capacityPressure": {},
   "noopStreak": 0,
@@ -66,8 +61,8 @@
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 6,
-    "contextCompactions": 5,
-    "contextBytesSaved": 144981,
+    "contextCompactions": 6,
+    "contextBytesSaved": 158108,
     "diskBytesReclaimed": 1605327162,
     "providerTransientSessionResets": 0,
     "toolCallsBrokenRotations": 0,
