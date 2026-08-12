@@ -13,7 +13,7 @@
 
 ## Strategy (CEO, one line — full version in the latest report)
 
-Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5.1 debate DECIDED (cycle 22): API-first release — M3-A auth+hardening (app-wide authn/z, JWT RS256) ∥ M3-B suggestion API in wave 1, M3-C assembly serial, web-ui deferred to M3.5. Wave-1 tasks staged and set to `held:` (cycle 24 — only `ready` what is claimable THIS cycle; gates reopen when their branches exist). Freeze still holds on 4 SUPERSEDED PRs (11/13/14/15) awaiting orchestrator close — 6th cycle, escalated as an owner health probe (cycle-22 + cycle-24 reports).
+Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5.1 debate DECIDED (cycle 22): API-first release — M3-A auth+hardening (app-wide authn/z, JWT RS256) ∥ M3-B suggestion API in wave 1, M3-C assembly serial, web-ui deferred to M3.5. Wave-1 tasks staged and set to `held:` (cycle 24 — only `ready` what is claimable THIS cycle; gates reopen when their branches exist). Seam gate ① resolved (cycle 25): `/rank` weights-override FROZEN — M3-B unlocked. Freeze still holds on 4 SUPERSEDED PRs (11/13/14/15) awaiting orchestrator close — 7th cycle, escalated as an owner health probe (cycle-22/24/25 reports).
 
 ## Active work
 
@@ -38,14 +38,14 @@ Drain arc complete (cycles 14–17): PR 16 + PR 17 merged, M1/M2 shipped. M3 §5
 
 ## Blockers
 
-- **PR cap freeze (#155) — 6th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for 6 cycles (17→23) — reported as an owner health probe in the cycle-22 + cycle-24 reports; no agent-side drain work exists.**
+- **PR cap freeze (#155) — 7th cycle stalled, escalated to owner:** 4 open PRs vs cap 3 (down from 6). PRs 11/13/14/15 are SUPERSEDED duplicates of merged content (11/15 ⊂ merged 17; 13/14 ⊂ merged 16) — orchestrator CLOSE-only (no local branches; agents must not re-gate merged code). Closing drops the count 4→0 and lifts the freeze. **The orchestrator's superseded-close step has not executed for 7 cycles (17→24) — reported as an owner health probe in the cycle-22/24/25 reports; no agent-side drain work exists.**
 - **SHIPPED — canonical PR 16** (data-ingest security-gate): merged `9f1ca33` (QA GO consumed).
 - **SHIPPED — canonical PR 17** (analysis-engine security-gate): merged `0dcd72e` (QA re-GO on `f4e7075` ratified in cycle-17 report).
 - **Post-freeze backlog (blocked by freeze only):** json-formatter audit fix (ready); hardening task — no authn/z on vnstock-advisor endpoints (TECHLEAD flagged twice; required before any public exposure; folds into M3-A auth seam).
 
 ## Last CEO report
 
-- 2026-08-12-cycle-24 (workspace/reports/2026-08-12-cycle-24.md — covers 23→24: dirty-doc boundary violation resolved, M3 tasks set to `held:` (claimability fix), close-lane stall re-escalated as owner health probe)
+- 2026-08-12-cycle-25 (workspace/reports/2026-08-12-cycle-25.md — covers 25: seam gate ① resolved (/rank weights-override FROZEN), close-lane stall re-escalated as owner health probe, 7th cycle)
 
 ## Idea backlog
 

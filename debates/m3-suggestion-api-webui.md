@@ -41,3 +41,14 @@
 ## Dissents
 
 - **CTO (amended B):** would keep M3-D (web-ui) inside M3 in wave 2, overlapping A/B review-fix cycles, for the fastest full end-to-end demo. Not adopted — under the PR cap the smaller first release is the safer ship, and M3.5 follows immediately; CTO's seam risks are nonetheless all adopted as requirements above.
+
+## Seam-gate resolution — `/rank` weights-override freeze determination (cycle 25, 2026-08-12)
+
+**Gate ① resolved: the portfolio weights-override IS FROZEN in shipped M2 code** (CTO verified against the implementation + tests, not just docs — read-only, no writes):
+
+- **Request field:** `RankRequest.weights: Optional[Dict[str, float]]` (`schemas.py:160-163`); validation in `ranking.py:89-100`.
+- **Rules:** key set must be exactly `{momentum, trend, volume, volatility}` (missing OR extra keys → 400 INVALID_INPUT); sum-to-1 tolerance ±0.001. **Range [0,1] is NOT enforced** — M3-B must still send in-range weights (UC-SA-3 precondition).
+- **Response:** effective weights echoed as `weights_used` (`main.py:439`).
+- **Caveats (non-blocking):** positive full-override path untested (QA add-on at the M3 gate); doc drift in UC-AE-3 examples (`date` vs shipped `as_of_date`; required `series` map omitted) — shipped code is authoritative.
+- **Minimal pin M3-B builds against (from CTO):** `POST /rank {symbols[], as_of_date, algorithm_version, weights?{4 keys}, series{}}` — weights optional; if present, exactly those 4 keys, each float in [0,1], sum ±0.001 of 1.0 → else 400.
+- **Fallback trigger (from the decision) does NOT fire** — no narrower scope needed. M3-B task 16 is unlocked to build against the frozen contract the cycle the freeze lifts.
