@@ -6,11 +6,11 @@
   "milestoneStartedAt": null,
   "milestoneEscalated": false,
   "modelIndex": 0,
-  "failedStarts": 0,
+  "failedStarts": 1,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": null,
-  "ceoSessionRequests": 0,
+  "ceoSessionId": "ses_00973ef2affeyM2mdGg3fm6GJs",
+  "ceoSessionRequests": 1,
   "agentSessions": {},
   "agentInterrupted": {},
   "reviewFixInterrupted": {},
@@ -26,7 +26,10 @@
     "reason": "process restart (SIGINT) mid-cycle",
     "at": "2026-08-12T15:18:17.081Z"
   },
-  "pendingPrompt": null,
+  "pendingPrompt": {
+    "cycle": 1,
+    "session": "ses_00973ef2affeyM2mdGg3fm6GJs"
+  },
   "idleStreaks": {},
   "capacityPressure": {},
   "noopStreak": 0,
@@ -39,7 +42,7 @@
     "outOfChainDelegations": 0,
     "noopCycles": 0,
     "noopRotations": 0,
-    "stalls": 0,
+    "stalls": 1,
     "contextCompactions": 0,
     "contextBytesSaved": 0,
     "diskBytesReclaimed": 0,
@@ -111,5 +114,6 @@
     "task/vnstock-advisor-4-dev-data-ingest": 13,
     "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
   },
-  "prCapEngaged": true
+  "prCapEngaged": true,
+  "stallRetries": 1
 }
