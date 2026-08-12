@@ -1,16 +1,16 @@
 {
-  "cycleCount": 0,
-  "lastCycleAt": null,
+  "cycleCount": 1,
+  "lastCycleAt": "2026-08-12T15:37:31.408Z",
   "milestoneId": null,
-  "milestoneCycles": 0,
+  "milestoneCycles": 1,
   "milestoneStartedAt": null,
   "milestoneEscalated": false,
   "modelIndex": 0,
-  "failedStarts": 1,
+  "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
   "ceoSessionId": "ses_00973ef2affeyM2mdGg3fm6GJs",
-  "ceoSessionRequests": 1,
+  "ceoSessionRequests": 2,
   "agentSessions": {},
   "agentInterrupted": {},
   "reviewFixInterrupted": {},
@@ -21,15 +21,8 @@
   "shipBlocked": {},
   "shipConflicts": {},
   "resumedByProbe": false,
-  "interrupted": {
-    "cycle": 1,
-    "reason": "process restart (SIGINT) mid-cycle",
-    "at": "2026-08-12T15:18:17.081Z"
-  },
-  "pendingPrompt": {
-    "cycle": 1,
-    "session": "ses_00973ef2affeyM2mdGg3fm6GJs"
-  },
+  "interrupted": null,
+  "pendingPrompt": null,
   "idleStreaks": {},
   "capacityPressure": {},
   "noopStreak": 0,
@@ -39,7 +32,7 @@
     "boundaryViolations": 0,
     "workspaceDirty": 0,
     "reviewEscalations": 0,
-    "outOfChainDelegations": 0,
+    "outOfChainDelegations": 3,
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 1,
@@ -115,5 +108,9 @@
     "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
   },
   "prCapEngaged": true,
-  "stallRetries": 1
+  "stallRetries": 0,
+  "lastAuditedRunId": 31564177653,
+  "pendingConflictNotes": [
+    "SCHEDULED AUDIT REGRESSION (decision #137): the nightly full apps/ CI audit found 1 already-shipped app(s) now failing on main: json-formatter. New backlog task(s) (audit-<slug>, status: ready) already created mechanically — have PM assign a DEV."
+  ]
 }

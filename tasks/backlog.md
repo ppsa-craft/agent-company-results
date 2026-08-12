@@ -8,3 +8,4 @@
 > `- [role] [product] tasks/<id>.md — status: ready | claimed:<agent> | done`
 
 _No tasks yet — first ideation cycle pending._
+- [dev] [json-formatter] tasks/audit-json-formatter.md — status: ready
