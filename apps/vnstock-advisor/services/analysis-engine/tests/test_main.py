@@ -160,3 +160,43 @@ def test_rank_missing_symbols_returns_422():
         "as_of_date": "2026-08-10",
     })
     assert response.status_code == 422  # Pydantic validation error
+
+
+def test_rank_partial_weights_missing_keys_returns_400():
+    """Partial weight set that still sums to 1.0 must 400 INVALID_INPUT — never 500 (TESTER D2)."""
+    series = _load_fixture_bars()
+    response = client.post("/rank", json={
+        "symbols": ["VNM"],
+        "as_of_date": "2026-08-10",
+        "algorithm_version": "v1.0",
+        "weights": {"momentum": 1.0},  # sums to 1.0 but missing trend/volume/volatility
+        "series": {"VNM": series["VNM"]},
+    })
+    assert response.status_code == 400
+    body = response.json()
+    # RFC 7807: problem code lives in the `type` URL (no top-level `code` field).
+    assert "INVALID_INPUT" in body["detail"]["type"]
+    detail = body["detail"]["detail"]
+    assert "missing" in detail
+    assert "trend" in detail and "volume" in detail and "volatility" in detail
+
+
+def test_rank_all_zero_volume_series_returns_200():
+    """All-zero-volume series (schema allows volume ge=0) must rank cleanly — no 500 (TESTER D3)."""
+    series = _load_fixture_bars()
+    # 250 bars retained — valid_bars >= 200, so VNM stays rankable
+    zero_volume_bars = [dict(b, volume=0) for b in series["VNM"]]
+    response = client.post("/rank", json={
+        "symbols": ["VNM"],
+        "as_of_date": "2026-08-10",
+        "algorithm_version": "v1.0",
+        "series": {"VNM": zero_volume_bars},
+    })
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data["ranked"]) == 1
+    ranked = data["ranked"][0]
+    assert ranked["symbol"] == "VNM"
+    # volume_ratio must never surface as null in the response body — consistent 0.0 fallback
+    assert ranked["sub_components"]["volume"]["volume_ratio"] == 0.0
+    assert isinstance(ranked["components"]["volume"], float)

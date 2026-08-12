@@ -33,6 +33,14 @@ def make_async_context_manager(return_value):
     return AsyncContextManagerMock(return_value)
 
 
+def assert_meta_disclaimer(data):
+    """Assert that a response body includes meta.disclaimer for both locales."""
+    assert "meta" in data
+    assert "disclaimer" in data["meta"]
+    assert "vi-VN" in data["meta"]["disclaimer"]
+    assert "en-US" in data["meta"]["disclaimer"]
+
+
 def test_health_check():
     response = client.get("/health")
     assert response.status_code == 200
@@ -45,12 +53,15 @@ def test_health_check():
     db_check = next((c for c in data["checks"] if c.get("name") == "database"), None)
     assert db_check is not None
     assert "status" in db_check
+    assert_meta_disclaimer(data)
 
 
 def test_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "vnstock Data Ingest Service"}
+    data = response.json()
+    assert data["message"] == "vnstock Data Ingest Service"
+    assert_meta_disclaimer(data)
 
 
 def test_ingest_run_endpoint_validation():
@@ -65,6 +76,9 @@ def test_ingest_run_endpoint_validation():
         response = client.post("/ingest/run", json={"date": "2024-01-15"})
         # Should not fail with 400 for date format (Monday is trading day)
         assert response.status_code != 400 or "trading day" in response.text.lower()
+        # When a run completes successfully its response body must include the disclaimer
+        if response.status_code == 200:
+            assert_meta_disclaimer(response.json())
 
 
 def test_is_trading_day_weekend():
@@ -265,7 +279,7 @@ async def test_run_ingestion_job_weekday():
     mock_conn = AsyncMock()
     mock_session = AsyncMock()
     mock_engine = MagicMock()
-    mock_engine.begin = make_async_context_manager(mock_conn)
+    mock_engine.begin = lambda: make_async_context_manager(mock_conn)
     
     with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_fetch:
         mock_fetch.return_value = None  # Simulate CAFEF failure
@@ -328,6 +342,7 @@ async def test_ingest_status_endpoint():
     assert "scheduler_running" in data
     assert "default_symbols" in data
     assert isinstance(data["default_symbols"], list)
+    assert_meta_disclaimer(data)
 
 
 @pytest.mark.asyncio
@@ -338,7 +353,7 @@ async def test_primary_source_failure_triggers_fallback():
     mock_conn = AsyncMock()
     mock_session = AsyncMock()
     mock_engine = MagicMock()
-    mock_engine.begin = make_async_context_manager(mock_conn)
+    mock_engine.begin = lambda: make_async_context_manager(mock_conn)
     
     with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_cafef:
         mock_cafef.return_value = None  # Primary source fails
@@ -382,7 +397,7 @@ async def test_both_sources_fail():
     mock_conn = AsyncMock()
     mock_session = AsyncMock()
     mock_engine = MagicMock()
-    mock_engine.begin = make_async_context_manager(mock_conn)
+    mock_engine.begin = lambda: make_async_context_manager(mock_conn)
     
     with patch("data_ingest.ingest_service.fetch_from_cafef", new_callable=AsyncMock) as mock_cafef:
         mock_cafef.return_value = None  # Primary source fails

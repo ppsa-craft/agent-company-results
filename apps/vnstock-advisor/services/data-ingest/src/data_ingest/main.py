@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from vnstock_shared.config import get_settings
 from vnstock_shared.models import HealthCheck
 from .ingest_service import run_ingestion_job, is_trading_day
+from .disclaimer import build_meta_disclaimer
 
 settings = get_settings()
 
@@ -26,7 +27,7 @@ DISCLAIMER_EN = (
     "this information are at your own risk. Please consult a qualified independent financial advisor before investing."
 )
 
-DISCLAIMER_SHORT_VN = "⚠️ Tham khảo בלבד — Không phải lời khuyên đầu tư."
+DISCLAIMER_SHORT_VN = "⚠️ Chỉ mang tính chất tham khảo — Không phải lời khuyên đầu tư."
 DISCLAIMER_SHORT_EN = "⚠️ Reference only — Not financial advice."
 
 
@@ -63,6 +64,15 @@ app = FastAPI(
 DEFAULT_SYMBOLS = ["VNM", "VCB", "BID", "FPT", "HPG", "MSN", "VIC", "VHM", "GAS", "TCB"]
 
 
+def build_meta() -> dict:
+    """Build the standard response `meta` object including the mandatory disclaimer."""
+    return {
+        "generated_at": datetime.utcnow().isoformat() + "Z",
+        "source": "data-ingest-v0.1.0",
+        "disclaimer": build_meta_disclaimer("full"),
+    }
+
+
 async def scheduled_ingestion_job():
     """Scheduled ingestion job for trading days."""
     target_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
@@ -96,6 +106,7 @@ class IngestRunResponse(BaseModel):
     date: str
     results: List[IngestResultResponse]
     summary: dict
+    meta: dict = Field(default_factory=dict)
 
 
 @app.get("/health")
@@ -152,7 +163,14 @@ async def health_check():
         ]
     )
     
-    return health
+    return {
+        "status": health.status,
+        "service": health.service,
+        "version": health.version,
+        "timestamp": health.timestamp.isoformat() + "Z",
+        "checks": health.checks,
+        "meta": build_meta(),
+    }
 
 
 @app.post("/ingest/run", response_model=IngestRunResponse)
@@ -213,6 +231,7 @@ async def run_ingest(request: IngestRunRequest):
         date=target_date.strftime("%Y-%m-%d"),
         results=response_results,
         summary=summary,
+        meta=build_meta(),
     )
 
 
@@ -225,12 +244,16 @@ async def ingest_status():
         "scheduler_running": scheduler.running,
         "next_run": scheduler.get_job("daily_ingestion").next_run_time.isoformat() if scheduler.get_job("daily_ingestion") else None,
         "default_symbols": DEFAULT_SYMBOLS,
+        "meta": build_meta(),
     }
 
 
 @app.get("/")
 async def root():
-    return {"message": "vnstock Data Ingest Service"}
+    return {
+        "message": "vnstock Data Ingest Service",
+        "meta": build_meta(),
+    }
 
 
 if __name__ == "__main__":

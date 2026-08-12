@@ -95,7 +95,7 @@ class OHLCV(BaseModel):
             from datetime import datetime
             return datetime(2024, 1, 1, tzinfo=timezone.utc)
 
-    def normalize(self) -> "MarketDataCreate":
+    def normalize(self, timeframe: str = "1D") -> "MarketDataCreate":
         from vnstock_shared.models import MarketDataCreate
         return MarketDataCreate(
             time=self.time,
@@ -105,7 +105,8 @@ class OHLCV(BaseModel):
             low=self.low,
             close=self.close,
             volume=self.volume,
-            source=self.source
+            source=self.source,
+            timeframe=timeframe
         )
 
 

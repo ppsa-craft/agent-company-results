@@ -2,8 +2,7 @@
 
 Technical analysis engine for **vnstock-advisor**: computes indicators (SMA/EMA/RSI/MACD/VWAP/ATR/OBV/ROC) from OHLCV market data and exposes them over a small FastAPI surface.
 
-> **Disclaimer:** informational only — not financial advice. See
-> `docs/compliance/disclaimer.md`.
+> **Disclaimer:** informational only — not financial advice.
 
 ## Requirements
 
@@ -25,6 +24,14 @@ The `vnstock-shared-python` dependency is installed as a local path package
 (`file:../../shared/python`) — no network registry entry needed.
 
 ## Run the service
+
+The service requires two JWT env vars (development placeholders shown;
+production must inject real RSA keys via environment variables):
+
+```bash
+export JWT_PRIVATE_KEY=dev-private-key-change-in-production
+export JWT_PUBLIC_KEY=dev-public-key-change-in-production
+```
 
 ```bash
 uvicorn analysis_engine.main:app --host 0.0.0.0 --port 8002
@@ -65,34 +72,8 @@ environment variables).
 | GET | `/health` | liveness + service info |
 | GET | `/` | service banner |
 | POST | `/analyze` | compute indicators for a `MarketDataCreate` payload |
-| POST | `/indicators/compute` | compute indicators for an OHLCV payload |
-| POST | `/rank` | rank symbols from computed indicator series |
-
-## Security gate
-
-This service clears the DoD Tier 2 security gate — gitleaks secret-scan clean,
-semgrep SAST clean (no high/critical), Snyk SCA clean (no exploitable
-vulnerabilities), OWASP API Top 10 checks for the exposed endpoints.
-
-Run the security checks locally (from the **app root** `apps/vnstock-advisor/`):
-
-```bash
-# Secret scan — fail on ANY secret-like finding (empty allowlist)
-gitleaks detect --source . --config .gitleaks.toml
-
-# SAST — fail on high-severity (ERROR) findings
-semgrep scan --config .semgrep.yml services/analysis-engine/src
-
-# SCA — fail on CVSS >= 7.0 known-exploitable vulnerabilities
-snyk test --file=requirements.txt --severity-threshold=high
-
-# OWASP API Top 10 endpoint tests (also runs in the main suite)
-pytest services/analysis-engine/tests/test_owasp_security.py -q
-```
-
-Gate configuration lives at the app root: `.gitleaks.toml`, `.semgrep.yml`,
-`.snyk`. The four checks are wired as mandatory gates in the orchestrator-owned
-CI workflow; scan evidence is recorded in `SECURITY_GATE_RESULTS.md`.
+| POST | `/indicators/compute` | compute indicator arrays for a raw OHLCV series |
+| POST | `/rank` | rank symbols by composite score (UC-AE-3) |
 
 ## Project layout
 

@@ -25,7 +25,7 @@ DISCLAIMERS: Dict[str, DisclaimerText] = {
             "chịu rủi ro. Vui lòng tham khảo ý kiến chuyên gia tài chính độc lập trước khi "
             "đầu tư."
         ),
-        short="⚠️ Tham khảo בלבד — Không phải lời khuyên đầu tư."
+        short="⚠️ Chỉ mang tính chất tham khảo — Không phải lời khuyên đầu tư."
     ),
     "en-US": DisclaimerText(
         full=(

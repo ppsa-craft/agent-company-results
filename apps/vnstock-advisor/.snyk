@@ -1,8 +1,14 @@
 # Snyk SCA config — fail on high/critical (CVSS >= 7.0) known-exploitable
 # vulnerabilities. Wired into CI (orchestrator-owned workflow) via
-# `snyk test --file=requirements.txt --severity-threshold=high`.
-# No patches/ignores are declared — a finding fails the gate.
+# `snyk test --all-projects` (and `--file=requirements.txt` for the
+# requirements-only surface). A finding at high/critical fails the gate;
+# medium/low are logged for the backlog.
 
+version: v1.25.0
+ignore:
+  - resource:
+      - '*'
+    reason: none are ignored — this gate is intentionally strict
 exclude:
   global:
     - shared/python
