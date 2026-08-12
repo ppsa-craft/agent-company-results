@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-12T21:09:31.160Z",
-  "cycle": 62,
+  "generatedAt": "2026-08-12T21:09:55.843Z",
+  "cycle": 63,
   "cap": 3,
   "drain": true,
   "live": true,
@@ -111,7 +111,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 4,
-      "ageHours": 34
+      "ageHours": 34.1
     }
   ]
 }
