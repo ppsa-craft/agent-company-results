@@ -9,8 +9,8 @@
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": "ses_006d473caffepk9xZdd7i528pI",
-  "ceoSessionRequests": 4,
+  "ceoSessionId": null,
+  "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
       "id": "ses_0095219eaffeXSV0EGxgRRHa7q",
@@ -43,9 +43,21 @@
   "shipBlocked": {},
   "shipConflicts": {},
   "resumedByProbe": false,
-  "interrupted": null,
+  "interrupted": {
+    "cycle": 214,
+    "reason": "ppsa/deepseek-v4-flash-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-13T03:36:36.262Z"
+  },
   "pendingPrompt": null,
-  "idleStreaks": {},
+  "idleStreaks": {
+    "ba": 1,
+    "cto": 1,
+    "hr": 1,
+    "pm": 1,
+    "qa": 1,
+    "techlead": 1,
+    "tester": 1
+  },
   "capacityPressure": {},
   "noopStreak": 0,
   "counters": {
@@ -58,10 +70,10 @@
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 10,
-    "contextCompactions": 76,
-    "contextBytesSaved": 356399,
+    "contextCompactions": 77,
+    "contextBytesSaved": 358018,
     "diskBytesReclaimed": 1605327162,
-    "providerTransientSessionResets": 11,
+    "providerTransientSessionResets": 13,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
     "sessionTokenRenewals": 0,
