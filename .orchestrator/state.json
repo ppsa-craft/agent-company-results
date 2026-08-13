@@ -46,7 +46,7 @@
   "interrupted": {
     "cycle": 215,
     "reason": "ppsa/big-pickle hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
-    "at": "2026-08-13T03:41:39.265Z"
+    "at": "2026-08-13T03:44:41.534Z"
   },
   "pendingPrompt": null,
   "idleStreaks": {
@@ -68,7 +68,7 @@
     "contextCompactions": 78,
     "contextBytesSaved": 359636,
     "diskBytesReclaimed": 1605327162,
-    "providerTransientSessionResets": 17,
+    "providerTransientSessionResets": 20,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
     "sessionTokenRenewals": 0,
