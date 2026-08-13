@@ -1,5 +1,5 @@
 <!-- orchestrator:session-loss-note -->
-> ORCHESTRATOR NOTE (2026-08-13T03:43:42.704Z): your previous session was lost — a transient provider error hit your session — it was reset, retrying once before pausing.
+> ORCHESTRATOR NOTE (2026-08-13T03:46:55.243Z): your previous session was lost — a transient provider error hit your session — it was reset, retrying once before pausing.
 > Assignment on record: cycle 215, interrupted (ppsa/big-pickle hit a known-transient provider error ("Upstream request failed") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one).
 > Your condensed memory below (if any) predates the loss and may be stale — reconcile it
 > against COMPANY_STATE.md and tasks/backlog.md before trusting it.
