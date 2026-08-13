@@ -1,6 +1,6 @@
 <!-- orchestrator:session-loss-note -->
-> ORCHESTRATOR NOTE (2026-08-13T13:54:54.621Z): your previous session was lost — a transient provider error hit your session — it was reset, retrying once before pausing.
-> Assignment on record: cycle 217, interrupted (ppsa/laguna-s-2.1-free timed out after repeated attempts — health-probing the model list to resume on a healthy one).
+> ORCHESTRATOR NOTE (2026-08-13T14:48:35.019Z): your previous session was lost — a transient provider error hit your session — it was reset, retrying once before pausing.
+> Assignment on record: cycle 217, interrupted (ppsa/laguna-s-2.1-free hit a known-transient provider error ("Upstream request failed") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one).
 > Your condensed memory below (if any) predates the loss and may be stale — reconcile it
 > against COMPANY_STATE.md and tasks/backlog.md before trusting it.
 <!-- /orchestrator:session-loss-note -->
