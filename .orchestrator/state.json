@@ -42,7 +42,7 @@
   "abandonedPrs": {},
   "shipBlocked": {},
   "shipConflicts": {},
-  "resumedByProbe": false,
+  "resumedByProbe": true,
   "interrupted": {
     "cycle": 158,
     "reason": "ppsa/big-pickle hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
