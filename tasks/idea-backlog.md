@@ -22,7 +22,7 @@ Node+Python runtime envelope (§7.2); every suggestion surface must carry a clea
 "informational only — not financial advice" disclaimer (BA doc requirement);
 each service is its own milestone with the full DoD artifact set.
 
-## Status (updated cycle 149, 2026-08-13)
+## Status (updated cycle 151, 2026-08-13)
 
 - **M1 SHIPPED** — data-ingest security-gate merged (`9f1ca33`, PR 16). 34-pass
   suite incl. OWASP + DB-down regression; README-verbatim walkthrough fixed.
@@ -32,10 +32,10 @@ each service is its own milestone with the full DoD artifact set.
   app-wide authn/z) ∥ M3-B (suggestion API) wave 1, M3-C assembly serial, web-ui
   deferred to M3.5. Wave-1 tasks staged `held:` in `tasks/backlog.md`
   (vnstock-advisor-15..22); opens the moment the freeze lifts.
-- PR cap freeze (#155) holds (~126th cycle): 4 superseded PRs (11/13/14/15, content
+- PR cap freeze (#155) holds (~128th cycle): 4 superseded PRs (11/13/14/15, content
   ⊂ merged 16/17) await orchestrator close — escalated as an owner health probe
-  since the cycle-22 report; no agent-side drain work remains. M3 clock at 108/15
-  (breach — 7.2× the budget; 22/15 @62 → … → 107/15 @147 → 108/15 @148)
+  since the cycle-22 report; no agent-side drain work remains. M3 clock at 110/15
+  (breach — 7.3× the budget; 22/15 @62 → … → 109/15 @149 → 110/15 @150)
   — owner decision pending.
 - Milestone budget (cycle 40): the compound "M1/M2 SHIPPED + M3 DECIDED" milestone
   hit its 15-cycle cap → re-scoped by the CEO: M1/M2 CLOSED complete (shipped

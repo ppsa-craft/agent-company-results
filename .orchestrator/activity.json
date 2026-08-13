@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-08-13T00:19:33.727Z",
+  "generatedAt": "2026-08-13T00:23:45.493Z",
   "working": [],
   "recent": [
+    {
+      "instance": "ceo",
+      "role": "ceo",
+      "what": "running cycle 151",
+      "branch": null,
+      "taskId": null,
+      "since": "2026-08-13T00:20:18.184Z",
+      "ended": "2026-08-13T00:23:45.493Z",
+      "ok": true
+    },
     {
       "instance": "ceo",
       "role": "ceo",
@@ -110,16 +120,6 @@
       "taskId": null,
       "since": "2026-08-12T23:56:55.304Z",
       "ended": "2026-08-12T23:59:00.658Z",
-      "ok": true
-    },
-    {
-      "instance": "ceo",
-      "role": "ceo",
-      "what": "running cycle 139",
-      "branch": null,
-      "taskId": null,
-      "since": "2026-08-12T23:50:49.753Z",
-      "ended": "2026-08-12T23:56:10.505Z",
       "ok": true
     }
   ]
