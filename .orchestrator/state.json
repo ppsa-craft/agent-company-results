@@ -5,7 +5,7 @@
   "milestoneCycles": 168,
   "milestoneStartedAt": 1786565648611,
   "milestoneEscalated": true,
-  "modelIndex": 2,
+  "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
@@ -42,7 +42,7 @@
   "abandonedPrs": {},
   "shipBlocked": {},
   "shipConflicts": {},
-  "resumedByProbe": false,
+  "resumedByProbe": true,
   "interrupted": {
     "cycle": 209,
     "reason": "ppsa/mimo-v2.5-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
