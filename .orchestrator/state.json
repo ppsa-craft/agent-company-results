@@ -45,10 +45,7 @@
   "resumedByProbe": false,
   "interrupted": null,
   "pendingPrompt": null,
-  "idleStreaks": {
-    "cto": 1,
-    "tester": 1
-  },
+  "idleStreaks": {},
   "capacityPressure": {},
   "noopStreak": 0,
   "counters": {
@@ -61,8 +58,8 @@
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 6,
-    "contextCompactions": 15,
-    "contextBytesSaved": 257219,
+    "contextCompactions": 16,
+    "contextBytesSaved": 258847,
     "diskBytesReclaimed": 1605327162,
     "providerTransientSessionResets": 0,
     "toolCallsBrokenRotations": 0,
