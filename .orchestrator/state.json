@@ -5,7 +5,7 @@
   "milestoneCycles": 174,
   "milestoneStartedAt": 1786565648611,
   "milestoneEscalated": true,
-  "modelIndex": 2,
+  "modelIndex": 5,
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
@@ -45,8 +45,8 @@
   "resumedByProbe": false,
   "interrupted": {
     "cycle": 215,
-    "reason": "ppsa/mimo-v2.5-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
-    "at": "2026-08-13T03:47:54.609Z"
+    "reason": "ppsa/laguna-s-2.1-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-13T03:52:09.358Z"
   },
   "pendingPrompt": null,
   "idleStreaks": {
@@ -68,7 +68,7 @@
     "contextCompactions": 78,
     "contextBytesSaved": 359636,
     "diskBytesReclaimed": 1605327162,
-    "providerTransientSessionResets": 23,
+    "providerTransientSessionResets": 26,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
     "sessionTokenRenewals": 0,
