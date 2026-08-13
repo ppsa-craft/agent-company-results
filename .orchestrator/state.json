@@ -9,8 +9,8 @@
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": "ses_00765a270ffeymFMtcIJNl6Vov",
-  "ceoSessionRequests": 1,
+  "ceoSessionId": null,
+  "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
       "id": "ses_0095219eaffeXSV0EGxgRRHa7q",
@@ -43,15 +43,18 @@
   "shipBlocked": {},
   "shipConflicts": {},
   "resumedByProbe": false,
-  "interrupted": null,
+  "interrupted": {
+    "cycle": 158,
+    "reason": "ppsa/big-pickle hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-13T00:57:50.484Z"
+  },
   "pendingPrompt": null,
   "idleStreaks": {
-    "ba": 2,
-    "cto": 2,
-    "hr": 2,
-    "pm": 2,
-    "qa": 2,
-    "techlead": 2
+    "ba": 3,
+    "cto": 3,
+    "hr": 3,
+    "pm": 3,
+    "qa": 3
   },
   "capacityPressure": {},
   "noopStreak": 0,
@@ -65,10 +68,10 @@
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 6,
-    "contextCompactions": 20,
-    "contextBytesSaved": 265354,
+    "contextCompactions": 21,
+    "contextBytesSaved": 266978,
     "diskBytesReclaimed": 1605327162,
-    "providerTransientSessionResets": 7,
+    "providerTransientSessionResets": 9,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
     "sessionTokenRenewals": 0,
