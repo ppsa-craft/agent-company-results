@@ -9,7 +9,7 @@
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": null,
+  "ceoSessionId": "ses_005d3e071ffebbuELD1oSsmlNC",
   "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
@@ -48,7 +48,10 @@
     "reason": "ppsa/laguna-s-2.1-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
     "at": "2026-08-13T04:15:16.626Z"
   },
-  "pendingPrompt": null,
+  "pendingPrompt": {
+    "cycle": 216,
+    "session": "ses_005d3e071ffebbuELD1oSsmlNC"
+  },
   "idleStreaks": {
     "cto": 3,
     "hr": 3,
@@ -69,7 +72,7 @@
     "outOfChainDelegations": 186,
     "noopCycles": 0,
     "noopRotations": 0,
-    "stalls": 11,
+    "stalls": 12,
     "contextCompactions": 79,
     "contextBytesSaved": 361254,
     "diskBytesReclaimed": 1605327162,
@@ -124,7 +127,7 @@
     "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
   },
   "prCapEngaged": true,
-  "stallRetries": 0,
+  "stallRetries": 1,
   "lastAuditedRunId": 31564177653,
   "pendingConflictNotes": [],
   "pendingBoundaryNote": null,
