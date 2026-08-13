@@ -45,10 +45,13 @@
   "resumedByProbe": false,
   "interrupted": {
     "cycle": 217,
-    "reason": "ppsa/laguna-s-2.1-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
-    "at": "2026-08-13T08:22:08.924Z"
+    "reason": "ppsa/laguna-s-2.1-free timed out after repeated attempts — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-13T11:07:24.949Z"
   },
-  "pendingPrompt": null,
+  "pendingPrompt": {
+    "cycle": 217,
+    "session": "ses_005418d13ffeqlp3fMHXVTzC4H"
+  },
   "idleStreaks": {
     "cto": 4,
     "hr": 4,
@@ -69,7 +72,7 @@
     "outOfChainDelegations": 186,
     "noopCycles": 0,
     "noopRotations": 0,
-    "stalls": 12,
+    "stalls": 14,
     "contextCompactions": 80,
     "contextBytesSaved": 362872,
     "diskBytesReclaimed": 1605327162,
