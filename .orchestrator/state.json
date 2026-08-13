@@ -9,7 +9,7 @@
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": "ses_006dc7effffezE199d8vX3ciis",
+  "ceoSessionId": null,
   "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
@@ -43,17 +43,13 @@
   "shipBlocked": {},
   "shipConflicts": {},
   "resumedByProbe": false,
-  "interrupted": null,
-  "pendingPrompt": null,
-  "idleStreaks": {
-    "ba": 18,
-    "cto": 18,
-    "hr": 18,
-    "pm": 18,
-    "qa": 18,
-    "techlead": 18,
-    "tester": 18
+  "interrupted": {
+    "cycle": 209,
+    "reason": "ppsa/mimo-v2.5-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-13T03:29:42.664Z"
   },
+  "pendingPrompt": null,
+  "idleStreaks": {},
   "capacityPressure": {},
   "noopStreak": 0,
   "counters": {
@@ -66,10 +62,10 @@
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 10,
-    "contextCompactions": 71,
-    "contextBytesSaved": 348306,
+    "contextCompactions": 72,
+    "contextBytesSaved": 349925,
     "diskBytesReclaimed": 1605327162,
-    "providerTransientSessionResets": 9,
+    "providerTransientSessionResets": 11,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
     "sessionTokenRenewals": 0,
