@@ -45,15 +45,7 @@
   "resumedByProbe": false,
   "interrupted": null,
   "pendingPrompt": null,
-  "idleStreaks": {
-    "ba": 1,
-    "cto": 1,
-    "hr": 1,
-    "pm": 1,
-    "qa": 1,
-    "techlead": 1,
-    "tester": 1
-  },
+  "idleStreaks": {},
   "capacityPressure": {},
   "noopStreak": 0,
   "counters": {
@@ -66,8 +58,8 @@
     "noopCycles": 0,
     "noopRotations": 0,
     "stalls": 6,
-    "contextCompactions": 41,
-    "contextBytesSaved": 299482,
+    "contextCompactions": 42,
+    "contextBytesSaved": 301106,
     "diskBytesReclaimed": 1605327162,
     "providerTransientSessionResets": 9,
     "toolCallsBrokenRotations": 0,
