@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-13T02:35:42.067Z",
-  "cycle": 205,
+  "generatedAt": "2026-08-13T02:37:36.269Z",
+  "cycle": 206,
   "cap": 3,
   "drain": true,
   "live": true,
@@ -30,7 +30,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 1,
-      "ageHours": 52.1
+      "ageHours": 52.2
     },
     {
       "taskId": "vnstock-advisor-4-dev-data",
@@ -57,7 +57,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 2,
-      "ageHours": 41.7
+      "ageHours": 41.8
     },
     {
       "taskId": "vnstock-advisor-4-dev-data-ingest",
@@ -84,7 +84,7 @@
       "action": "open on GitHub — no branch on this pod to work from",
       "actor": "",
       "position": 3,
-      "ageHours": 41.7
+      "ageHours": 41.8
     },
     {
       "taskId": "vnstock-advisor-5c-dev-ranking",
