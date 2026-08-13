@@ -9,7 +9,7 @@
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
-  "ceoSessionId": "ses_006f3ca78ffeuYh5RMtuqVd9Wj",
+  "ceoSessionId": null,
   "ceoSessionRequests": 0,
   "agentSessions": {
     "tester": {
@@ -43,16 +43,23 @@
   "shipBlocked": {},
   "shipConflicts": {},
   "resumedByProbe": false,
-  "interrupted": null,
-  "pendingPrompt": null,
+  "interrupted": {
+    "cycle": 208,
+    "reason": "ppsa/deepseek-v4-flash-free timed out after repeated attempts — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-13T03:19:25.818Z"
+  },
+  "pendingPrompt": {
+    "cycle": 208,
+    "session": "ses_006f3ca78ffeuYh5RMtuqVd9Wj"
+  },
   "idleStreaks": {
-    "ba": 17,
-    "cto": 17,
-    "hr": 17,
-    "pm": 17,
-    "qa": 17,
-    "techlead": 17,
-    "tester": 17
+    "ba": 18,
+    "cto": 18,
+    "hr": 18,
+    "pm": 18,
+    "qa": 18,
+    "techlead": 18,
+    "tester": 18
   },
   "capacityPressure": {},
   "noopStreak": 0,
@@ -65,9 +72,9 @@
     "outOfChainDelegations": 182,
     "noopCycles": 0,
     "noopRotations": 0,
-    "stalls": 8,
-    "contextCompactions": 70,
-    "contextBytesSaved": 346688,
+    "stalls": 10,
+    "contextCompactions": 71,
+    "contextBytesSaved": 348306,
     "diskBytesReclaimed": 1605327162,
     "providerTransientSessionResets": 9,
     "toolCallsBrokenRotations": 0,
