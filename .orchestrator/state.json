@@ -5,7 +5,7 @@
   "milestoneCycles": 166,
   "milestoneStartedAt": 1786565648611,
   "milestoneEscalated": true,
-  "modelIndex": 1,
+  "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
@@ -42,7 +42,7 @@
   "abandonedPrs": {},
   "shipBlocked": {},
   "shipConflicts": {},
-  "resumedByProbe": false,
+  "resumedByProbe": true,
   "interrupted": {
     "cycle": 207,
     "reason": "ppsa/big-pickle timed out after repeated attempts — health-probing the model list to resume on a healthy one",
