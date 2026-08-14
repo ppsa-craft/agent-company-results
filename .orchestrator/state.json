@@ -46,7 +46,7 @@
   "interrupted": {
     "cycle": 217,
     "reason": "ppsa/laguna-s-2.1-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
-    "at": "2026-08-14T02:49:42.020Z"
+    "at": "2026-08-14T04:42:14.916Z"
   },
   "pendingPrompt": null,
   "idleStreaks": {
@@ -73,7 +73,7 @@
     "contextCompactions": 80,
     "contextBytesSaved": 362872,
     "diskBytesReclaimed": 1605327162,
-    "providerTransientSessionResets": 45,
+    "providerTransientSessionResets": 48,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
     "sessionTokenRenewals": 0,
