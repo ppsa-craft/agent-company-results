@@ -5,7 +5,7 @@
   "milestoneCycles": 176,
   "milestoneStartedAt": 1786565648611,
   "milestoneEscalated": true,
-  "modelIndex": 5,
+  "modelIndex": 0,
   "failedStarts": 0,
   "providerTransientRetries": 0,
   "contextOverflowRetries": 0,
@@ -45,8 +45,8 @@
   "resumedByProbe": false,
   "interrupted": {
     "cycle": 217,
-    "reason": "ppsa/laguna-s-2.1-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
-    "at": "2026-08-13T14:52:57.870Z"
+    "reason": "ppsa/deepseek-v4-flash-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-14T00:03:22.060Z"
   },
   "pendingPrompt": null,
   "idleStreaks": {
@@ -73,7 +73,7 @@
     "contextCompactions": 80,
     "contextBytesSaved": 362872,
     "diskBytesReclaimed": 1605327162,
-    "providerTransientSessionResets": 39,
+    "providerTransientSessionResets": 42,
     "toolCallsBrokenRotations": 0,
     "contextOverflowSessionResets": 0,
     "sessionTokenRenewals": 0,
