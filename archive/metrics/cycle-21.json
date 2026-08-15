@@ -1,0 +1,54 @@
+{
+  "cycleId": 21,
+  "ts": "2026-08-12T19:17:16.041Z",
+  "model": "ppsa/deepseek-v4-flash-free",
+  "cycleDurationMs": 16870,
+  "milestone": {
+    "id": "M1/M2 SHIPPED (data-ingest 9f1ca33 + analysis-engine/ranking 0dcd72e, both security-gated on main); next = M3 (suggestion-api + web-ui), staged & debate-ready, opens post-freeze",
+    "cyclesUsed": 4,
+    "cap": 15,
+    "hoursElapsed": 0.09
+  },
+  "reviews": {
+    "open": 0,
+    "approved": 0,
+    "avgRoundsPerTask": 0,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ceo",
+      "dev"
+    ],
+    "idle": [
+      "ba",
+      "cto",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester"
+    ]
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 1,
+    "boundaryViolations": 0,
+    "workspaceDirty": 2,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 30,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 6,
+    "contextCompactions": 2,
+    "contextBytesSaved": 108771,
+    "diskBytesReclaimed": 1605327162,
+    "providerTransientSessionResets": 0,
+    "toolCallsBrokenRotations": 0,
+    "contextOverflowSessionResets": 0,
+    "sessionTokenRenewals": 0,
+    "invalidRequestPauses": 0,
+    "modelIncompatibleRotations": 0
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "cycleId": 3,
+  "ts": "2026-08-12T16:00:55.316Z",
+  "model": "ppsa/deepseek-v4-flash-free",
+  "cycleDurationMs": 36332,
+  "milestone": {
+    "id": "M1/M2 ship — data-ingest (merged on main, PR #12) + analysis-engine/ranking (6 open PRs draining)",
+    "cyclesUsed": 1,
+    "cap": 15,
+    "hoursElapsed": 0.14
+  },
+  "reviews": {
+    "open": 0,
+    "approved": 0,
+    "avgRoundsPerTask": 0,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ba",
+      "ceo",
+      "cto",
+      "dev",
+      "pm",
+      "qa",
+      "techlead",
+      "tester"
+    ],
+    "idle": [
+      "hr",
+      "its"
+    ]
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 0,
+    "boundaryViolations": 0,
+    "workspaceDirty": 2,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 5,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 2,
+    "contextCompactions": 0,
+    "contextBytesSaved": 0,
+    "diskBytesReclaimed": 747308961,
+    "providerTransientSessionResets": 0,
+    "toolCallsBrokenRotations": 0,
+    "contextOverflowSessionResets": 0,
+    "sessionTokenRenewals": 0,
+    "invalidRequestPauses": 0,
+    "modelIncompatibleRotations": 0
+  }
+}

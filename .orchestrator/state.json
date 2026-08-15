@@ -1,0 +1,137 @@
+{
+  "cycleCount": 216,
+  "lastCycleAt": "2026-08-13T08:19:46.371Z",
+  "milestoneId": "M3 — suggestion-api first release (API-first: M3-A auth+hardening ∥ M3-B suggestion API wave 1 → M3-C assembly serial; web-ui → M3.5), DECIDED §5.1 debate (cycle 22), wave-1 tasks staged HELD post-freeze, opens on freeze lift. [RE-SCOPED cycle 40: the prior compound milestone \"M1/M2 SHIPPED + M3 DECIDED\" hit its 15-cycle budget → declared COMPLETE (M1 9f1ca33 + M2 0dcd72e merged, security-gated, cycle 17; zero agent-doable work remained); M3 opened as a NEW milestone with a fresh budget — verdict CONTINUE-with-why in the cycle-40 report]",
+  "milestoneCycles": 176,
+  "milestoneStartedAt": 1786565648611,
+  "milestoneEscalated": true,
+  "modelIndex": 5,
+  "failedStarts": 0,
+  "providerTransientRetries": 0,
+  "contextOverflowRetries": 0,
+  "ceoSessionId": null,
+  "ceoSessionRequests": 0,
+  "agentSessions": {
+    "tester": {
+      "id": "ses_0095219eaffeXSV0EGxgRRHa7q",
+      "requests": 4
+    },
+    "dev": {
+      "id": "ses_008cd8ae5ffeiRRkJPSuY1cKun",
+      "requests": 1
+    },
+    "qa": {
+      "id": "ses_008b6ed5fffeXaxeUsPl581ozo",
+      "requests": 1
+    },
+    "pm": {
+      "id": "ses_008b1587dffeqGXniAkGn4hO9Z",
+      "requests": 0
+    }
+  },
+  "agentInterrupted": {},
+  "reviewFixInterrupted": {},
+  "markerMisses": {},
+  "ciRedStreak": {},
+  "conflictStreak": {
+    "vnstock-advisor-14-dev-data-ingest-security-gate": {
+      "count": 1,
+      "at": "2026-08-12T18:18:22.492Z"
+    }
+  },
+  "abandonedPrs": {},
+  "shipBlocked": {},
+  "shipConflicts": {},
+  "resumedByProbe": false,
+  "interrupted": {
+    "cycle": 217,
+    "reason": "ppsa/laguna-s-2.1-free hit a known-transient provider error (\"Upstream request failed\") twice in a row (once after a session reset) — health-probing the model list to resume on a healthy one",
+    "at": "2026-08-14T04:42:14.916Z"
+  },
+  "pendingPrompt": null,
+  "idleStreaks": {
+    "cto": 4,
+    "hr": 4,
+    "ba": 2,
+    "pm": 2,
+    "qa": 2,
+    "techlead": 2,
+    "tester": 2
+  },
+  "capacityPressure": {},
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 1,
+    "boundaryViolations": 0,
+    "workspaceDirty": 4,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 186,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 14,
+    "contextCompactions": 80,
+    "contextBytesSaved": 362872,
+    "diskBytesReclaimed": 1605327162,
+    "providerTransientSessionResets": 48,
+    "toolCallsBrokenRotations": 0,
+    "contextOverflowSessionResets": 0,
+    "sessionTokenRenewals": 0,
+    "invalidRequestPauses": 0,
+    "modelIncompatibleRotations": 0
+  },
+  "openPrLive": true,
+  "openPrIndex": {
+    "task/vnstock-advisor-5c-dev-ranking-dev": 15,
+    "task/vnstock-advisor-4-dev-data-ingest-dev": 14,
+    "task/vnstock-advisor-4-dev-data-ingest": 13,
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
+  },
+  "openPrMeta": {
+    "task/vnstock-advisor-5c-dev-ranking-dev": {
+      "number": 15,
+      "createdAt": "2026-08-11T11:06:36Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/15",
+      "title": "task/vnstock-advisor-5c-dev-ranking",
+      "draft": false
+    },
+    "task/vnstock-advisor-4-dev-data-ingest-dev": {
+      "number": 14,
+      "createdAt": "2026-08-11T08:51:20Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/14",
+      "title": "task/vnstock-advisor-4-dev-data-ingest",
+      "draft": false
+    },
+    "task/vnstock-advisor-4-dev-data-ingest": {
+      "number": 13,
+      "createdAt": "2026-08-11T08:51:17Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/13",
+      "title": "task/vnstock-advisor-4-dev-data",
+      "draft": false
+    },
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": {
+      "number": 11,
+      "createdAt": "2026-08-10T22:27:39Z",
+      "url": "https://github.com/ppsa-craft/agent-company-results/pull/11",
+      "title": "task/vnstock-advisor-5-dev-analysis-engine",
+      "draft": false
+    }
+  },
+  "prSeen": {
+    "task/vnstock-advisor-5c-dev-ranking-dev": 15,
+    "task/vnstock-advisor-4-dev-data-ingest-dev": 14,
+    "task/vnstock-advisor-4-dev-data-ingest": 13,
+    "task/vnstock-advisor-5-dev-analysis-engine-dev": 11
+  },
+  "prCapEngaged": true,
+  "stallRetries": 0,
+  "lastAuditedRunId": 31668089254,
+  "pendingConflictNotes": [],
+  "pendingBoundaryNote": null,
+  "signOffInterrupted": {},
+  "reviewPrSyncHashes": {
+    "vnstock-advisor-14-dev-data-ingest-security-gate": "53c491b290fa2078dd769adfaeaebe35aabee059",
+    "vnstock-advisor-15-dev-analysis-engine-security-gate": "49ef5acb9f0775c15512b6c8d6d82938746ff9b7"
+  },
+  "pendingQaNotes": []
+}

@@ -1,0 +1,53 @@
+{
+  "cycleId": 61,
+  "ts": "2026-08-12T21:06:11.074Z",
+  "model": "ppsa/deepseek-v4-flash-free",
+  "cycleDurationMs": 74719,
+  "milestone": {
+    "id": "M3 — suggestion-api first release (API-first: M3-A auth+hardening ∥ M3-B suggestion API wave 1 → M3-C assembly serial; web-ui → M3.5), DECIDED §5.1 debate (cycle 22), wave-1 tasks staged HELD post-freeze, opens on freeze lift. [RE-SCOPED cycle 40: the prior compound milestone \"M1/M2 SHIPPED + M3 DECIDED\" hit its 15-cycle budget → declared COMPLETE (M1 9f1ca33 + M2 0dcd72e merged, security-gated, cycle 17; zero agent-doable work remained); M3 opened as a NEW milestone with a fresh budget — verdict CONTINUE-with-why in the cycle-40 report]",
+    "cyclesUsed": 21,
+    "cap": 15,
+    "hoursElapsed": 0.87
+  },
+  "reviews": {
+    "open": 0,
+    "approved": 0,
+    "avgRoundsPerTask": 0,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ba",
+      "ceo",
+      "cto",
+      "dev",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester"
+    ],
+    "idle": []
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 1,
+    "boundaryViolations": 0,
+    "workspaceDirty": 4,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 77,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 6,
+    "contextCompactions": 3,
+    "contextBytesSaved": 120209,
+    "diskBytesReclaimed": 1605327162,
+    "providerTransientSessionResets": 0,
+    "toolCallsBrokenRotations": 0,
+    "contextOverflowSessionResets": 0,
+    "sessionTokenRenewals": 0,
+    "invalidRequestPauses": 0,
+    "modelIncompatibleRotations": 0
+  }
+}

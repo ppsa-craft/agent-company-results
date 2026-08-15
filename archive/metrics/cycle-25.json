@@ -1,0 +1,53 @@
+{
+  "cycleId": 25,
+  "ts": "2026-08-12T19:42:47.524Z",
+  "model": "ppsa/deepseek-v4-flash-free",
+  "cycleDurationMs": 201923,
+  "milestone": {
+    "id": "M1/M2 SHIPPED (data-ingest 9f1ca33 + analysis-engine/ranking 0dcd72e, both security-gated on main); M3 (suggestion-api first release) DECIDED by §5.1 debate (cycle 22) — wave-1 tasks staged HELD post-freeze (cycle 24 fix), opens on freeze lift",
+    "cyclesUsed": 1,
+    "cap": 15,
+    "hoursElapsed": 0.06
+  },
+  "reviews": {
+    "open": 0,
+    "approved": 0,
+    "avgRoundsPerTask": 0,
+    "stalled": 0
+  },
+  "activity": {
+    "seen": [
+      "ba",
+      "ceo",
+      "cto",
+      "dev",
+      "hr",
+      "pm",
+      "qa",
+      "techlead",
+      "tester"
+    ],
+    "idle": []
+  },
+  "noopStreak": 0,
+  "counters": {
+    "backoffs": 0,
+    "qaNoGo": 1,
+    "boundaryViolations": 0,
+    "workspaceDirty": 4,
+    "reviewEscalations": 0,
+    "outOfChainDelegations": 39,
+    "noopCycles": 0,
+    "noopRotations": 0,
+    "stalls": 6,
+    "contextCompactions": 2,
+    "contextBytesSaved": 108771,
+    "diskBytesReclaimed": 1605327162,
+    "providerTransientSessionResets": 0,
+    "toolCallsBrokenRotations": 0,
+    "contextOverflowSessionResets": 0,
+    "sessionTokenRenewals": 0,
+    "invalidRequestPauses": 0,
+    "modelIncompatibleRotations": 0
+  }
+}
